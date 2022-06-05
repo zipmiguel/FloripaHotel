@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro de Funcionários</title>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat Alternates' rel='stylesheet'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/hotel.css">
+        
+    </head>
+    <body>
+        <div class="cabecalho">
+            <div class="nomedoHotel">
+                <a href="">
+                    <h1 class="negrito branco">Floripa</h1>
+                    <h3 class="negrito branco">HOTEL</h3>
+                </a>
+            </div>
+            <div class="logoHome">
+                <a href="#">
+                    <img src="img/icons8-casa-64.png" alt="btn-home">
+                </a>
+            </div>
+            <div class="nomeSair">
+                <h3 class="negrito branco">João Pereira Silva</h3>
+                <button class="pointer" onclick="" >Logout</button>
+            </div>
+        </div>
+        <div class="navegacao">
+            <h2 id="titulo" class="negrito">Hóspede</h2>
+            <hr/>
+            <hr/>
+            <hr/>
+            <div class="inputs">
+                <input class="barra-pesquisa" type="text" placeholder="Pesquisar por Hóspede">
+                <input class="btnPesquisar negrito branco pointer" type="submit" value="Pesquisar">
+            </div>
+        </div>
+        <form action="">
+            <div class="cadastro">
+                <h1 class="negrito tituloCadastro">Cadastro de Hóspedes</h1>
+                <div class="cadastroEsquerda">
+                    <div class="campoCadastro">
+                        <h1 class="negrito">Nome</h1>
+                        <input type="text" name="nomeFuncionario">
+                    </div>
+                    <div class="campoCadastro">
+                        <h1 class="negrito">Telefone</h1>
+                        <input type="text" name="nomeFuncionario">
+                    </div>
+                    <div class="campoCadastro">
+                        <h1 class="negrito">CPF</h1>
+                        <input type="text" name="nomeFuncionario">
+                    </div>
+                </div>
+                <div class="cadastroDireita">
+                    <div class="campoCadastro">
+                        <h1 class="negrito">Endereço</h1>
+                        <input type="text" name="nomeFuncionario">
+                    </div>
+                    <div class="campoCadastro">
+                        <h1 class="negrito">E-mail</h1>
+                        <input type="email" name="nomeFuncionario">
+                    </div>
+                    <div class="campoCadastro">
+                        <h1 class="negrito">Nascimento</h1>
+                        <input type="date" name="nomeFuncionario">
+                    </div>
+                </div>
+                <div class="botoesCadastro">
+                    <input type="reset" value="Excluir" class="negrito botaoExcluirCadastro pointer">
+                    <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">
+                </div>
+            </div>
+        </form>
+    </body>
+    </html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro do Hóspede</title>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat Alternates' rel='stylesheet'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquey-mask.js"></script>
+        <script src="js/cliente.js"></script>
+        <!-- Css Styles -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+        <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+        <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+        <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+        <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        
+    </head>
+    <body>
+        <header class="header-section">
+            <div class="container-fluid">
+                <div class="inner-header">
+                    <div class="logo">
+                        <a href="./index.html"><img src="img/logo.svg" alt=""></a>
+                    </div>
+                    <div class="nav-right">
+                        <a href="./index.html#reserva" class="primary-btn">Faça sua Reserva</a>
+                        <a href="./login.html" id="button-login">Login</a>
+                        <!-- <h6 class="text-white">Ainda não tem conta?<a href="./index.html#reserva" id="button-cadastro">Cadastre-se</a></h6> -->
+                    </div>
+                    <nav class="main-menu mobile-menu">
+                        <ul>
+                            <li><a href="./index.html">Início</a></li>
+                            <li><a href="rooms.html">Quartos</a></li>
+                            <li><a href="services.html">Serviços</a></li>
+                            <li><a href="./about-us.html">Sobre</a></li>
+                            <!-- <li><a href="./blog.html">Notícias</a></li> -->
+                            <li><a href="./contact.html">Contato</a></li>
+                        </ul>
+                    </nav>
+                    <div id="mobile-menu-wrap"></div>
+                </div>
+            </div>
+        </header>
+        <form class="formularioCompra" action="">
+            <h2 class="informacoes negrito" style="font-size: 1.65em;">Cadastre ou altere dados abaixo para poder realizar compras futuras de modo mais rápido!!!</h2>
+            <h3 class="linhaUnica"></h3>
+            <div class="formulario" action="">
+                <div class="cadastro">
+                    <h1 class="negrito tituloCadastro">Informações de Contato</h1>
+                    <div class="cadastroEsquerda">
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Nome</h1>
+                            <input type="text" name="nomeCliente" placeholder="Nome Completo">
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Telefone</h1>
+                            <input type="text" class="telefone" name="telefoneCliente" placeholder="xx xxxxx-xxxx">
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">CPF</h1>
+                            <input type="text" class="cpf" name="cpfCliente" placeholder="xxx.xxx.xxx-xx">
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Endereço</h1>
+                            <input type="text" name="enderecoCliente" placeholder="Rua, nº, Cidade, Estado, País, CEP">
+                        </div>
+                    </div>
+                    <div class="cadastroDireita">
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Email</h1>
+                            <input type="email" name="emailCliente" placeholder="exemplo@email.com"></select>
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Nascimento</h1>
+                            <input type="date" name="dataNascimentoCliente">
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Senha</h1>
+                            <input type="password" name="senhaCliente" placeholder="Exemplo123!">
+                        </div>
+                        <div class="campoCadastro">
+                            <h2 class="negrito">Confirmar Senha</h2>
+                            <input type="password" name="senhaCliente" placeholder="Exemplo123!">
+                        </div>
+                    </div>
+                    <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">
+                </div>
+            </div>
+            <h3 style="line-height: 50px; margin-top: 50px; font-size: 1.7em;"><span class="negrito">Cadastre</span> um <span class="negrito">Cartão de Crédito</span> ou um <span class="negrito">Cartão de Débito</span>
+                para realizar pagamento futuros!!! 
+            </h3>
+        </form>
+        <form action="" style="margin-bottom: 50px;">
+            <div class="formulario" action="">
+                <div class="cadastro">
+                    <h1 class="negrito tituloCadastro">Cadastro Cartão</h1>
+                    <div class="cadastroEsquerda">
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Bandeira</h1>
+                                <select id="bandeirasCartoes" name="selectBandeirasCartoes" class="pointer">
+                                    <option value="" selected disabled hidden>Selecione a Bandeira do Cartão</option>
+                                    <option value="americanExpress">American Express</option>
+                                    <option value="dinersClubInternational">Diners Club International</option>
+                                    <option value="elo">Elo</option>
+                                    <option value="hipercard">Hipercard</option>
+                                    <option value="masterCard"> MasterCard</option>
+                                    <option value="visa">Visa</option>
+                                </select>
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Nº do Cartão</h1>
+                            <input type="text" class="numeroCartao" name="numeroCartao" placeholder="xxxx xxxx xxxx xxxx">
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Vencimento</h1>
+                            <input type="month" name="vencimentoCartao">
+                        </div>
+                    </div>
+                    <div class="cadastroDireita">
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Nome no Cartão</h1>
+                            <input type="text" name="nomeCartao" placeholder="Nome Gravado no Cartão"></select>
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">CVV</h1>
+                            <input type="text" class="cvv" name="cvv" placeholder="xxx">
+                        </div>
+                    </div>
+                    <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">
+                </div>
+            </div>
+        </form>
+        <footer class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="footer-item">
+                            <div class="footer-logo">
+                                <a href="#"><img src="img/logo.svg" alt=""></a>
+                            </div>
+                            <p>Assine nosso Newsletter para receber emails com nossas principais novidades!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="footer-item">
+                            <h5>Newsletter</h5>
+                            <div class="newslatter-form">
+                                <input type="text" placeholder="Insira Seu Email Aqui">
+                                <button type="submit">Assinar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="footer-item">
+                            <h5>Informações de Contato</h5>
+                            <ul>
+                                <li><img src="img/placeholder.png" alt="">2285 João Paulo,<br />Florianópolis - SC</li>
+                                <li><img src="img/phone.png" alt="">+55 (48) 3535-4592</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul>
+                                <li><a href="./index.html">Início</a></li>
+                                <li><a href="rooms.html">Quartos</a></li>
+                                <li><a href="services.html">Serviços</a></li>
+                                <li><a href="./about-us.html">Sobre</a></li>
+                                <!-- <li><a href="./blog.html">Notícias</a></li> -->
+                                <li><a href="./contact.html">Contato</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row pt-5">
+                        <div class="col-lg-12 ">
+                            <div class="small text-white text-center">
+                                <span> &copy; 2022 - Projeto WEB - Jovem Programador SENAC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
