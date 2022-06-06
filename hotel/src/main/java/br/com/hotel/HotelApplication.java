@@ -19,7 +19,7 @@ public class HotelApplication {
 
 	@Autowired
     SenderMailService senderMailService;
-	@GetMapping("/teste")
+	@GetMapping("/recuperar")
 	public void testEnvioEmail(HttpServletResponse response) throws IOException{
 		senderMailService.enviar();
     	response.sendRedirect("/recuperarSenha.html");
