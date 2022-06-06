@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pagamento Funcionário</title>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat Alternates' rel='stylesheet'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquey-mask.js"></script>
+        <script src="js/cliente.js"></script>
+
+        <!-- Css Styles -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+        <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+        <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+        <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+        <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        
+    </head>
+    <body>
+        <div class="cabecalho">
+            <div class="nomedoHotel">
+                <a href="">
+                    <h1 class="negrito branco">Floripa</h1>
+                    <h3 class="negrito branco">HOTEL</h3>
+                </a>
+            </div>
+            <div class="logoHome">
+                <a href="#">
+                    <img src="img/icons8-casa-64.png" alt="btn-home">
+                </a>
+            </div>
+            <div class="nomeSair">
+                <h3 class="negrito branco">João Pereira Silva</h3>
+                <button class="pointer" onclick="" >Logout</button>
+            </div>
+        </div>
+        <form class="formularioCompra menosMarginPagamentoFuncionario" action="">
+            <h1 class="negrito underLineLaranja">Sua estadia</h1>
+            <h2 class="informacoes">segunda, 30/05/2022 - terça, 31/05/2022</h2>
+            <h2 class="informacoes">2 Adultos, 1 Criança</h2>
+            <h2 class="informacoes">1 Quarto Standard</h2>
+            <h2 class="informacoes negrito">Total: R$1699,99</h2>
+            <h3>Cadastre os dados do cliente para efetivar a reserva!!!</h3>
+            <div class="navegacao barraPesquisaCentralizada">
+                <div class="inputs">
+                    <input class="barra-pesquisa" type="text" placeholder="Pesquisar Hóspede por CPF">
+                    <input class="btnPesquisar negrito branco pointer" type="submit" value="Pesquisar">
+                </div>
+            </div>
+            <hr class="hrLaranja"/>
+            <div class="formulario" action="">
+                <div class="cadastro">
+                    <h1 class="negrito tituloCadastro">Informações de Contato</h1>
+                    <div class="cadastroEsquerda">
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Nome</h1>
+                            <input type="text" name="nomeCliente" placeholder="Nome Completo">
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Telefone</h1>
+                            <input type="text" class="telefone" name="telefoneCliente" placeholder="xx xxxxx-xxxx">
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">CPF</h1>
+                            <input type="text" class="cpf" name="cpfCliente" placeholder="xxx.xxx.xxx-xx">
+                        </div>
+                    </div>
+                    <div class="cadastroDireita">
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Endereço</h1>
+                            <input type="text" name="enderecoCliente" placeholder="Rua, nº, Cidade, Estado, País, CEP">
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Email</h1>
+                            <input type="email" name="emailCliente" placeholder="exemplo@email.com"></select>
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Nascimento</h1>
+                            <input type="date" name="dataNascimentoCliente">
+                        </div>
+                    </div>
+                    <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">
+                </div>
+            </div>
+            <h3 class="negrito">Pagamento
+                <select name="selectBandeirasCartoes" class="pointer">
+                    <option value="" selected disabled hidden>Selecione o Método de Pagamento</option>
+                    <option value="dinheiro">Dinheiro</option>
+                    <option value="cartaoCredito">Cartão de Crédito</option>
+                    <option value="cartaoDebito">Cartão de Débito</option>
+                    <option value="pix">Pix</option>
+                </select>
+            </h3>
+            <input type="submit" class="botaoFinalizarCadastro negrito" value="Finalizar Reserva">
+        </form>
+        <footer>
+            <div class="copyright">
+                <div class="col-lg-12 ">
+                    <div class="small text-white text-center">
+                        <span> &copy; 2022 - Projeto WEB - Jovem Programador SENAC</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
