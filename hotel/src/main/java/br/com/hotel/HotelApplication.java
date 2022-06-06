@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @SpringBootApplication
 @Controller
-public class HotelApplication {
+public class HotelApplication{
 	public static void main(String[] args) {
 		SpringApplication.run(HotelApplication.class, args);
 	}
@@ -22,7 +22,7 @@ public class HotelApplication {
 	@GetMapping("/recuperar")
 	public void testEnvioEmail(HttpServletResponse response) throws IOException{
 		senderMailService.enviar();
-    	response.sendRedirect("/recuperarSenha.html");
+    	response.sendRedirect("/recuperarSenhaUsuario.html");
 	}
 
 }
