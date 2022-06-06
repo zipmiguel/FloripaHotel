@@ -13,7 +13,7 @@ public class SenderMailService {
 
     void enviar() {
         SimpleMailMessage email = new SimpleMailMessage();
-        email.setTo("elderluciane@uol.com.br");
+        email.setTo("hotelfloripasenac@gmail.com");
         email.setSubject("Recuperação de Senha");
         email.setText("Insira esse código para alterar sua senha:");
         mailSender.send(email);
