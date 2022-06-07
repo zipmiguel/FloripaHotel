@@ -172,6 +172,7 @@ form{
     height: 30%;
     width: 300px;
     border: 0;
+    padding: 0 10px 0 10px;
 }
 .cadastro input[type=submit], .cadastro input[type=reset], .cadastro input[type=button]{
     margin: 0 50px 0 50px;
