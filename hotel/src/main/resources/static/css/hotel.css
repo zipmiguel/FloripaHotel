@@ -217,6 +217,14 @@ form{
     display: inline;
     margin-left: 30%;
 }
+.nomeNovoCargoPermissao{
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    display: inline;
+    margin-left: 320px;
+}
 .inputCadastroCargo{
     display: inline;
     width: 450px;
