@@ -270,3 +270,27 @@ footer {
 	font-weight: 600;
 	line-height: 28px;
 }
+.confirmar{
+    background-color: #F9AD81;
+    border: 0;
+    padding: 7px;
+}
+.centralText{
+    text-align: center;
+}
+.popup{
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.botaoPopup{
+    cursor: pointer;
+}
