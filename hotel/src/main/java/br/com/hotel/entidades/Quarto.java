@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Quarto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idQuarto;
+    private Long idQuarto;
     @Column(nullable = false)
     private ArrayList<ArrayList<Reserva>> listaReservas;
     @Column(nullable = false)
@@ -21,10 +21,10 @@ public class Quarto {
     @Column(nullable = false)
     private Boolean status;
 
-    public int getIdQuarto() {
+    public Long getIdQuarto() {
         return idQuarto;
     }
-    public void setIdQuarto(int idQuarto) {
+    public void setIdQuarto(Long idQuarto) {
         this.idQuarto = idQuarto;
     }
     public int getNumero() {
