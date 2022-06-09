@@ -31,28 +31,42 @@
         </div>
         <div class="navegacao">
             <h2 id="titulo" class="negrito">Quarto</h2>
-            <hr/>
-            <hr/>
-            <hr/>
+            <hr class="hrLaranja"/>
             <div class="inputs">
                 <input class="barra-pesquisa" type="text" placeholder="Pesquisar por Quarto">
                 <input class="btnPesquisar negrito branco pointer" type="submit" value="Pesquisar">
             </div>
         </div>
-        <form action="" method="POST">
-            <div class="cadastro">
+        <form action="" method="">
+            <div class="cadastro cadastroCentro">
                 <h1 class="negrito tituloCadastro">Cadastro de Quarto</h1>
-                <div class="cadastroEsquerda cadastroCentro">
-                    <div class="campoCadastro">
+                    <div class="campoCadastro centralizarDiv">
                         <h1 class="negrito">Nº do Quarto</h1>
                         <input type="text" name="nomeFuncionario">
                     </div>
-                    <div class="campoCadastro">
+                    <div class="campoCadastro centralizarDiv">
                         <h1 class="negrito">Tipo de quarto</h1>
-                        <select name="selectCargo" class="pointer"></select>
+                        <select name="selectCargo" class="pointer">
+                            <option selected disabled>Selecione o Tipo de Quarto</option>
+                            <option value="standard">Standard</option>
+                            <option value="master">Master</option>
+                            <option value="deluxe">Deluxe</option>
+                            <option value="deluxePlus">Deluxe Plus</option>
+                        </select>
                     </div>
-                </div>
-                <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">
+                    <div id="radioCargo">
+                        <div>
+                            <h3 class="negrito">Ativar</h1>
+                            <input type="radio" name="radio" value="ativado">
+                        </div>
+                        <div>
+                            <h3 class="negrito">Desativar</h1>
+                            <input type="radio" name="radio" value="desativado">
+                        </div>
+                    </div>
+                    <div class="botoesCadastro">
+                        <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">
+                    </div>
             </div>
         </form>
         <footer>

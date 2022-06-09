@@ -13,9 +13,9 @@ public class Hospede {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private int idHospede;
+    private Long idHospede;
     @Column(nullable = false)
-    private int idCartao;
+    private Long idCartao;
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
@@ -31,16 +31,16 @@ public class Hospede {
     @Column(nullable = false)
     private String senha;
 
-    public int getIdHospede() {
+    public Long getIdHospede() {
         return idHospede;
     }
-    public void setIdHospede(int idHospede) {
+    public void setIdHospede(Long idHospede) {
         this.idHospede = idHospede;
     }
-    public int getIdCartao() {
+    public Long getIdCartao() {
         return idCartao;
     }
-    public void setIdCartao(int idCartao) {
+    public void setIdCartao(Long idCartao) {
         this.idCartao = idCartao;
     }
     public String getNome() {

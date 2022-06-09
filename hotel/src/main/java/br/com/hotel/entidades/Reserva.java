@@ -12,15 +12,15 @@ import javax.persistence.Table;
 public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idReserva;
+    private Long idReserva;
     @Column(nullable = false)
-    private int idHospede;
+    private Long idHospede;
     @Column(nullable = false)
-    private int idTipoQuarto;
+    private Long idTipoQuarto;
     @Column(nullable = false)
-    private int idFuncionario;
+    private Long idFuncionario;
     @Column(nullable = false)
-    private int idDiaria;
+    private Long idDiaria;
     @Column(nullable = false)
     private String metodoPagamento;
     @Column(nullable = false)
@@ -32,34 +32,34 @@ public class Reserva {
     @Column(nullable = false)
     private String status;
 
-    public int getIdReserva() {
+    public Long getIdReserva() {
         return idReserva;
     }
-    public void setIdReserva(int idReserva) {
+    public void setIdReserva(Long idReserva) {
         this.idReserva = idReserva;
     }
-    public int getIdHospede() {
+    public Long getIdHospede() {
         return idHospede;
     }
-    public void setIdHospede(int idHospede) {
+    public void setIdHospede(Long idHospede) {
         this.idHospede = idHospede;
     }
-    public int getIdTipoQuarto() {
+    public Long getIdTipoQuarto() {
         return idTipoQuarto;
     }
-    public void setIdTipoQuarto(int idTipoQuarto) {
+    public void setIdTipoQuarto(Long idTipoQuarto) {
         this.idTipoQuarto = idTipoQuarto;
     }
-    public int getIdFuncionario() {
+    public Long getIdFuncionario() {
         return idFuncionario;
     }
-    public void setIdFuncionario(int idFuncionario) {
+    public void setIdFuncionario(Long idFuncionario) {
         this.idFuncionario = idFuncionario;
     }
-    public int getIdDiaria() {
+    public Long getIdDiaria() {
         return idDiaria;
     }
-    public void setIdDiaria(int idDiaria) {
+    public void setIdDiaria(Long idDiaria) {
         this.idDiaria = idDiaria;
     }
     public String getMetodoPagamento() {

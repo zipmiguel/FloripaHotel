@@ -12,9 +12,9 @@ import javax.persistence.Table;
 public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idFuncionario;
+    private Long idFuncionario;
     @Column(nullable = false)
-    private int idCargo;
+    private Long idCargo;
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
@@ -28,16 +28,16 @@ public class Funcionario {
     @Column(nullable = false)
     private String senha;
 
-    public int getIdFuncionario() {
+    public Long getIdFuncionario() {
         return idFuncionario;
     }
-    public void setIdFuncionario(int idFuncionario) {
+    public void setIdFuncionario(Long idFuncionario) {
         this.idFuncionario = idFuncionario;
     }
-    public int getIdCargo() {
+    public Long getIdCargo() {
         return idCargo;
     }
-    public void setIdCargo(int idCargo) {
+    public void setIdCargo(Long idCargo) {
         this.idCargo = idCargo;
     }
     public String getNome() {

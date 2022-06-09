@@ -31,18 +31,22 @@
         </div>
         <div class="navegacao">
             <h2 id="titulo" class="negrito">Tipo de cargo</h2>
-            <hr/>
-            <hr/>
-            <hr/>
+            <hr class="hrLaranja"/>
         </div>
-        <form action="">
-            <div class="cadastro">
+        <form action="" style="margin-bottom: 50px;">
+            <div class="cadastro cadastroCentro">
                 <h1 class="negrito tituloCadastro">Cadastro de Tipos de Cargos</h1>
-                <div class="tipoCargo">
-                    <h1 class="nomeNovoCargo">Cargo</h1>
-                    <input class="inputCadastroCargo" type="text" name="nomeCargo">
-                    <h1 class="nomeNovoCargoPermissao">Permissão</h1>
-                    <select name="nomePermissao" class="pointer"></select>
+                <div class="campoCadastro centralizarDiv">
+                    <h1 class="negrito">Cargo</h1>
+                    <input type="text" name="nomeCargo">
+                </div>
+                <div class="campoCadastro centralizarDiv">
+                    <h1 class="negrito">Permissão</h1>
+                    <select name="nomePermissao" class="pointer">
+                        <option selected disabled>Selecione o Tipo de Permissão</option>
+                        <option value="admin">Admin</option>
+                        <option value="comum">Comum</option>
+                    </select>
                 </div>
                 <div class="botoesCadastro">
                     <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">
