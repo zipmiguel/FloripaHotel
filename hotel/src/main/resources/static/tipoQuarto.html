@@ -57,15 +57,42 @@
                 <tbody id="listerUser">
                     <form action="">
                         <tr>
-                            <td><input type="text" class="centralText" required></td>
-                            <td><input type="number" required></td>
-                            <td><input type="number" required></td>
-                            <td><input type="number" required></td>
+                            <td><input type="text" class="centralText" name="tipoQuarto" required></td>
+                            <td><input type="number" name="camaSolteiro" required></td>
+                            <td><input type="number" name="camaCasal" required></td>
+                            <td><input type="number" name="Npessoas" required disabled></td>
                             <td>
                                 <button type="submit" class="confirmar">Confirmar</button>
                             </td>
                         </tr>
                     </form>
+                        <tr>
+                            <td>master</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>
+                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="mostrarPopup()">  
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>master</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>
+                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="mostrarPopup()">  
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>deluxe</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>
+                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="mostrarPopup()">  
+                            </td>
+                        </tr>
                         <tr>
                             <td>master</td>
                             <td>2</td>
@@ -88,10 +115,20 @@
                     </div>
                 </div>
             </div>
-            <div class="popup">
-                <button onclick="ocultarPopup()"class="close">teste</button>
-            </div>
         </footer>
+        <div class="popup">
+            <form action="">
+                <div class="editarPopup">
+                        <div class="headerPopup">
+                            <h1 class="tituloPopup">Editar tipo de quarto</h1> <img src="img/close_1.png" class="pointer close" onclick="ocultarPopup()" alt="">
+                        </div>
+                        <div>
+                            <label>Tipo de quarto</label>
+                            <input type="text" placeholder="digite tipo de quarto" name="tipoQuarto" class="input-popupForm">
+                        </div>
+                </div>
+             </form>
+        </div>
     </body>
     <script></script>
     </html>

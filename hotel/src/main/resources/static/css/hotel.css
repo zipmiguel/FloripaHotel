@@ -294,3 +294,31 @@ footer {
 .botaoPopup{
     cursor: pointer;
 }
+.editarPopup{
+    width: 30%;
+    height: 350px;
+    background-color: white;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.editarPopup input[type="text"]{
+    
+}
+.editarPopup .headerPopup{
+    width: 100%;
+    height: 20%;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: space-between;
+}
+.editarPopup .headerPopup .tituloPopup{
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    font-size: 25px;
+}
+footer .footerTabela
