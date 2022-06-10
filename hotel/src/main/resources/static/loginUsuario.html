@@ -53,10 +53,10 @@
             <h1 class="negrito">Login</h1>
             <h3 class="linhaUnica"></h3>
             <h2>Seu Email</h2>
-            <input type="email" name="emailCliente" placeholder="exemplo@email.com">
+            <input type="email" name="emailCliente" id="email" placeholder="exemplo@email.com">
             <h2>Sua Senha</h2>
             <input type="password" name="senhaCliente" placeholder="1º acesso =  preencha com a senha recebida em seu email">
-            <a href="recuperar">Esqueceu sua senha?</a>
+            <a onclick="this.href='recuperar?emailCliente='+document.getElementById('email').value" href="#">Esqueceu sua senha?</a>
             <input type="submit" value="Entrar" class="negrito botaoFinalizarCadastro">
         </form>
         <footer class="footer-section">

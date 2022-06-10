@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,14 +15,18 @@ public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
-    @Column(nullable = false)
-    private Long idHospede;
-    @Column(nullable = false)
-    private Long idTipoQuarto;
-    @Column(nullable = false)
-    private Long idFuncionario;
-    @Column(nullable = false)
-    private Long idDiaria;
+    @ManyToOne
+    @JoinColumn(name = "id_hospede")
+    private Hospede hospede;
+    @ManyToOne
+    @JoinColumn(name = "id_tipoQuarto")
+    private TipoQuarto tipoQuarto;
+    @ManyToOne
+    @JoinColumn(name = "id_funcionario")
+    private Funcionario funcionario;
+    @ManyToOne
+    @JoinColumn(name = "id_diaria")
+    private Diaria diaria;
     @Column(nullable = false)
     private String metodoPagamento;
     @Column(nullable = false)
@@ -31,36 +37,36 @@ public class Reserva {
     private String dataSaida;
     @Column(nullable = false)
     private String status;
-
+    
     public Long getIdReserva() {
         return idReserva;
     }
     public void setIdReserva(Long idReserva) {
         this.idReserva = idReserva;
     }
-    public Long getIdHospede() {
-        return idHospede;
+    public Hospede getHospede() {
+        return hospede;
     }
-    public void setIdHospede(Long idHospede) {
-        this.idHospede = idHospede;
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
     }
-    public Long getIdTipoQuarto() {
-        return idTipoQuarto;
+    public TipoQuarto getTipoQuarto() {
+        return tipoQuarto;
     }
-    public void setIdTipoQuarto(Long idTipoQuarto) {
-        this.idTipoQuarto = idTipoQuarto;
+    public void setTipoQuarto(TipoQuarto tipoQuarto) {
+        this.tipoQuarto = tipoQuarto;
     }
-    public Long getIdFuncionario() {
-        return idFuncionario;
+    public Funcionario getFuncionario() {
+        return funcionario;
     }
-    public void setIdFuncionario(Long idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
-    public Long getIdDiaria() {
-        return idDiaria;
+    public Diaria getDiaria() {
+        return diaria;
     }
-    public void setIdDiaria(Long idDiaria) {
-        this.idDiaria = idDiaria;
+    public void setDiaria(Diaria diaria) {
+        this.diaria = diaria;
     }
     public String getMetodoPagamento() {
         return metodoPagamento;
@@ -92,5 +98,7 @@ public class Reserva {
     public void setStatus(String status) {
         this.status = status;
     }
+
+        
 }
 
