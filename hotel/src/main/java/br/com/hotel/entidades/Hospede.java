@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,8 +16,9 @@ public class Hospede {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long idHospede;
-    @Column(nullable = false)
-    private Long idCartao;
+    @OneToOne
+    @JoinColumn(name = "id_cartao")
+    private Cartao cartao;
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
@@ -30,18 +33,18 @@ public class Hospede {
     private String nascimento;
     @Column(nullable = false)
     private String senha;
-
+    
     public Long getIdHospede() {
         return idHospede;
     }
     public void setIdHospede(Long idHospede) {
         this.idHospede = idHospede;
     }
-    public Long getIdCartao() {
-        return idCartao;
+    public Cartao getCartao() {
+        return cartao;
     }
-    public void setIdCartao(Long idCartao) {
-        this.idCartao = idCartao;
+    public void setCartao(Cartao cartao) {
+        this.cartao = cartao;
     }
     public String getNome() {
         return nome;
@@ -86,4 +89,5 @@ public class Hospede {
         this.senha = senha;
     }
 
+    
 }
