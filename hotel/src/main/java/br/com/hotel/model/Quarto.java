@@ -1,4 +1,4 @@
-package br.com.hotel.entidades;
+package br.com.hotel.model;
 
 import java.util.List;
 
