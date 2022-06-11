@@ -1,4 +1,4 @@
-package br.com.hotel.entidades;
+package br.com.hotel.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
