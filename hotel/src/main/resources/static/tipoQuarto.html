@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--feito por luiz Eduardo Sagaz Carvalho-->
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
@@ -73,7 +74,7 @@
                             <td>1</td>
                             <td>3</td>
                             <td>
-                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="mostrarPopup()">  
+                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(2);">  
                             </td>
                         </tr>
                         <tr>
@@ -82,7 +83,7 @@
                             <td>1</td>
                             <td>3</td>
                             <td>
-                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="mostrarPopup()">  
+                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(3)">  
                             </td>
                         </tr>
                         <tr>
@@ -91,7 +92,7 @@
                             <td>2</td>
                             <td>4</td>
                             <td>
-                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="mostrarPopup()">  
+                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(4)">  
                             </td>
                         </tr>
                         <tr>
@@ -100,7 +101,7 @@
                             <td>1</td>
                             <td>3</td>
                             <td>
-                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="mostrarPopup()">  
+                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(9)">  
                             </td>
                         </tr>
                     </form>
@@ -118,43 +119,43 @@
             </div>
         </footer>
         <div class="popup">
-            <form action="">
-                <div class="editarPopup">
-                        <div class="headerPopup">
-                            <h1 class="tituloPopup">editar</h1> 
-                        </div>
-                        <div class="inputPopup">
-                            <label class="title-input">Tipo de quarto</label>
-                            <input type="text" class="form-control inputpopupForm" name="tipoQuarto" required>
-                        </div> 
-                        <div class="inputPopup">
-                            <label class="title-input">Cama Solteiro</label>
-                            <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" onchange="gerarQNTpessoas()" required>
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                              </select>
-                        </div> 
-                        <div class="inputPopup">
-                            <label class="title-input">Cama Casal</label>
-                            <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaCasal" name="quantidadeCamaCasal" onchange="gerarQNTpessoas()" required>
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                              </select>
-                        </div> 
-                        <div class="inputPopup">
-                            <label class="title-input">N° Pessoas</label>
-                            <input type="text" class="form-control inputpopupForm" disabled required name="numeroPessoas" id="numeroPessoas">
-                        </div> 
-                        <footer class="footerPopup">
-                            <button type="button" class="buttonPopup buttonCancel close" onclick="ocultarPopup()">Cancelar </button>
-                            <button type="submit" class="buttonPopup buttonSuccess">Salvar</button>
-                        </footer>
-             </form>
+            <div id="editarPopup" idquarto="2">
+                <form action="">
+                    <header class="headerPopup">
+                        <h1 class="tituloPopup">editar</h1> 
+                    </header>
+                    <div class="inputPopup">
+                        <label class="title-input">Tipo de quarto</label>
+                        <input type="text" class="form-control inputpopupForm" name="tipoQuarto" required>
+                    </div> 
+                    <div class="inputPopup">
+                        <label class="title-input">Cama Solteiro</label>
+                        <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" id="quantidadeCamaSolteiro" onchange="gerarQNTpessoas()" required>
+                            <option value="1" selected id="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div> 
+                    <div class="inputPopup">
+                        <label class="title-input">Cama Casal</label>
+                        <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaCasal" name="quantidadeCamaCasal" id="quantidadeCamaCasal" onchange="gerarQNTpessoas()" required>
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div> 
+                    <div class="inputPopup">
+                        <label class="title-input">N° Pessoas</label>
+                        <input type="number" class="form-control inputpopupForm" disabled required name="numeroPessoas" id="numeroPessoas">
+                    </div> 
+                    <footer class="footerPopup">
+                        <button type="button" class="buttonPopup buttonCancel close" onclick="CloseEditPopup()">Cancelar </button>
+                        <button type="submit" class="buttonPopup buttonSuccess">Salvar</button>
+                    </footer>
+                </form>
+            </div>
         </div>
     </body>
-    <script></script>
     </html>
