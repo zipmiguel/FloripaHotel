@@ -18,6 +18,11 @@ function editarPopup(){
         document.querySelector('.')
     })
 }
+function gerarQNTpessoas(){
+    const camaSolteiro = parseInt($("#quantidadeCamaSolteiro").val());
+    const camaCasal = parseInt($("#quantidadeCamaCasal").val());
+    document.getElementById('numeroPessoas').value = camaSolteiro+camaCasal;
+}
 
 
 
