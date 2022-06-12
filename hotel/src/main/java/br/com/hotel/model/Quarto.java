@@ -1,11 +1,15 @@
-package br.com.hotel.entidades;
+package br.com.hotel.model;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,19 +17,25 @@ import javax.persistence.Table;
 public class Quarto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idQuarto;
-    @Column(nullable = false)
-    private ArrayList<ArrayList<Reserva>> listaReservas;
+    private Long idQuarto;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Reserva> listaReservas;
     @Column(nullable = false)
     private int numero;
     @Column(nullable = false)
     private Boolean status;
-
-    public int getIdQuarto() {
+    
+    public Long getIdQuarto() {
         return idQuarto;
     }
-    public void setIdQuarto(int idQuarto) {
+    public void setIdQuarto(Long idQuarto) {
         this.idQuarto = idQuarto;
+    }
+    public List<Reserva> getListaReservas() {
+        return listaReservas;
+    }
+    public void setListaReservas(List<Reserva> listaReservas) {
+        this.listaReservas = listaReservas;
     }
     public int getNumero() {
         return numero;
@@ -39,4 +49,6 @@ public class Quarto {
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
+    
 }

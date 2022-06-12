@@ -1,4 +1,4 @@
-package br.com.hotel.entidades;
+package br.com.hotel.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Diaria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDiara;
+    private Long idDiara;
     @Column(nullable = false)
     private Double diaUtil;
     @Column(nullable = false)
@@ -22,10 +22,10 @@ public class Diaria {
     @Column(nullable = false)
     private Double promocional;
 
-    public int getIdDiara() {
+    public Long getIdDiara() {
         return idDiara;
     }
-    public void setIdDiara(int idDiara) {
+    public void setIdDiara(Long idDiara) {
         this.idDiara = idDiara;
     }
     public Double getDiaUtil() {

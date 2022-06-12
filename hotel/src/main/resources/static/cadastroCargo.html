@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastro de Funcionários</title>
+        <title>Cadastro de Cargos</title>
         <link href='https://fonts.googleapis.com/css?family=Montserrat Alternates' rel='stylesheet'>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -31,19 +31,24 @@
         </div>
         <div class="navegacao">
             <h2 id="titulo" class="negrito">Tipo de cargo</h2>
-            <hr/>
-            <hr/>
-            <hr/>
+            <hr class="hrLaranja"/>
         </div>
-        <form action="">
-            <div class="cadastro">
+        <form action="/cadastrarCargo" method="POST" style="margin-bottom: 50px;">
+            <div class="cadastro cadastroCentro">
                 <h1 class="negrito tituloCadastro">Cadastro de Tipos de Cargos</h1>
-                <div class="tipoCargo">
-                    <h1 class="nomeNovoCargo">Cargo</h1>
-                    <input class="inputCadastroCargo" type="text" name="nomeFuncionario">
+                <div class="campoCadastro centralizarDiv">
+                    <h1 class="negrito">Cargo</h1>
+                    <input type="text" name="tipoCargo">
+                </div>
+                <div class="campoCadastro centralizarDiv">
+                    <h1 class="negrito">Permissão</h1>
+                    <select name="permissao" class="pointer">
+                        <option selected disabled>Selecione o Tipo de Permissão</option>
+                        <option value="admin">Admin</option>
+                        <option value="comum">Comum</option>
+                    </select>
                 </div>
                 <div class="botoesCadastro">
-                    <input type="reset" value="Excluir" class="negrito botaoExcluirCadastro pointer">
                     <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">
                 </div>
             </div>

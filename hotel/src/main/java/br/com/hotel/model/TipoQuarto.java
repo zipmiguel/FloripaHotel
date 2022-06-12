@@ -1,4 +1,4 @@
-package br.com.hotel.entidades;
+package br.com.hotel.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class TipoQuarto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTipoQuarto;
+    private Long idTipoQuarto;
     @Column(nullable = false)
     private String tipoQuarto;
     @Column(nullable = false)
@@ -22,10 +22,10 @@ public class TipoQuarto {
     @Column(nullable = false)
     private int numeroPessoas;
     
-    public int getIdTipoQuarto() {
+    public Long getIdTipoQuarto() {
         return idTipoQuarto;
     }
-    public void setIdTipoQuarto(int idTipoQuarto) {
+    public void setIdTipoQuarto(Long idTipoQuarto) {
         this.idTipoQuarto = idTipoQuarto;
     }
     public String getTipoQuarto() {

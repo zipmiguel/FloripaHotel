@@ -169,7 +169,7 @@ form{
     font-size: 25px;
 }
 .campoCadastro input, .campoCadastro select{
-    height: 30%;
+    height: 30px;
     width: 300px;
     border: 0;
     padding: 0 10px 0 10px;
@@ -197,8 +197,11 @@ form{
     cursor: pointer;
 }
 /* luiz_eduardo */
-.cadastroCentro{
-    width: 62.5%;
+.centralizarDiv{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 27.5%;
+    height: 75px;
 }
 .tipoCargo{
     width: 100%;
@@ -216,6 +219,14 @@ form{
     text-align: center;
     display: inline;
     margin-left: 30%;
+}
+.nomeNovoCargoPermissao{
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    display: inline;
+    margin-left: 320px;
 }
 .inputCadastroCargo{
     display: inline;
@@ -270,6 +281,7 @@ footer {
 	font-weight: 600;
 	line-height: 28px;
 }
+/*luizEduardoQuarto*/
 .confirmar{
     background-color: #F9AD81;
     border: 0;
@@ -377,4 +389,33 @@ footer {
 }
 .buttonPopup button[type="button"]{
     font-weight: bold;
+}
+#radioCargo{
+    display: flex;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 50px;
+    justify-content: space-around;
+}
+#radioCargo div{
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#radioCargo div h3{
+    width: 100%;
+    margin-bottom: 10px;
+}
+#radioCargo div input{
+    width: 20px;
+    height: 20px;
+}
+.hrLaranja{
+	height: 3px;
+	border: none;
+	background-color: #F9AD81;
+	opacity: 100%;
+	width: 90%;
+	margin: 10px auto 30px auto;
 }
