@@ -21,34 +21,40 @@ public class Quarto {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Reserva> listaReservas;
     @Column(nullable = false)
-    private int numero;
+    private String numero;
     @Column(nullable = false)
     private Boolean status;
-    
+
     public Long getIdQuarto() {
         return idQuarto;
     }
+
     public void setIdQuarto(Long idQuarto) {
         this.idQuarto = idQuarto;
     }
+
     public List<Reserva> getListaReservas() {
         return listaReservas;
     }
+
     public void setListaReservas(List<Reserva> listaReservas) {
         this.listaReservas = listaReservas;
     }
-    public int getNumero() {
+
+    public String getNumero() {
         return numero;
     }
-    public void setNumero(int numero) {
+
+    public void setNumero(String numero) {
         this.numero = numero;
     }
+
     public Boolean getStatus() {
         return status;
     }
+
     public void setStatus(Boolean status) {
         this.status = status;
     }
 
-    
 }
