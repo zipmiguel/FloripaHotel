@@ -419,3 +419,103 @@ footer {
 	width: 90%;
 	margin: 10px auto 30px auto;
 }
+
+/*TELA DE LOGIN - GUILHERME*/
+
+.login{
+    width: 30%;
+    height: 60vh;
+    margin-top: 5%;
+    background-color: #EEEEEE;
+}
+.loginEscrita{
+    margin: 0%; padding-top: 5%;
+    font-weight: bold;
+    color: #393939;
+}
+.loginLinha{
+    border: 1px solid #F9AD81;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+.loginEmail{
+    width: 30%;
+    margin-top: 10%;
+    margin-left: 6%;
+}
+.caixaEmail{
+    width: 80%;
+    height: 5%;
+    margin-top: 1%;
+    margin-left: 9%;
+}
+.loginSenha{
+    width: 30%;
+    margin-top: 10%;
+    margin-left: 6%;
+}
+.caixaSenha{
+    width: 80%;
+    height: 5%;
+    margin-top: 1%;
+    margin-left: 9%;
+}
+.botaoEntrar{
+    width: 25%;
+    height: 8%;
+    margin-left: 37%;
+    margin-top: 10%;
+    background-color: #F9AD81;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Montserrat Alternates';
+    border: none;
+    border-radius: 5%;
+}
+.esqueceuSenha{
+    margin-right: 46%;
+    margin-top: 2%;
+}
+.areaFuncionario{
+    margin-right: 19%;
+    width: 54%;
+    font-weight: bold;
+    color: #FFF;
+}
+
+/*TELA RECUPERAR SENHA - GUILHERME*/ 
+
+.login h1, h2{
+    font-weight: bold;
+}
+.alterarEscrita{
+    margin: 0%; padding-top: 5%;
+    font-weight: bold;
+    color: #393939;
+}
+.recuperarCodigo{
+    width: 40%;
+    margin-top: 10%;
+    margin-left: 11%;
+}
+.recuperarSenha{
+    width: 30%;
+    margin-top: 10%;
+    margin-left: 6%;
+}
+.botaoAlterar{
+    width: 25%;
+    height: 8%;
+    margin-left: 37%;
+    margin-top: 16%;
+    background-color: #F9AD81;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Montserrat Alternates';
+    border: none;
+    border-radius: 5%;  
+}
+.botaoAlterar h2{
+    font-weight: bold;
+}
