@@ -1,15 +1,10 @@
 package br.com.hotel.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,12 +13,11 @@ public class Quarto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idQuarto;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Reserva> listaReservas;
+    @Column(nullable = false, columnDefinition = "varchar(16100)")
+    private String listaReservas;
     @Column(nullable = false)
     private String numero;
-    @Column(nullable = false)
-    private Boolean status;
+    private Boolean statusReserva;
 
     public Long getIdQuarto() {
         return idQuarto;
@@ -33,11 +27,11 @@ public class Quarto {
         this.idQuarto = idQuarto;
     }
 
-    public List<Reserva> getListaReservas() {
+    public String getListaReservas() {
         return listaReservas;
     }
 
-    public void setListaReservas(List<Reserva> listaReservas) {
+    public void setListaReservas(String listaReservas) {
         this.listaReservas = listaReservas;
     }
 
@@ -50,11 +44,11 @@ public class Quarto {
     }
 
     public Boolean getStatus() {
-        return status;
+        return statusReserva;
     }
 
     public void setStatus(Boolean status) {
-        this.status = status;
+        this.statusReserva = status;
     }
 
 }
