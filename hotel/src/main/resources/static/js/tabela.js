@@ -18,6 +18,7 @@ function OpenEditPopup(idquarto){
        popupEditar.removeAttribute('idquarto');
        popupEditar.setAttribute('idquarto',idquarto);
        popupEditar.style.visibility = 'visible';
+       popupEditar.style.display = 'flex'
        mostrarPopup()
 }
 function CloseEditPopup(){
@@ -38,6 +39,7 @@ function CloseEditPopup(){
     }
     const popupEditar = document.getElementById('editarPopup');
     popupEditar.style.visibility = 'hidden';
+    popupEditar.style.display = 'none';
     ocultarPopup();
 }
 function gerarQNTpessoas(){
@@ -51,6 +53,7 @@ function OpenDeletePopup(idquarto){
         deletePopup.removeAttribute('idquarto');
         deletePopup.setAttribute('idquarto',idquarto);
         deletePopup.style.visibility = 'visible';
+        deletePopup.style.display = 'flex';
         mostrarPopup();
 }
 

@@ -309,6 +309,7 @@ footer {
     padding-left: 20px;
 }
 #editarPopup{
+    display: none;
     visibility: hidden;
     width: 30%;
     min-height: 300px;
@@ -421,10 +422,8 @@ footer {
 	margin: 10px auto 30px auto;
 }
 #deletePopup{
-    display: flex;
-    align-items: center;
+    display: none;
     visibility: hidden;
-    margin: 0 auto;
     width: 30%;
     min-height: 300px;
     max-height: 900px;
