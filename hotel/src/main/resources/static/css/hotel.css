@@ -305,15 +305,16 @@ footer {
     transition: all .2s ease-in-out;
 }
 .botaoPopup{
-    cursor: pointer;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 #editarPopup{
+    visibility: hidden;
     width: 30%;
     min-height: 300px;
     max-height: 900px;
     background-color: lightgray;
     margin: 0 auto;
-    display: flex;
     flex-direction: column;
     border-radius: 5px;
 }
@@ -418,4 +419,17 @@ footer {
 	opacity: 100%;
 	width: 90%;
 	margin: 10px auto 30px auto;
+}
+#deletePopup{
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+    margin: 0 auto;
+    width: 30%;
+    min-height: 300px;
+    max-height: 900px;
+    background-color: lightgray;
+    margin: 0 auto;
+    flex-direction: column;
+    border-radius: 5px;
 }

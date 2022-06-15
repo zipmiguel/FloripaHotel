@@ -74,7 +74,8 @@
                             <td>1</td>
                             <td>3</td>
                             <td>
-                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(2);">  
+                                <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(2)">
+                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(2);">  
                             </td>
                         </tr>
                         <tr>
@@ -83,7 +84,8 @@
                             <td>1</td>
                             <td>3</td>
                             <td>
-                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(3)">  
+                                <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(3)">
+                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(3)">  
                             </td>
                         </tr>
                         <tr>
@@ -92,7 +94,8 @@
                             <td>2</td>
                             <td>4</td>
                             <td>
-                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(4)">  
+                                <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(4)">
+                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(4)">  
                             </td>
                         </tr>
                         <tr>
@@ -101,7 +104,8 @@
                             <td>1</td>
                             <td>3</td>
                             <td>
-                              <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(9)">  
+                                <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(9)">
+                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup pointer" onclick="OpenEditPopup(9)">  
                             </td>
                         </tr>
                     </form>
@@ -118,8 +122,9 @@
                 </div>
             </div>
         </footer>
+        <!--editar Popup-->
         <div class="popup">
-            <div id="editarPopup" idquarto="2">
+            <div id="editarPopup">
                 <form action="">
                     <header class="headerPopup">
                         <h1 class="tituloPopup">editar</h1> 
@@ -156,6 +161,14 @@
                     </footer>
                 </form>
             </div>
+        <!--deletar Popup-->
+                <div id="deletePopup">
+                    <form action="">
+                        <header class="headerPopup">
+                            <h1 class="tituloPopup"></h1> 
+                        </header>
+                    </form>
+                </div>
         </div>
     </body>
     </html>
