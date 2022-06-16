@@ -17,6 +17,8 @@ function OpenEditPopup(idquarto){
        const popupEditar = document.getElementById('editarPopup');
        popupEditar.removeAttribute('idquarto');
        popupEditar.setAttribute('idquarto',idquarto);
+       popupEditar.style.visibility = 'visible';
+       popupEditar.style.display = 'flex'
        mostrarPopup()
 }
 function CloseEditPopup(){
@@ -35,12 +37,24 @@ function CloseEditPopup(){
                 break;
             }
     }
+    const popupEditar = document.getElementById('editarPopup');
+    popupEditar.style.visibility = 'hidden';
+    popupEditar.style.display = 'none';
     ocultarPopup();
 }
 function gerarQNTpessoas(){
     const camaSolteiro = parseInt($("#quantidadeCamaSolteiro").val());
     const camaCasal = parseInt($("#quantidadeCamaCasal").val());
-    document.getElementById('numeroPessoas').value = camaSolteiro+camaCasal;
+    document.getElementById('numeroPessoas').value = camaSolteiro+(camaCasal*2);
+}
+function OpenDeletePopup(idquarto){
+    const deletePopup = document.getElementById('deletePopup');
+    console.log(deletePopup);
+        deletePopup.removeAttribute('idquarto');
+        deletePopup.setAttribute('idquarto',idquarto);
+        deletePopup.style.visibility = 'visible';
+        deletePopup.style.display = 'flex';
+        mostrarPopup();
 }
 
 
