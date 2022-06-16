@@ -14,12 +14,12 @@ function ocultarPopup(){
     }) 
 }
 function OpenEditPopup(idquarto){
+       mostrarPopup()
        const popupEditar = document.getElementById('editarPopup');
        popupEditar.removeAttribute('idquarto');
        popupEditar.setAttribute('idquarto',idquarto);
        popupEditar.style.visibility = 'visible';
        popupEditar.style.display = 'flex'
-       mostrarPopup()
 }
 function CloseEditPopup(){
     const listaDiv = Array.from(document.querySelectorAll('#editarPopup div'));
@@ -42,19 +42,27 @@ function CloseEditPopup(){
     popupEditar.style.display = 'none';
     ocultarPopup();
 }
-function gerarQNTpessoas(){
-    const camaSolteiro = parseInt($("#quantidadeCamaSolteiro").val());
-    const camaCasal = parseInt($("#quantidadeCamaCasal").val());
-    document.getElementById('numeroPessoas').value = camaSolteiro+(camaCasal*2);
+function gerarQNTpessoas(id){
+    const NumeroPessoas = document.querySelector(`${id} input[disabled]`)
+    NumeroPessoas.value = "";
+    const listaCamas = document.querySelectorAll(`${id} select`)
+    const camaSolteiro = parseInt($(listaCamas[0]).val());
+    const camaCasal = parseInt($(listaCamas[1]).val());
+    NumeroPessoas.value = camaSolteiro+(camaCasal*2);
 }
 function OpenDeletePopup(idquarto){
-    const deletePopup = document.getElementById('deletePopup');
-    console.log(deletePopup);
+        mostrarPopup();
+        const deletePopup = document.getElementById('deletePopup');
         deletePopup.removeAttribute('idquarto');
         deletePopup.setAttribute('idquarto',idquarto);
         deletePopup.style.visibility = 'visible';
         deletePopup.style.display = 'flex';
-        mostrarPopup();
+}
+function CloseDeletePopup(){
+    const deletePopup = document.getElementById('deletePopup');
+    deletePopup.style.visibility = 'hidden';
+    deletePopup.style.display = 'none';
+    ocultarPopup();
 }
 
 

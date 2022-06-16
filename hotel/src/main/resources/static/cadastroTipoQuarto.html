@@ -58,9 +58,25 @@
                     <form action="">
                         <tr>
                             <td><input type="text" class="centralText" name="tipoQuarto" required></td>
-                            <td><input type="number" class="centralText" name="camaSolteiro" required></td>
-                            <td><input type="number" class="centralText" name="camaCasal" required></td>
-                            <td><input type="number" class="centralText" name="Npessoas" required disabled></td>
+                            <td>
+                                <select class="selectPopupForm" aria-label=".form-select-lg example" id="camaSolteiro" name="camaSolteiro" id="camaSolteiro" onchange="gerarQNTpessoas('#listerUser')" required>
+                                <option value="1" selected id="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="selectPopupForm" aria-label=".form-select-lg example" id="camaCasal" name="camaCasal" onchange="gerarQNTpessoas('#listerUser')" required>
+                                <option value="1" selected id="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                </select>
+                            </td>
+                            <td><input type="number" class="centralText" name="Npessoas" id="Npessoas" required disabled></td>
                             <td>
                                 <button type="submit" class="confirmar negrito ">Cadastrar</button>
                             </td>
@@ -133,20 +149,22 @@
                     </div> 
                     <div class="inputPopup">
                         <label class="title-input">Cama Solteiro</label>
-                        <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" id="quantidadeCamaSolteiro" onchange="gerarQNTpessoas()" required>
+                        <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" id="quantidadeCamaSolteiro" onchange="gerarQNTpessoas('#editarPopup')" required>
                             <option value="1" selected id="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div> 
                     <div class="inputPopup">
                         <label class="title-input">Cama Casal</label>
-                        <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaCasal" name="quantidadeCamaCasal" id="quantidadeCamaCasal" onchange="gerarQNTpessoas()" required>
+                        <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaCasal" name="quantidadeCamaCasal" id="quantidadeCamaCasal" onchange="gerarQNTpessoas('#editarPopup')" required>
                             <option value="1" selected>1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div> 
                     <div class="inputPopup">
@@ -162,9 +180,14 @@
         <!--deletar Popup-->
                 <div id="deletePopup">
                     <form action="">
-                        <header class="headerPopup">
-                            <h1 class="tituloPopup"></h1> 
+                        <header class="headerPopup" style="padding-top: 10px;">
+                            <img src="img/close_2.png" id="icon-deletePopup">
+                            <h1 class="tituloPopup">Gostaria de Excluir?</h1> 
                         </header>
+                        <footer class="footerPopup">
+                            <button type="submit" class="buttonPopup buttonSuccess negrito">Cancelar</button>
+                            <button type="button" class="buttonPopup buttonCancel close negrito" onclick="CloseEditPopup()">Excluir</button>
+                        </footer>
                     </form>
                 </div>
         </div>

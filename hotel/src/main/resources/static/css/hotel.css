@@ -331,7 +331,7 @@ footer {
     height: 36px;
     margin-left: 460px;
     }
-#editarPopup .headerPopup{
+.headerPopup{
     width: 100%;
     height: 20%;
     text-align: center;
@@ -365,6 +365,14 @@ footer {
     border: 0 none;
     outline: none;
     border-radius: 5px;   
+}
+.selectPopupForm{
+    width: 100%;
+    padding: 0px 0px;
+    border: 1px solid black;
+    outline: none;
+    padding-bottom: 4.9px;
+    margin-top: 7px;
 }
 #editarPopup .inputPopup{
     margin-left: auto;
@@ -436,4 +444,10 @@ footer {
     margin: 0 auto;
     flex-direction: column;
     border-radius: 5px;
+}
+#icon-deletePopup{
+    width:  72px;
+    height: 72px;
+    border: 5px solid  #ec3838;
+    border-radius: 50px;
 }
