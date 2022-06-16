@@ -37,11 +37,9 @@
         </div>
         <div class="navegacao">
             <h2 id="titulo" class="negrito">Tipo Quarto</h2>
-            <hr/>
-            <hr/>
-            <hr/>
-            <div class="inputs">
-                <input class="barra-pesquisa" type="text" placeholder="Pesquisar por tipo de quarto">
+            <hr class="hrLaranja"/>
+            <div class="inputs" style="margin-top: 60px;">
+                <input class="barra-pesquisa" type="text" placeholder="Pesquisar por Tipo de Quarto">
                 <input class="btnPesquisar negrito branco pointer" type="submit" value="Pesquisar">
             </div>
         </div>
@@ -60,11 +58,11 @@
                     <form action="">
                         <tr>
                             <td><input type="text" class="centralText" name="tipoQuarto" required></td>
-                            <td><input type="number" name="camaSolteiro" required></td>
-                            <td><input type="number" name="camaCasal" required></td>
-                            <td><input type="number" name="Npessoas" required disabled></td>
+                            <td><input type="number" class="centralText" name="camaSolteiro" required></td>
+                            <td><input type="number" class="centralText" name="camaCasal" required></td>
+                            <td><input type="number" class="centralText" name="Npessoas" required disabled></td>
                             <td>
-                                <button type="submit" class="confirmar">Confirmar</button>
+                                <button type="submit" class="confirmar negrito ">Cadastrar</button>
                             </td>
                         </tr>
                     </form>
@@ -127,7 +125,7 @@
             <div id="editarPopup">
                 <form action="">
                     <header class="headerPopup">
-                        <h1 class="tituloPopup">editar</h1> 
+                        <h1 class="tituloPopup negrito">EDITAR</h1> 
                     </header>
                     <div class="inputPopup">
                         <label class="title-input">Tipo de quarto</label>
@@ -156,8 +154,8 @@
                         <input type="number" class="form-control inputpopupForm" disabled required name="numeroPessoas" id="numeroPessoas">
                     </div> 
                     <footer class="footerPopup">
-                        <button type="button" class="buttonPopup buttonCancel close" onclick="CloseEditPopup()">Cancelar </button>
-                        <button type="submit" class="buttonPopup buttonSuccess">Salvar</button>
+                        <button type="button" class="buttonPopup buttonCancel close negrito" onclick="CloseEditPopup()">Cancelar </button>
+                        <button type="submit" class="buttonPopup buttonSuccess negrito">Salvar</button>
                     </footer>
                 </form>
             </div>

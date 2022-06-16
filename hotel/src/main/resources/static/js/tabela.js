@@ -45,7 +45,7 @@ function CloseEditPopup(){
 function gerarQNTpessoas(){
     const camaSolteiro = parseInt($("#quantidadeCamaSolteiro").val());
     const camaCasal = parseInt($("#quantidadeCamaCasal").val());
-    document.getElementById('numeroPessoas').value = camaSolteiro+camaCasal;
+    document.getElementById('numeroPessoas').value = camaSolteiro+(camaCasal*2);
 }
 function OpenDeletePopup(idquarto){
     const deletePopup = document.getElementById('deletePopup');
