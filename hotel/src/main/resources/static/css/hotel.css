@@ -343,8 +343,9 @@ footer {
     font-family: 'Montserrat Alternates';
 }
 .footerTabela {
-    position: relative;
+    position: absolute;
     margin-top: auto;
+    top: 100vh;
 }
 .show {
     visibility: visible;
@@ -450,4 +451,13 @@ footer {
     height: 72px;
     border: 5px solid  #ec3838;
     border-radius: 50px;
+}
+.titulo-tabela{
+    margin-bottom: 20px;
+    display: block;
+    font-family: 'Montserrat Alternates';
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
 }

@@ -64,5 +64,9 @@ function CloseDeletePopup(){
     deletePopup.style.display = 'none';
     ocultarPopup();
 }
-
-
+function formataValor(valor){
+    const t = valor;
+    const s = valor.substring(2,valor.length)
+    return s.replace(',','.')
+} 
+console.log(formataValor('R$ 234343.434'))
