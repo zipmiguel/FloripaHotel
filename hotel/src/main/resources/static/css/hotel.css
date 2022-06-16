@@ -285,10 +285,13 @@ footer {
 .confirmar{
     background-color: #F9AD81;
     border: 0;
-    padding: 7px;
+    padding: 7px 30px 7px 30px;
+    
 }
 .centralText{
     text-align: center;
+    padding:0 10px 0 10px;
+    margin-top: 7px;
 }
 .popup{
     visibility: hidden;
@@ -305,17 +308,18 @@ footer {
     transition: all .2s ease-in-out;
 }
 .botaoPopup{
-    cursor: pointer;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 #editarPopup{
+    display: none;
+    visibility: hidden;
     width: 30%;
     min-height: 300px;
     max-height: 900px;
     background-color: lightgray;
     margin: 0 auto;
-    display: flex;
     flex-direction: column;
-    border-radius: 5px;
 }
 #editarPopup input[type="text"]{
     width: 100%;
@@ -334,6 +338,7 @@ footer {
     margin-bottom: 20px;
 }
 #editarPopup .headerPopup .tituloPopup{
+    padding-top: 20px;
     font-size: 40px;
     font-family: 'Montserrat Alternates';
 }
@@ -347,6 +352,7 @@ footer {
     opacity: 1;
 }
 .inputPopup .title-input{
+    padding-top: 20px;
     margin-bottom: 10px;
     font-size: 23.5px;
     font-family: 'Montserrat Alternates';
@@ -354,6 +360,8 @@ footer {
 }
 .inputpopupForm{
     padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
     border: 0 none;
     outline: none;
     border-radius: 5px;   
@@ -367,6 +375,7 @@ footer {
     height: 80px;
 }   
 .footerPopup{
+    padding-top: 40px;
     display: flex;
     width: 100%;
     height: 100px;
@@ -376,16 +385,14 @@ footer {
     width: 38%;
     height: 55px;
     border: 0 none;
-    font-size: large;
-    font-weight: bold;
+    font-size: 25px;
     font-family: 'Montserrat Alternates';
-    border-radius: 5px;
 }
 .buttonSuccess{
-    background-color: #00FF00;
+    background-color: #93ff90;
 }
 .buttonCancel{
-    background-color: #B22222;
+    background-color: #FF8383;
 }
 .buttonPopup button[type="button"]{
     font-weight: bold;
@@ -418,4 +425,15 @@ footer {
 	opacity: 100%;
 	width: 90%;
 	margin: 10px auto 30px auto;
+}
+#deletePopup{
+    display: none;
+    visibility: hidden;
+    width: 30%;
+    min-height: 300px;
+    max-height: 900px;
+    background-color: lightgray;
+    margin: 0 auto;
+    flex-direction: column;
+    border-radius: 5px;
 }
