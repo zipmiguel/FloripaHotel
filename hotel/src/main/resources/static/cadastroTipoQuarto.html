@@ -53,76 +53,35 @@
                         <th>N° Pessoas</th>
                         <th></th>
                     </tr>
-                </thead>
+                </thead>    
                 <tbody id="listerUser">
-                    <form action="">
                         <tr>
-                            <td><input type="text" class="centralText" name="tipoQuarto" required></td>
-                            <td>
-                                <select class="selectPopupForm" aria-label=".form-select-lg example" id="camaSolteiro" name="camaSolteiro" id="camaSolteiro" onchange="gerarQNTpessoas('#listerUser')" required>
-                                <option value="1" selected id="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="selectPopupForm" aria-label=".form-select-lg example" id="camaCasal" name="camaCasal" onchange="gerarQNTpessoas('#listerUser')" required>
-                                <option value="1" selected id="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                </select>
-                            </td>
-                            <td><input type="number" class="centralText" name="Npessoas" id="Npessoas" required disabled></td>
-                            <td>
-                                <button type="submit" class="confirmar negrito ">Cadastrar</button>
-                            </td>
+                            <form action="/tipoQuarto/save" method="post">
+                                <td><input type="text" class="centralText" name="tipoQuarto" required></td>
+                                <td>
+                                    <select class="selectPopupForm" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" onchange="gerarQNTpessoas('#listerUser')" required>
+                                    <option value="1" selected id="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="selectPopupForm" aria-label=".form-select-lg example" id="quantidadeCamaCasal" name="quantidadeCamaCasal" onchange="gerarQNTpessoas('#listerUser')" required>
+                                    <option value="1" selected id="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    </select>
+                                </td>
+                                <td><input type="number" class="centralText" name="numeroPessoas" id="numeroPessoas" required disabled ></td>
+                                <td>
+                                    <button type="submit" class="confirmar negrito ">Cadastrar</button>
+                                </td>
+                            </form>
                         </tr>
-                    </form>
-                        <tr>
-                            <td>master</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>
-                                <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(2)">
-                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(2);">  
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>master</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>
-                                <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(3)">
-                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(3)">  
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>deluxe</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>4</td>
-                            <td>
-                                <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(4)">
-                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(4)">  
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>master</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>
-                                <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(9)">
-                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup pointer" onclick="OpenEditPopup(9)">  
-                            </td>
-                        </tr>
-                    </form>
                 </tbody>
             </table>
         </div>
@@ -139,14 +98,10 @@
         <!--editar Popup-->
         <div class="popup">
             <div id="editarPopup">
-                <form action="">
+                <form action="/tipoQuarto/edit" id="formularioEdit" onsubmit="EditTipoQuarto()" method="post">
                     <header class="headerPopup">
                         <h1 class="tituloPopup negrito">EDITAR</h1> 
                     </header>
-                    <div class="inputPopup">
-                        <label class="title-input">Tipo de quarto</label>
-                        <input type="text" class="form-control inputpopupForm" name="tipoQuarto" required>
-                    </div> 
                     <div class="inputPopup">
                         <label class="title-input">Cama Solteiro</label>
                         <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" id="quantidadeCamaSolteiro" onchange="gerarQNTpessoas('#editarPopup')" required>
@@ -169,28 +124,34 @@
                     </div> 
                     <div class="inputPopup">
                         <label class="title-input">N° Pessoas</label>
-                        <input type="number" class="form-control inputpopupForm" disabled required name="numeroPessoas" id="numeroPessoas">
+                        <input type="number" class="form-control inputpopupForm" required name="numeroPessoas" id="numeroPessoas" disabled>
                     </div> 
                     <footer class="footerPopup">
                         <button type="button" class="buttonPopup buttonCancel close negrito" onclick="CloseEditPopup()">Cancelar </button>
                         <button type="submit" class="buttonPopup buttonSuccess negrito">Salvar</button>
                     </footer>
-                    <input type="hidden" name="idQuarto">
+                    <input type="hidden" name="idQuarto" id="idquarto">
                 </form>
             </div>
         <!--deletar Popup-->
                 <div id="deletePopup">
-                    <form action="">
+                    <form action="/tipoQuarto/delete" method="post" id="formularioDelete">
                         <header class="headerPopup" style="padding-top: 10px;">
                             <img src="img/close_2.png" id="icon-deletePopup">
                             <h1 class="tituloPopup">Gostaria de Excluir?</h1> 
                         </header>
                         <footer class="footerPopup">
-                            <button type="submit" class="buttonPopup buttonSuccess negrito">Cancelar</button>
-                            <button type="button" class="buttonPopup buttonCancel close negrito" onclick="CloseEditPopup()">Excluir</button>
+                            <button type="button" class="buttonPopup buttonSuccess negrito" onclick="CloseDeletePopup()">Cancelar</button>
+                            <button type="button" class="buttonPopup buttonCancel close negrito" id="BotaoSubmitDelete" onclick="deleteTipoQuarto()">Excluir</button>
+                            <input type="hidden" id="idQuarto" name="idQuarto">
                         </footer>
                     </form>
                 </div>
         </div>
     </body>
+    <script>
+        $(document).ready(function(){
+            carregarTipoQuarto();
+        });
+    </script>
     </html>

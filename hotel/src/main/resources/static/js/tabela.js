@@ -25,7 +25,6 @@ function CloseEditPopup(){
     const listaDiv = Array.from(document.querySelectorAll('#editarPopup div'));
     for (let i = 0; i < listaDiv.length; i++) {
         const divAtual = listaDiv[i].children[1];
-        console.log(divAtual.tagName);
         switch (divAtual.tagName) {
             case 'INPUT':
                 divAtual.value = ""; 
@@ -44,12 +43,13 @@ function CloseEditPopup(){
 }
 function gerarQNTpessoas(id){
     const NumeroPessoas = document.querySelector(`${id} input[disabled]`)
-    NumeroPessoas.value = "";
+    NumeroPessoas.value = ""
     const listaCamas = document.querySelectorAll(`${id} select`)
     const camaSolteiro = parseInt($(listaCamas[0]).val());
     const camaCasal = parseInt($(listaCamas[1]).val());
     NumeroPessoas.value = camaSolteiro+(camaCasal*2);
 }
+
 function OpenDeletePopup(idquarto){
         mostrarPopup();
         const deletePopup = document.getElementById('deletePopup');
@@ -58,15 +58,71 @@ function OpenDeletePopup(idquarto){
         deletePopup.style.visibility = 'visible';
         deletePopup.style.display = 'flex';
 }
+
 function CloseDeletePopup(){
     const deletePopup = document.getElementById('deletePopup');
     deletePopup.style.visibility = 'hidden';
     deletePopup.style.display = 'none';
     ocultarPopup();
 }
+
 function formataValor(valor){
     const t = valor;
     const s = valor.substring(2,valor.length)
     return s.replace(',','.')
 } 
-console.log(formataValor('R$ 234343.434'))
+
+function carregarTipoQuarto(){
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/tipoQuarto",
+        success: function (data) {
+            const tabela = document.querySelector('#listerUser')
+            let tr = "";
+            $.each(data,function(i,value){
+             tr+= `<tr class="TipoQuarto">
+             <td>${value.tipoQuarto}</td>
+             <td>${value.quantidadeCamaSolteiro}</td>
+             <td>${value.quantidadeCamaCasal}</td>
+             <td>${value.numeroPessoas}</td>
+             <td>
+                 <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(${value.idTipoQuarto})">
+                 <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(${value.idTipoQuarto});">  
+             </td>
+         </tr>
+         `;
+            
+            })
+        $('.TipoQuarto').remove();
+        $('#listerUser').append(tr);
+    },
+        error: function() {
+            alert('Tipos de quarto indisponiveis')
+        }
+    })
+}
+function EditTipoQuarto(){
+    const editPopup = document.getElementById('editarPopup');
+    $('#idquarto').val(parseInt(editPopup.getAttribute("idquarto")))
+}
+function deleteTipoQuarto(){
+    const deletePopup = document.getElementById('deletePopup');
+    $('#idQuarto').val(parseInt(deletePopup.getAttribute("idquarto")))
+    const formularioDelete = document.getElementById('formularioDelete');
+    formularioDelete.submit();
+
+    //deletePopup.querySelector()
+    /*$.ajax({
+        type: "POST",
+        url: "tipoQuarto/delete",
+        data: {
+            idQuarto:deletePopup.getAttribute('idquarto')   
+        },
+        success: function (response) {
+            alert(response)
+        }
+    });*/
+}
+
+
