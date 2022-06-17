@@ -24,7 +24,7 @@ import br.com.hotel.model.TipoQuarto;
 
 @RestController
 @RequestMapping("/tipoQuarto")
-public class TIpoQuartoController {
+public class TipoQuartoController {
     @Autowired
     private tipoQuartoRepositorio tipoQuartoRepositorio;
 
