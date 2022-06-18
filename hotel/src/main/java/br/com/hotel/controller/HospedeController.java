@@ -30,7 +30,7 @@ public class HospedeController {
         int codigo = senderMailService.enviarConfirmarCadastro(hospede.getEmail(), hospede.getNome());
         hospede.setVerificarConfirmacao(codigo);
         hospedeRepositorio.save(hospede);
-        response.sendRedirect("/cadastroUsuario");
+        response.sendRedirect("/loginUsuario");
     }
 
     @GetMapping("/finalizarCadastro/{codigo}")

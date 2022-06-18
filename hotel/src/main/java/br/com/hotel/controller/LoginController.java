@@ -21,8 +21,6 @@ public class LoginController {
 
     @GetMapping("/hospede")
     public Hospede verificarLoginHospede(HttpServletResponse response, @RequestParam String login, @RequestParam String senha){
-        System.out.println(login);
-        System.out.println(senha);
         Hospede hospede = loginRepositorio.findByemail(login);
         if(hospede.getSenha().equals(senha) && hospede.getVerificarConfirmacao() == -1){
             return hospede;
