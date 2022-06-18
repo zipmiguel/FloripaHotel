@@ -21,7 +21,15 @@ public class TipoQuarto {
     private int quantidadeCamaCasal;
     @Column(nullable = false)
     private int numeroPessoas;
-    
+    @Column(nullable = false, columnDefinition = "boolean")
+    private boolean StatusTipoQuarto;
+
+    public boolean getStatusTipoQuarto() {
+        return StatusTipoQuarto;
+    }
+    public void setStatusTipoQuarto(boolean statusTipoQuarto) {
+        StatusTipoQuarto = statusTipoQuarto;
+    }
     public Long getIdTipoQuarto() {
         return idTipoQuarto;
     }
@@ -52,4 +60,19 @@ public class TipoQuarto {
     public void setNumeroPessoas(int numeroPessoas) {
         this.numeroPessoas = numeroPessoas;
     }
+    public TipoQuarto(String tipoQuarto,int quantidadeCamaSolteiro,int quantidadeCamaCasal,int numeroPessoas){
+        this.tipoQuarto = tipoQuarto;
+        this.quantidadeCamaSolteiro = quantidadeCamaSolteiro;
+        this.quantidadeCamaCasal = quantidadeCamaCasal;
+        this.numeroPessoas = numeroPessoas;
+        this.StatusTipoQuarto = true;
+    }
+    public TipoQuarto(String tipoQuarto,int quantidadeCamaSolteiro,int quantidadeCamaCasal){
+        this.tipoQuarto = tipoQuarto;
+        this.quantidadeCamaSolteiro = quantidadeCamaSolteiro;
+        this.quantidadeCamaCasal = quantidadeCamaCasal;
+        this.numeroPessoas = (quantidadeCamaCasal*2)+quantidadeCamaSolteiro;
+        this.StatusTipoQuarto = true;
+    }
+    public TipoQuarto(){}
 }
