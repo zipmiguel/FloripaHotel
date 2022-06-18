@@ -85,6 +85,14 @@ public class redirect {
     public static String cadastroTipoQuarto(){
             return "cadastroTipoQuarto.html";
     }
+    @RequestMapping("/editarReservaUsuario")
+    public static String editarReservaUsuario(){
+            return "editarReservaUsuario.html";
+    }
+    @RequestMapping("/editarReservaFuncionario")
+    public static String editarReservaFuncionario(){
+            return "editarReservaFuncionario.html";
+    }
     @RequestMapping("/")
     public static String index(){
         return "index.html";
