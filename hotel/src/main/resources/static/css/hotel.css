@@ -230,7 +230,7 @@ form{
 }
 .inputCadastroCargo{
     display: inline;
-    width: 450px;
+    /* width: 450px; */
 }
 .botoesCadastro{
     width: 100%;
