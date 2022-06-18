@@ -43,8 +43,8 @@ public class TipoQuartoController {
     @PostMapping("/delete")
     public void deleteQuarto(HttpServletResponse response,@RequestParam Long idQuarto) throws IOException{  
         TipoQuarto tipoQuarto = tipoQuartoRepositorio.getReferenceById(idQuarto);
-        tipoQuartoRepositorio.delete(tipoQuarto);
-        //tipoQuartoRepositorio.CancelaTipoQuarto(idQuarto);
+//         tipoQuartoRepositorio.delete(tipoQuarto);
+        tipoQuartoRepositorio.CancelaTipoQuarto(idQuarto);
         response.sendRedirect("/cadastroTipoQuarto.html");
     }
     @PostMapping("/edit")
