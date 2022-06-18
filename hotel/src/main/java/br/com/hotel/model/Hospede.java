@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+// import javax.persistence.JoinColumn;
+// import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,11 +14,10 @@ import javax.persistence.Table;
 public class Hospede {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private Long idHospede;
-    @OneToOne
-    @JoinColumn(name = "id_cartao")
-    private Cartao cartao;
+    // @OneToOne
+    // @JoinColumn(name = "id_cartao")
+    // private Cartao cartao;
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
@@ -33,19 +32,27 @@ public class Hospede {
     private String nascimento;
     @Column(nullable = false)
     private String senha;
+    @Column(nullable = false)
+    private int verificarConfirmacao;
     
+    public int getVerificarConfirmacao() {
+        return verificarConfirmacao;
+    }
+    public void setVerificarConfirmacao(int verificarConfirmacao) {
+        this.verificarConfirmacao = verificarConfirmacao;
+    }
     public Long getIdHospede() {
         return idHospede;
     }
     public void setIdHospede(Long idHospede) {
         this.idHospede = idHospede;
     }
-    public Cartao getCartao() {
-        return cartao;
-    }
-    public void setCartao(Cartao cartao) {
-        this.cartao = cartao;
-    }
+    // public Cartao getCartao() {
+    //     return cartao;
+    // }
+    // public void setCartao(Cartao cartao) {
+    //     this.cartao = cartao;
+    // }
     public String getNome() {
         return nome;
     }
