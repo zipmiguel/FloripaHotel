@@ -2216,6 +2216,12 @@ ol {
     justify-content: flex-end;
     align-items: center;
 }
+.campoCadastroHome{
+	margin: 40px 0 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .campoCadastro h1, .campoCadastro h2{
     margin-right: 20px;
     font-size: 25px;
@@ -2234,6 +2240,52 @@ ol {
     color: #ffffff;
     font-family: 'Montserrat Alternates';
     font-size: 24px;
+}
+.cadastro input[type=submit].botaoFuncionarioComum{
+	display: flex;
+	justify-content: center;
+	margin: 100px 0 0 0;
+    width: 50%;
+	height: 100px;
+    border: 0;
+    color: #ffffff;
+    font-family: 'Montserrat Alternates';
+    font-size: 24px;
+}
+.cadastro input[type=submit].botaoFuncionarioAdmin{
+	display: flex;
+	justify-content: center;
+    width: 50%;
+	height: 50px;
+    border: 0;
+    color: #ffffff;
+    font-family: 'Montserrat Alternates';
+    font-size: 24px;
+}
+.cadastro input[type=submit].botaoFuncionarioSistemaAdmin{
+	display: flex;
+	justify-content: center;
+    width: 50%;
+	height: 50px;
+    border: 0;
+    color: #ffffff;
+    font-family: 'Montserrat Alternates';
+    font-size: 24px;
+}
+.cadastro input.botaoFuncionarioComum{
+	display: flex;
+	background-color: #F9AD81;
+	color: #FFF;
+}
+.cadastro input.botaoFuncionarioAdmin{
+	display: flex;
+	background-color: #F9AD81;
+	color: #FFF;
+}
+.cadastro input.botaoFuncionarioSistemaAdmin{
+	display: flex;
+	background-color: #393939;
+	color: #FFF;
 }
 .botaoFinalizarCadastro{
     background-color: #F9AD81;

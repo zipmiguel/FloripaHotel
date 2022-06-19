@@ -170,7 +170,7 @@ form{
 }
 .campoCadastro input, .campoCadastro select{
     height: 30px;
-    width: 300px;
+    width: 300px; 
     border: 0;
     padding: 0 10px 0 10px;
 }
