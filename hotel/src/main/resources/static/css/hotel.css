@@ -368,11 +368,9 @@ footer {
     border-radius: 5px;   
 }
 .selectPopupForm{
-    width: 100%;
-    padding: 0px 0px;
-    border: 1px solid black;
+    width: 85%;
+    padding: 0px 10px 0px 10px;
     outline: none;
-    padding-bottom: 4.9px;
     margin-top: 7px;
 }
 #editarPopup .inputPopup{
