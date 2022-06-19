@@ -459,3 +459,7 @@ footer {
     text-transform: uppercase;
     font-weight: 900;
 }
+tr th{
+    font-family: 'Montserrat Alternates';
+    border-bottom: 1px solid #000000;
+}
