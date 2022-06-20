@@ -2328,6 +2328,10 @@ ol {
 	margin-top: 80px;
 	font-size: 2em;	
 }
+.formularioLogin p {
+	margin:0 18% 0 18%;
+	text-align: center;
+}
 .cadastro input.botaoSalvarCadastro{
     background-color: #93FF91;
     color: #000000;

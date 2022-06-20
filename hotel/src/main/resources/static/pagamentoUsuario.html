@@ -13,6 +13,8 @@
         <script src="js/jquey-mask.js"></script>
         <script src="js/cliente.js"></script>
 
+        <script src="js/verificarUsuario.js"></script>
+
         <!-- Css Styles -->
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -74,12 +76,12 @@
                             <h1 class="negrito">CPF</h1>
                             <input type="text" class="cpf" name="cpfCliente" placeholder="xxx.xxx.xxx-xx">
                         </div>
+                    </div>
+                    <div class="cadastroDireita">
                         <div class="campoCadastro">
                             <h1 class="negrito">Endereço</h1>
                             <input type="text" name="enderecoCliente" placeholder="Rua, nº, Cidade, Estado, País, CEP">
                         </div>
-                    </div>
-                    <div class="cadastroDireita">
                         <div class="campoCadastro">
                             <h1 class="negrito">Email</h1>
                             <input type="email" name="emailCliente" placeholder="exemplo@email.com"></select>
@@ -87,14 +89,6 @@
                         <div class="campoCadastro">
                             <h1 class="negrito">Nascimento</h1>
                             <input type="date" name="dataNascimentoCliente">
-                        </div>
-                        <div class="campoCadastro">
-                            <h1 class="negrito">Senha</h1>
-                            <input type="password" name="senhaCliente" placeholder="Exemplo123!">
-                        </div>
-                        <div class="campoCadastro">
-                            <h2 class="negrito">Confirmar Senha</h2>
-                            <input type="password" name="senhaCliente" placeholder="Exemplo123!">
                         </div>
                     </div>
                 </div>
@@ -138,6 +132,10 @@
                             <div class="campoCadastro">
                                 <h1 class="negrito">Vencimento</h1>
                                 <input type="month" name="vencimentoCartao">
+                            </div>
+                            <div class="campoCadastro" style="margin: 50px 0 0 0; padding: 0 180px 0 0; display: inline-block; ">
+                                <h6 class="negrito">Salvar cartão para compras futuras!</h6>
+                                <input type="checkbox" name="salvarCartao"/>
                             </div>
                         </div>
                         <div class="cadastroDireita">
