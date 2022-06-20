@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "hospede")
-public class Hospede {
+public class Hospede implements Cloneable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idHospede;
@@ -22,11 +22,11 @@ public class Hospede {
     private String nome;
     @Column(nullable = false)
     private String telefone;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String cpf;
     @Column(nullable = false)
     private String endereco;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
     private String nascimento;
@@ -96,5 +96,8 @@ public class Hospede {
         this.senha = senha;
     }
 
-    
+    @Override
+    public Hospede clone() throws CloneNotSupportedException {
+        return (Hospede) super.clone();
+    }
 }

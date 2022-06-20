@@ -29,7 +29,6 @@ public class LoginController {
             hospede2.setNome("sayudasd@#aidshuauisg86aSDBH");
             return hospede2; 
         }
-        
         else{
             return null;
         }

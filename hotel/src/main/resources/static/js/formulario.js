@@ -1,30 +1,50 @@
-function validarForm(){
-    nome = $("input[name=nome]").val();
-    telefone = $("input[name=telefone]").val();
-    cpf = $("input[name=cpf]").val();
-    endereco = $("input[name=endereco]").val();
-    email = $("input[name=email]").val();
-    nascimento = $("input[name=nascimento]").val();
-    senha = $("input[name=senha]").val();
-    confirmarSenha = $("input[name=confirmarSenha]").val();
+$(document).ready(function() {
+    $("#inputTeste").click(function(e){
+        e.preventDefault()
+        const nome = $("input[name=nome]").val()
+        const telefone = $("input[name=telefone]").val()
+        const cpf = $("input[name=cpf]").val()
+        const endereco = $("input[name=endereco]").val()
+        const email = $("input[name=email]").val()
+        const nascimento = $("input[name=nascimento]").val()
+        const senha = $("input[name=senha]").val()
+        const confirmarSenha = $("input[name=confirmarSenha]").val()
+        // const dadosJson = `{"nome":${nome},"telefone":${telefone},cpf":${cpf},"endereco":${endereco},email":${email},"nascimento":${nascimento},"senha":${senha}}`
+        const dados = `?nome=${nome}&telefone=${telefone}&cpf=${cpf}&endereco=${endereco}&email=${email}&nascimento=${nascimento}&senha=${senha}`
+        if(vazio(nome) || telefone.length != 15 || cpf.length != 14 || vazio(endereco) || vazio(email) || vazio(nascimento)){
+            alert("Preencha corretamente os campos");
+        }else if(senha != confirmarSenha){
+            alert("Senha e Confirmar senha não são iguais!")
+        }else if(!email.includes("@") || !email.includes(".") || email.length <= 5){
+            alert("Email incorreto")
+        }else if(!validaSenha(senha)){
+            alert("Senha deve conter no mínimo:\n\n" + "8 caracteres\n" + "1 Letra maiúscula\n" + "1 Letra minúscula\n" + "1 Número\n" + "1 Caractere especial")
+        }else if(JSON.parse(localStorage.getItem('hospede')) != null){
+            atualizarSessao(dados)
+        }else{
+            alert("Foi enviado uma etapa adicional de verificação ao seu email. Prossiga os passos para finalizar o cadastro")
+            $("#cadastrarHospede").trigger('submit', [true]);
+        }
+        
+    });
+});
 
-    if(vazio(nome) || telefone.length != 11 || cpf.length != 11 || vazio(endereco) || 
-    vazio(email) || vazio(nascimento)){
-        alert("Preencha corretamente os campos");
-        return false
-    }else if(senha != confirmarSenha){
-        alert("Senha e Confirmar senha não são iguais!")
-        return false
-    }else if(!email.includes("@") || !email.includes(".") || email.length <= 5){
-        alert("Email incorreto")
-        return false
-    }else if(!validaSenha(senha)){
-        alert("Senha deve conter no mínimo:\n\n" + "8 caracteres\n" + "1 Letra maiúscula\n" + "1 Letra minúscula\n" + "1 Número\n" + "1 Caractere especial")
-        return false
-    }else{
-        alert("Foi enviado uma etapa adicional de verificação ao seu email. Prossiga os passos para finalizar o cadastro")
-    }
-    return true
+function atualizarSessao(dados){
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        contentType: 'application/json',
+        url: "/editarHospede"+dados,
+        async: false,
+        success: function(hospede){
+            alert("Dados alterados com sucesso "+hospede.nome)
+            localStorage.setItem('hospede', JSON.stringify(hospede))
+            window.location.replace("http://localhost:8089/cadastroUsuario")
+        },
+        error: function (){
+            alert("Ocorreu um erro inesperado, por favor, tente novamente!")
+        }
+    })
 }
 
 function validaSenha (senha){
@@ -67,13 +87,8 @@ function validarLogin() {
         error: function (){
             alert("Email e/ou senha incorretos!")
         }
-        // },
-        // beforeSend: function (){
-    
-        // }
     })
     if(logar){
-        //Logar na sessao
         window.location.replace('http://localhost:8089/')
     }
     return false

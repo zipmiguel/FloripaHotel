@@ -20,7 +20,7 @@ public class Reserva {
     private Hospede hospede;
     @ManyToOne
     @JoinColumn(name = "id_tipoQuarto")
-    private TipoQuarto tipoQuarto;
+    private Quarto quarto;
     @ManyToOne
     @JoinColumn(name = "id_funcionario")
     private Funcionario funcionario;
@@ -50,11 +50,11 @@ public class Reserva {
     public void setHospede(Hospede hospede) {
         this.hospede = hospede;
     }
-    public TipoQuarto getTipoQuarto() {
-        return tipoQuarto;
+    public Quarto getQuarto() {
+        return quarto;
     }
-    public void setTipoQuarto(TipoQuarto tipoQuarto) {
-        this.tipoQuarto = tipoQuarto;
+    public void setTipoQuarto(Quarto quarto) {
+        this.quarto = quarto;
     }
     public Funcionario getFuncionario() {
         return funcionario;
