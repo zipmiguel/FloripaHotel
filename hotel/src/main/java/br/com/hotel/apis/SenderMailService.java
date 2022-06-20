@@ -48,7 +48,7 @@ public class SenderMailService {
             helper.setSubject("Confirmar Cadastro no Floripa Hotel");
             helper.setText("<html><head></head><body><h2 style=\"color: black;\">Floripa Hotel</h2> <br/>"+
             "<h3 style=\"color: black;\">Olá "+nome+", seu cadastro está quase concluído, por favor clique no link abaixo para finalizá-lo !<br/><br/>"+
-            "<a href=\"http://localhost:8089/cadastrarHospede/finalizarCadastro/"+codigo+"\">Clique aqui!</a></h3></body></html>", true);
+            "<a href=\"http://localhost:8089/finalizarCadastro/"+codigo+"\">Clique aqui!</a></h3></body></html>", true);
             mailSender.send(mimeMessage);
         } catch (MessagingException e) {
             System.out.println(e);
