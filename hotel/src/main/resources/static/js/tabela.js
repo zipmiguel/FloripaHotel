@@ -88,7 +88,7 @@ function carregarTipoQuarto(){
              <td>${value.numeroPessoas}</td>
              <td>
                  <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(${value.idTipoQuarto})">
-                 <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(${value.idTipoQuarto});">  
+                 <img src="img/editar_lapis_30x30px.svg" class="botaoPopup pointer" onclick="OpenEditPopup(${value.idTipoQuarto});">  
              </td>
          </tr>
          `;

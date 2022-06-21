@@ -11,7 +11,7 @@ function checkUser(){
         const user = JSON.parse(localStorage.getItem("user"))
         divLoginLogout.innerHTML = `<h3 class="negrito branco"> ${(user.nome).toUpperCase()} </h3> <button class="pointer" onclick="Logout()" id="logout" >Logout</button>`
     }else{
-        divLoginLogout.innerHTML = `<div class="nav-right"> <a href="./index.html#reserva" class="primary-btn">Faça sua Reserva</a> <a href="./loginUsuario.html" id="button-login">Login</a></div>`
+        divLoginLogout.innerHTML = `<div class="nav-right"><a href="./loginFuncionario.html" id="button-login">Login</a></div>`
     }
     } catch (error) {
         divLoginLogout.innerHTML = `<div class="nav-right"> <a href="./index.html#reserva" class="primary-btn">Faça sua Reserva</a> <a href="./loginUsuario.html" id="button-login">Login</a></div>`
