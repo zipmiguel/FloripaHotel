@@ -39,8 +39,7 @@ public class HospedeController {
     }
 
     @PostMapping("/editarHospede")
-    public Hospede editarHospede(Hospede hospede, HttpServletResponse response)
-            throws CloneNotSupportedException, IOException {
+    public Hospede editarHospede(Hospede hospede, HttpServletResponse response) throws CloneNotSupportedException, IOException {
         Hospede hospedeExistente = hospedeRepositorio.findBycpf(hospede.getCpf());
         Long id = hospedeExistente.getIdHospede();
         hospedeExistente = hospede.clone();
