@@ -112,7 +112,8 @@
                     <div class="inputPopup">
                         <label class="title-input">Cama Solteiro</label>
                         <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" id="quantidadeCamaSolteiro" onchange="gerarQNTpessoas('#editarPopup')" required>
-                            <option value="1" selected id="1">1</option>
+                            <option value="1" selected>0</option>
+                            <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
@@ -122,7 +123,8 @@
                     <div class="inputPopup">
                         <label class="title-input">Cama Casal</label>
                         <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaCasal" name="quantidadeCamaCasal" id="quantidadeCamaCasal" onchange="gerarQNTpessoas('#editarPopup')" required>
-                            <option value="1" selected>1</option>
+                            <option value="1" selected>0</option>
+                            <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
@@ -141,19 +143,18 @@
                 </form>
             </div>
         <!--deletar Popup-->
-                <div id="deletePopup">
-                    <form action="/tipoQuarto/delete" method="post" id="formularioDelete">
-                        <header class="headerPopup" style="padding-top: 10px;">
-                            <img src="img/close_2.png" id="icon-deletePopup">
-                            <h1 class="tituloPopup">Gostaria de Excluir?</h1> 
-                        </header>
-                        <footer class="footerPopup">
-                            <button type="button" class="buttonPopup buttonSuccess negrito" onclick="CloseDeletePopup()">Cancelar</button>
-                            <button type="button" class="buttonPopup buttonCancel close negrito" id="BotaoSubmitDelete" onclick="deleteTipoQuarto()">Excluir</button>
-                            <input type="hidden" id="idQuarto" name="idQuarto">
-                        </footer>
-                    </form>
-                </div>
+            <div id="deletePopup">
+                <form action="/tipoQuarto/delete" method="post" id="formularioDelete">
+                    <header class="headerPopup" style="padding-top: 10px;">
+                        <h3 style="padding: 60px 0 30px 0; color: #ffffff;" class="negrito tituloPopup">Gostaria mesmo de excluir?</h3> 
+                    </header>
+                    <footer class="footerPopup">
+                        <button type="button" class="buttonPopup negrito" onclick="CloseDeletePopup()">Cancelar</button>
+                        <button type="button" class="buttonPopup buttonCancel close negrito" id="BotaoSubmitDelete" onclick="deleteTipoQuarto()">Excluir</button>
+                        <input type="hidden" id="idQuarto" name="idQuarto">
+                    </footer>
+                </form>
+            </div>
         </div>
     </body>
     </html>

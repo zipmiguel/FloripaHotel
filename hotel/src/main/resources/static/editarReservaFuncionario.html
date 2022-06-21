@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastro de Quarto</title>
+        <title>Editar Reserva Funcionario</title>
         <link href='https://fonts.googleapis.com/css?family=Montserrat Alternates' rel='stylesheet'>
         <script src="js/jquery-3.3.1.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -44,7 +44,7 @@
             <h2 id="titulo" class="negrito">Editar Reserva</h2>
             <hr class="hrLaranja"/>
             <div class="inputs" style="margin-top: 60px;">
-                <input class="barra-pesquisa" type="text" placeholder="Pesquisar por Tipo de Quarto">
+                <input class="barra-pesquisa" type="text" placeholder="Pesquisar por CPF do Hóspede">
                 <input class="btnPesquisar negrito branco pointer" type="submit" value="Pesquisar">
             </div>
         </div>
@@ -59,7 +59,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                   <label class="titulo-tabela">Cadastro Reserva</label>
+                   <label class="titulo-tabela">Cadastro Reservas</label>
                 <tbody id="listerUser">
                         <tr>
                             <td>master</td>
@@ -68,7 +68,7 @@
                             <td>3</td>
                             <td>
                                 <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(2)">
-                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(2);">  
+                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup pointer" onclick="OpenEditPopup(2);">  
                             </td>
                         </tr>
                         <tr>
@@ -78,7 +78,7 @@
                             <td>3</td>
                             <td>
                                 <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(3)">
-                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(3)">  
+                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup pointer" onclick="OpenEditPopup(3)">  
                             </td>
                         </tr>
                         <tr>
@@ -88,7 +88,7 @@
                             <td>4</td>
                             <td>
                                 <img src="img/excluir_lixeira_30x30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(4)">
-                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(4)">  
+                                <img src="img/editar_lapis_30x30px.svg" class="botaoPopup pointer" onclick="OpenEditPopup(4)">  
                             </td>
                         </tr>
                         <tr>
@@ -120,23 +120,50 @@
             <div id="editarPopup">
                 <form action="">
                     <header class="headerPopup">
-                        <h1 class="tituloPopup negrito">EDITAR</h1> 
+                        <h1 class="tituloPopup negrito">EDITAR RESERVA</h1> 
                     </header>
                     <div class="inputPopup">
                         <label class="title-input">Nome Hóspede</label>
-                        <input type="text" class="form-control inputpopupForm" name="nome" required>
+                        <input type="" class="form-control inputpopupForm" name="nome" disabled required  name="" id="">
+                    </div>
+                    <div class="inputPopup">
+                        <label class="title-input">Quantidade de Quartos</label>
+                            <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" id="quantidadeCamaSolteiro" onchange="gerarQNTpessoas('#editarPopup')" required>
+                                <option value="1" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                    </div> 
+                    <div class="inputPopup">
+                        <label class="title-input">Tipo de Quarto</label>
+                            <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" id="quantidadeCamaSolteiro" onchange="gerarQNTpessoas('#editarPopup')" required>
+                                <option value="1" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
                     </div> 
                     <div class="inputPopup">
                         <label class="title-input">Data Entrada</label>
                         <input type="date" class="form-control dataReserva" onkeydown="return false">
                     </div> 
                     <div class="inputPopup">
-                        <label class="title-input">Cama Casal</label>
+                        <label class="title-input">Data Saída</label>
                         <input type="date" class="form-control dataReserva" onkeydown="return false">
                     </div> 
                     <div class="inputPopup">
-                        <label class="title-input">N° Pessoas</label>
-                        <input type="number" class="form-control inputpopupForm" disabled required name="numeroPessoas" id="numeroPessoas">
+                        <label class="title-input">Valor</label>
+                        <input type="number" class="form-control inputpopupForm" disabled required name="" id="">
                     </div> 
                     <footer class="footerPopup">
                         <button type="button" class="buttonPopup buttonCancel close negrito" onclick="CloseEditPopup()">Cancelar </button>
@@ -146,18 +173,18 @@
                 </form>
             </div>
         <!--deletar Popup-->
-                <div id="deletePopup">
-                    <form action="">
-                        <header class="headerPopup" style="padding-top: 10px;">
-                            <img src="img/close_2.png" id="icon-deletePopup">
-                            <h1 class="tituloPopup">Gostaria de Excluir?</h1> 
-                        </header>
-                        <footer class="footerPopup">
-                            <button type="submit" class="buttonPopup buttonSuccess negrito">Cancelar</button>
-                            <button type="button" class="buttonPopup buttonCancel close negrito" onclick="CloseEditPopup()">Excluir</button>
-                        </footer>
-                    </form>
-                </div>
+            <div id="deletePopup">
+                <form action="/tipoQuarto/delete" method="post" id="formularioDelete">
+                    <header class="headerPopup" style="padding-top: 10px;">
+                        <h3 style="padding: 60px 0 30px 0; color: #ffffff;" class="negrito tituloPopup">Gostaria mesmo de excluir?</h3> 
+                    </header>
+                    <footer class="footerPopup">
+                        <button type="button" class="buttonPopup negrito" onclick="CloseDeletePopup()">Cancelar</button>
+                        <button type="button" class="buttonPopup buttonCancel close negrito" id="BotaoSubmitDelete" onclick="deleteTipoQuarto()">Excluir</button>
+                        <input type="hidden" id="idQuarto" name="idQuarto">
+                    </footer>
+                </form>
+            </div>
         </div>
     </body>
     </html>

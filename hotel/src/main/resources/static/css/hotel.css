@@ -317,7 +317,7 @@ footer {
     width: 30%;
     min-height: 300px;
     max-height: 900px;
-    background-color: lightgray;
+    background-color: #EEEEEE;
     margin: 0 auto;
     flex-direction: column;
 }
@@ -338,14 +338,13 @@ footer {
     margin-bottom: 20px;
 }
 #editarPopup .headerPopup .tituloPopup{
-    padding-top: 20px;
+    padding-top: 30px;
     font-size: 40px;
     font-family: 'Montserrat Alternates';
 }
 .footerTabela {
-    position: absolute;
+    position: relative;
     margin-top: auto;
-    top: 100vh;
 }
 .show {
     visibility: visible;
@@ -394,6 +393,7 @@ footer {
     border: 0 none;
     font-size: 25px;
     font-family: 'Montserrat Alternates';
+    background-color: #EEEEEE;
 }
 .buttonSuccess{
     background-color: #93ff90;
@@ -439,10 +439,9 @@ footer {
     width: 30%;
     min-height: 300px;
     max-height: 900px;
-    background-color: lightgray;
+    background-color: #393939;
     margin: 0 auto;
     flex-direction: column;
-    border-radius: 5px;
 }
 #icon-deletePopup{
     width:  72px;
