@@ -18,31 +18,33 @@ import br.com.hotel.model.TipoQuarto;
 
 @RestController
 @RequestMapping("/tipoQuarto")
-public class TipoQuartoController {
+public class TipoQuartoController{
     @Autowired
     private tipoQuartoRepositorio tipoQuartoRepositorio;
 
     @GetMapping
     public List<TipoQuarto> listaTipoQuarto(){
         List<TipoQuarto> listaTipos = tipoQuartoRepositorio.BuscarTiposQuartoTrue();
-       return listaTipos;
+        return listaTipos;
     }
 
     @PostMapping("/save")
-    public void saveQuarto(HttpServletResponse response,@RequestParam String tipoQuarto,@RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException{
+    public void saveQuarto(HttpServletResponse response, @RequestParam String tipoQuarto, @RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException {
         TipoQuarto tQuarto = new TipoQuarto(tipoQuarto, quantidadeCamaSolteiro, quantidadeCamaCasal);
         tipoQuartoRepositorio.save(tQuarto);
         response.sendRedirect("/cadastroTipoQuarto");
     }
+
     @PostMapping("/delete")
-    public void deleteQuarto(HttpServletResponse response,@RequestParam Long idQuarto) throws IOException{  
+    public void deleteQuarto(HttpServletResponse response, @RequestParam Long idQuarto) throws IOException {
         tipoQuartoRepositorio.CancelaTipoQuarto(idQuarto);
         response.sendRedirect("/cadastroTipoQuarto");
     }
+
     @PostMapping("/edit")
-    public void EditQuarto(HttpServletResponse response,@RequestParam Long idQuarto,@RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException{
+    public void EditQuarto(HttpServletResponse response, @RequestParam Long idQuarto, @RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException {
         TipoQuarto tipoQuartoOriginal = tipoQuartoRepositorio.getReferenceById(idQuarto);
-        TipoQuarto tipoQuartoNovo = new TipoQuarto(tipoQuartoOriginal.getTipoQuarto(),quantidadeCamaSolteiro,quantidadeCamaCasal);
+        TipoQuarto tipoQuartoNovo = new TipoQuarto(tipoQuartoOriginal.getTipoQuarto(), quantidadeCamaSolteiro, quantidadeCamaCasal);
         tipoQuartoRepositorio.CancelaTipoQuarto(idQuarto);
         tipoQuartoRepositorio.save(tipoQuartoNovo);
         response.sendRedirect("/cadastroTipoQuarto");

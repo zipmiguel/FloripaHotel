@@ -16,7 +16,7 @@ import br.com.hotel.repositorio.HospedeRepositorio;
 
 @RestController
 public class HospedeController {
-    
+
     @Autowired
     SenderMailService senderMailService;
 
@@ -24,7 +24,7 @@ public class HospedeController {
     private HospedeRepositorio hospedeRepositorio;
 
     @PostMapping("/cadastrarHospede")
-    public void adicionar(Hospede hospede, HttpServletResponse response) throws IOException{
+    public void adicionar(Hospede hospede, HttpServletResponse response) throws IOException {
         int codigo = senderMailService.enviarConfirmarCadastro(hospede.getEmail(), hospede.getNome());
         hospede.setVerificarConfirmacao(codigo);
         hospedeRepositorio.save(hospede);
@@ -32,14 +32,14 @@ public class HospedeController {
     }
 
     @GetMapping("/finalizarCadastro/{codigo}")
-    public void finalizarCadastro(@PathVariable("codigo") int codigo){
+    public void finalizarCadastro(@PathVariable("codigo") int codigo) {
         Hospede hospede = hospedeRepositorio.findByverificarConfirmacao(codigo);
         hospede.setVerificarConfirmacao(-1);
         hospedeRepositorio.save(hospede);
     }
 
     @PostMapping("/editarHospede")
-    public Hospede editarHospede(Hospede hospede,HttpServletResponse response) throws CloneNotSupportedException, IOException{
+    public Hospede editarHospede(Hospede hospede, HttpServletResponse response) throws CloneNotSupportedException, IOException {
         Hospede hospedeExistente = hospedeRepositorio.findBycpf(hospede.getCpf());
         Long id = hospedeExistente.getIdHospede();
         hospedeExistente = hospede.clone();
