@@ -25,9 +25,9 @@ public class HospedeController {
 
     @PostMapping("/cadastrarHospede")
     public void adicionar(Hospede hospede, HttpServletResponse response) throws IOException {
-        hospedeRepositorio.save(hospede);
         int codigo = senderMailService.enviarConfirmarCadastro(hospede.getEmail(), hospede.getNome());
         hospede.setVerificarConfirmacao(codigo);
+        hospedeRepositorio.save(hospede);
         response.sendRedirect("/loginUsuario");
     }
 
