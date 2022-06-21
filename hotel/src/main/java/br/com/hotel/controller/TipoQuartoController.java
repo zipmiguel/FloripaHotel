@@ -23,7 +23,7 @@ public class TipoQuartoController {
     private tipoQuartoRepositorio tipoQuartoRepositorio;
 
     @GetMapping
-    public List<TipoQuarto> listaTipoQuarto() {
+    public List<TipoQuarto> listaTipoQuarto(){
         List<TipoQuarto> listaTipos = tipoQuartoRepositorio.BuscarTiposQuartoTrue();
         return listaTipos;
     }
@@ -43,11 +43,9 @@ public class TipoQuartoController {
     }
 
     @PostMapping("/edit")
-    public void EditQuarto(HttpServletResponse response, @RequestParam Long idQuarto,
-            @RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException {
+    public void EditQuarto(HttpServletResponse response, @RequestParam Long idQuarto, @RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException {
         TipoQuarto tipoQuartoOriginal = tipoQuartoRepositorio.getReferenceById(idQuarto);
-        TipoQuarto tipoQuartoNovo = new TipoQuarto(tipoQuartoOriginal.getTipoQuarto(), quantidadeCamaSolteiro,
-                quantidadeCamaCasal);
+        TipoQuarto tipoQuartoNovo = new TipoQuarto(tipoQuartoOriginal.getTipoQuarto(), quantidadeCamaSolteiro, quantidadeCamaCasal);
         tipoQuartoRepositorio.CancelaTipoQuarto(idQuarto);
         tipoQuartoRepositorio.save(tipoQuartoNovo);
         response.sendRedirect("/cadastroTipoQuarto");
