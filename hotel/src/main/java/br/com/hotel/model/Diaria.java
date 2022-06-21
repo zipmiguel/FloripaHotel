@@ -17,6 +17,7 @@ public class Diaria {
     private Long idDiara;
     @ManyToOne
     @JoinColumn(name = "id_tipoQuarto")
+    private TipoQuarto tipoQuarto;
     @Column(nullable = false)
     private Double diaUtil;
     @Column(nullable = false)
@@ -24,6 +25,13 @@ public class Diaria {
     @Column(nullable = false)
     private Double feriado;
     @Column(nullable = false)
+    
+    public TipoQuarto getTipoQuarto() {
+        return tipoQuarto;
+    }
+    public void setTipoQuarto(TipoQuarto tipoQuarto) {
+        this.tipoQuarto = tipoQuarto;
+    }
     private Double promocional;
 
     public Long getIdDiara() {
