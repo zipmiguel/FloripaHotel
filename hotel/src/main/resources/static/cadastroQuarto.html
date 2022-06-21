@@ -10,7 +10,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/hotel.css">
         <script src="js/storageManager.js"> </script>
-        
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/cadastroQuarto.js"></script>
+
     </head>
     <body>
         <div class="cabecalho">
@@ -34,8 +36,8 @@
             <h2 id="titulo" class="negrito">Quarto</h2>
             <hr class="hrLaranja"/>
             <div class="inputs">
-                <input class="barra-pesquisa" type="text" placeholder="Pesquisar por Quarto">
-                <input class="btnPesquisar negrito branco pointer" type="submit" value="Pesquisar">
+                <input class="barra-pesquisa" type="text" id="inputNumeroQuarto" placeholder="Pesquisar por Quarto">
+                <input class="btnPesquisar negrito branco pointer" type="submit" id="pesquisarQuarto" value="Pesquisar">
             </div>
         </div>
         <form action="/cadastrarQuarto" method="POST">
@@ -47,22 +49,17 @@
                     </div>
                     <div class="campoCadastro centralizarDiv">
                         <h1 class="negrito">Tipo de quarto</h1>
-                        <select name="selectCargo" class="pointer">
-                            <option selected disabled>Selecione o Tipo de Quarto</option>
-                            <option value="standard">Standard</option>
-                            <option value="master">Master</option>
-                            <option value="deluxe">Deluxe</option>
-                            <option value="deluxePlus">Deluxe Plus</option>
+                        <select id="selectTipoQuartoBanco" name="tipoQuarto" class="pointer">
                         </select>
                     </div>
                     <div id="radioCargo">
                         <div>
                             <h3 class="negrito">Ativar</h1>
-                            <input type="radio" name="statusReserva" value="1">
+                            <input type="radio" id="campotrue" name="status" value=true>
                         </div>
                         <div>
                             <h3 class="negrito">Desativar</h1>
-                            <input type="radio" name="statusReserva" value="0">
+                            <input type="radio" id="campofalse" name="status" value=false>
                         </div>
                     </div>
                     <div class="botoesCadastro">

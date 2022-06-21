@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.hotel.model.Quarto;
 
 @Repository
-public interface QuartoRepositorio extends JpaRepository<Quarto, Long>{
-
+public interface QuartoRepositorio extends JpaRepository<Quarto, Long> {
+    Quarto findBynumero(String numero);
 }

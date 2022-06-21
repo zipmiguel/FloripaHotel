@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,11 +15,15 @@ public class Quarto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idQuarto;
-    @Column(nullable = false, columnDefinition = "varchar(16100)")
+    @ManyToOne
+    @JoinColumn(name = "id_tipoQuarto")
+    private TipoQuarto tipoQuarto;
+    @Column(nullable = false)
     private String listaReservas;
     @Column(nullable = false)
     private String numero;
-    private Boolean statusReserva;
+    @Column
+    private Boolean status;
 
     public Long getIdQuarto() {
         return idQuarto;
@@ -44,11 +50,19 @@ public class Quarto {
     }
 
     public Boolean getStatus() {
-        return statusReserva;
+        return status;
     }
 
     public void setStatus(Boolean status) {
-        this.statusReserva = status;
+        this.status = status;
+    }
+
+    public TipoQuarto getTipoQuarto() {
+        return tipoQuarto;
+    }
+
+    public void setTipoQuarto(TipoQuarto tipoQuarto) {
+        this.tipoQuarto = tipoQuarto;
     }
 
 }
