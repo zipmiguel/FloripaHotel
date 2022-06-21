@@ -18,7 +18,7 @@ import br.com.hotel.model.TipoQuarto;
 
 @RestController
 @RequestMapping("/tipoQuarto")
-public class TipoQuartoController {
+public class TipoQuartoController{
     @Autowired
     private tipoQuartoRepositorio tipoQuartoRepositorio;
 
@@ -29,8 +29,7 @@ public class TipoQuartoController {
     }
 
     @PostMapping("/save")
-    public void saveQuarto(HttpServletResponse response, @RequestParam String tipoQuarto,
-            @RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException {
+    public void saveQuarto(HttpServletResponse response, @RequestParam String tipoQuarto, @RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException {
         TipoQuarto tQuarto = new TipoQuarto(tipoQuarto, quantidadeCamaSolteiro, quantidadeCamaCasal);
         tipoQuartoRepositorio.save(tQuarto);
         response.sendRedirect("/cadastroTipoQuarto");
