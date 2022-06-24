@@ -97,4 +97,17 @@ public class redirect {
     public static String index(){
         return "index.html";
     }
+    @RequestMapping("/homeFuncionarioComum")
+    public static String homeFuncionarioComum(){
+        return "homeFuncionarioComum.html";
+    }
+    @RequestMapping("/homeFuncionarioAdmin")
+    public static String homeFuncionarioAdmin(){
+        return "homeFuncionarioAdmin.html";
+    }
+    @RequestMapping("/checkinQuartoDisponivel")
+    public static String checkinQuartoDisponivel(){
+        return "checkinQuartoDisponivel.html";
+    }
+    
 }

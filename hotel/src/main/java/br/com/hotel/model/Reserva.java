@@ -37,7 +37,15 @@ public class Reserva {
     private String dataSaida;
     @Column(nullable = false)
     private String status;
+    @Column(nullable = false)
+    private Long codigoReserva;
     
+    public Long getCodigoReserva() {
+        return codigoReserva;
+    }
+    public void setCodigoReserva(Long codigoReserva) {
+        this.codigoReserva = codigoReserva;
+    }
     public Long getIdReserva() {
         return idReserva;
     }
@@ -99,6 +107,6 @@ public class Reserva {
         this.status = status;
     }
 
-        
+    
 }
 
