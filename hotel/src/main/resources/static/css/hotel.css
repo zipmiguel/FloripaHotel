@@ -238,9 +238,7 @@ form{
     justify-content: space-around;
 }
 /* table_TeladosPreços */
-#tabelaPrecos{
-    width: 1200px;
-    height: 315px;
+table.table-hover{
     background-color: #FFF;
     border-collapse: collapse;
     border: 1px solid black;
