@@ -9,9 +9,9 @@ $(document).ready(function() {
         const nascimento = $("input[name=nascimento]").val()
         const senha = $("input[name=senha]").val()
         const confirmarSenha = $("input[name=confirmarSenha]").val()
-        // const dadosJson = `{"nome":${nome},"telefone":${telefone},cpf":${cpf},"endereco":${endereco},email":${email},"nascimento":${nascimento},"senha":${senha}}`
-        const dados = `?nome=${nome}&telefone=${telefone}&cpf=${cpf}&endereco=${endereco}&email=${email}&nascimento=${nascimento}&senha=${senha}`
-        if(vazio(nome) || telefone.length != 15 || cpf.length != 14 || vazio(endereco) || vazio(email) || vazio(nascimento)){
+
+        
+        if(vazio(nome) || telefone.length != 15 || cpf.length != 14 || vazio(endereco) || vazio(nascimento)){
             alert("Preencha corretamente os campos");
         }else if(senha != confirmarSenha){
             alert("Senha e Confirmar senha não são iguais!")
@@ -20,7 +20,7 @@ $(document).ready(function() {
         }else if(!validaSenha(senha)){
             alert("Senha deve conter no mínimo:\n\n" + "8 caracteres\n" + "1 Letra maiúscula\n" + "1 Letra minúscula\n" + "1 Número\n" + "1 Caractere especial")
         }else if(JSON.parse(localStorage.getItem('hospede')) != null){
-            atualizarSessao(dados)
+            atualizarSessao(nome,telefone,cpf,endereco,email,nascimento,senha)
         }else{
             alert("Foi enviado uma etapa adicional de verificação ao seu email. Prossiga os passos para finalizar o cadastro")
             $("#cadastrarHospede").trigger('submit', [true]);
@@ -29,20 +29,53 @@ $(document).ready(function() {
     });
 });
 
-function atualizarSessao(dados){
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        contentType: 'application/json',
-        url: "/editarHospede"+dados,
-        async: false,
-        success: function(hospede){
-            alert("Dados alterados com sucesso "+hospede.nome)
+function atualizarSessao(nomeV,telefoneV,cpfV,enderecoV,emailV,nascimentoV,senhaV){
+
+    $.post("http://localhost:8089/editarHospede",{
+        nome:nomeV,telefone:telefoneV,cpf:cpfV,endereco:enderecoV,email:emailV,nascimento:nascimentoV,senha:senhaV
+    }, function(hospede){
+        if(hospede){
             localStorage.setItem('hospede', JSON.stringify(hospede))
             window.location.replace("http://localhost:8089/cadastroUsuario")
-        },
-        error: function (){
-            alert("Ocorreu um erro inesperado, por favor, tente novamente!")
+        }else{
+            alert("Ocorreu um erro inesperado, por favor tente novamente!")
+        }
+    })
+
+}
+
+function esqueciMinhaSenha(emailV){
+    if(!emailV.includes("@") || !emailV.includes(".") || emailV.length <= 5){
+        alert("Para recuperar sua senha, por favor, insira seu email no campo acima e clique novamente!")
+    }else{
+        $.post("http://localhost:8089/recuperarSenha",{
+        email: emailV
+    }, function(hospede){
+        if(!hospede){
+            alert("Ocorreu um erro inesperado, por favor tente novamente!")
+        }else{
+            alert("Verifique em instantes sua caixa de email para recuperar sua senha e siga as instruções!")
+            window.location.replace("http://localhost:8089/recuperarSenhaUsuario")
+        }
+    })
+    }
+}
+
+function recuperarSenha(senha){
+    if(!validaSenha(senha)){
+        alert("Senha deve conter no mínimo:\n\n" + "8 caracteres\n" + "1 Letra maiúscula\n" + "1 Letra minúscula\n" + "1 Número\n" + "1 Caractere especial")
+        return false
+    }
+    
+    const codigoV = $("input[name=codigo]").val()
+    const novaSenhaV = $("input[name=novaSenha]").val()
+    $.post("http://localhost:8089/trocarSenha",{
+        novaSenha: novaSenhaV, codigo: codigoV
+    }, function(msg){
+        if(!msg){
+            alert("Ocorreu um erro inesperado, por favor tente novamente!")
+        }else{
+            window.location.replace("http://localhost:8089/loginUsuario")
         }
     })
 }
@@ -63,33 +96,23 @@ function vazio(input){
 }
 
 function validarLogin() {
-    login = $("input[name=login]").val();
-    senha = $("input[name=senha]").val();
-    if(vazio(login) || vazio(senha)){
-        alert("Preencha corretamente todos os campos")
-        return false
-    }
-    logar = false
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: "http://localhost:8089/verificarLogin/hospede?login="+login+"&senha="+senha,
-        async: false,
-        success: function(hospede){
-            if(hospede.nome == "sayudasd@#aidshuauisg86aSDBH"){
+    loginV = $("input[name=login]").val();
+    senhaV = $("input[name=senha]").val();
+    if(vazio(loginV) || senhaV.length < 8){
+        alert("Email e/ou senha incorretos!")
+    }else{
+        $.post("http://localhost:8089/verificarLogin/hospede",{
+            login: loginV, senha: senhaV
+        }, function(hospede){
+            if(!hospede){
+                alert("Email e/ou senha incorretos!")
+            }else if(hospede.nome == "sayudasd@#aidshuauisg86aSDBH"){
                 alert("Por favor, conclua seu cadastro via e-mail!")
             }else{
                 alert("Ola "+hospede.nome)
                 localStorage.setItem('hospede', JSON.stringify(hospede));
-                logar = true
+                window.location.replace('http://localhost:8089/')
             }
-        },
-        error: function (){
-            alert("Email e/ou senha incorretos!")
-        }
-    })
-    if(logar){
-        window.location.replace('http://localhost:8089/')
+        })
     }
-    return false
 }

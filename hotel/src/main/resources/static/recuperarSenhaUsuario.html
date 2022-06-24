@@ -13,6 +13,7 @@
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquey-mask.js"></script>
         <script src="js/cliente.js"></script>
+        <script src="js/formulario.js"></script>
 
         <!-- Css Styles -->
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -52,14 +53,14 @@
                 </div>
             </div>
         </header>
-        <form class="formularioLogin" action="">
+        <form class="formularioLogin" id="formRecuperaSenha" action="trocarSenha" method="POST">
             <h1 class="negrito">Alteração de Senha</h1>
             <h3 class="linhaUnica"></h3>
             <h2>Insira o Código Recebido</h2>
-            <input type="text" class="codigoRecebido" name="codigoNovaSenha" placeholder="xxxxxx">
+            <input type="text" class="codigoRecebido" name="codigo" placeholder="xxxxxx">
             <h2>Nova Senha</h2>
-            <input type="password" name="novaSenha" placeholder="Exemplo123!">
-            <input type="submit" value="Alterar" class="negrito botaoFinalizarCadastro">
+            <input type="password" id="trocarSenha" name="novaSenha" placeholder="Exemplo123!">
+            <input type="button" onclick="recuperarSenha(document.getElementById('trocarSenha').value)" value="Alterar" class="negrito botaoFinalizarCadastro">
         </form>
         <footer class="footer-section">
             <div class="container">

@@ -4,13 +4,13 @@ insert into hotel.hospede (
     -- id_cartao,
     nome, telefone, cpf, endereco, email, nascimento, senha, verificarConfirmacao) values (
         -- cartao,
-        "hospede0", "(00)00000-0000", "000.000.000-00", "Rua hospede zero", "hospede0@email.com", 00-00-0000, "Hospede0!", "-1"), (
+        "hospede0", "(00) 00000-0000", "000.000.000-00", "Rua hospede zero", "hospede0@email.com", "00-00-0000", "Hospede0!", "-1"), (
         -- cartao,
-        "hospede1", "(11)11111-1111", "111.111.111-11", "Rua hospede um", "hospede1@email.com", 11-11-1111, "Hospede1!", "-1"), (
+        "hospede1", "(11) 11111-1111", "111.111.111-11", "Rua hospede um", "hospede1@email.com", "11-11-1111", "Hospede1!", "-1"), (
         -- cartao,
-        "hospede2", "(22)22222-2222", "222.222.222-22", "Rua hospede dois", "hospede2@email.com", 22-22-2222, "Hospede2!", "-1"), (
+        "hospede2", "(22) 22222-2222", "222.222.222-22", "Rua hospede dois", "hospede2@email.com", "22-22-2222", "Hospede2!", "-1"), (
         -- cartao,
-        "hospede3", "(33)33333-3333", "333.333.333-33", "Rua hospede tres", "hospede3@email.com", 33-33-3333, "Hospede3!", "-1");
+        "hospede3", "(33) 33333-3333", "333.333.333-33", "Rua hospede tres", "hospede3@email.com", "33-33-3333", "Hospede3!", "-1");
 
 insert into hotel.quarto (id_tipoQuarto, listaReservas, numero, status) values 
     (1, 0, 1, 1), 
@@ -119,4 +119,4 @@ insert into hotel.diaria (id_tipoQuarto, diaUtil, fimDeSemana, feriado, promocio
     (1, 100, 120, 130, 90), 
     (2, 200, 220, 230, 180), 
     (3, 300, 320, 330, 270), 
-    (4, 500, 520, 530, 450); 
+    (4, 500, 520, 530, 450);
