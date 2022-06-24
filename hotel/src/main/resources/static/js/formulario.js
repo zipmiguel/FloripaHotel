@@ -47,6 +47,35 @@ function atualizarSessao(dados){
     })
 }
 
+function recuperarSenha(senha){
+    if(!validaSenha(senha)){
+        alert("Senha deve conter no mínimo:\n\n" + "8 caracteres\n" + "1 Letra maiúscula\n" + "1 Letra minúscula\n" + "1 Número\n" + "1 Caractere especial")
+        return false
+    }
+    // $.ajax({
+    //     type: "POST",
+    //     dataType: "json",
+    //     contentType: 'application/json',
+    //     url: "/trocarSenha",
+    //     data: {novaSenha: novaSenhaV, codigo: codigoV},
+    //     async: false,
+    //     success: function(){
+    //         window.location.replace("http://localhost:8089/loginUsuario")
+    //     },
+    //     error: function (){
+    //         alert("Código errado, por favor, insira-o novamente!")
+    //     }
+    // })
+    
+    const codigoV = $("input[name=codigo]").val()
+    const novaSenhaV = $("input[name=novaSenha]").val()
+    $.post("http://localhost:8089/trocarSenha",{
+        novaSenha: novaSenhaV, codigo: codigoV
+    }, function(msg){
+        window.location.replace("http://localhost:8089/loginUsuario")
+    })
+}
+
 function validaSenha (senha){
     result = false;
     if (/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,})$/.test(senha)) {
@@ -65,7 +94,7 @@ function vazio(input){
 function validarLogin() {
     login = $("input[name=login]").val();
     senha = $("input[name=senha]").val();
-    if(vazio(login) || vazio(senha)){
+    if(vazio(login) || senha.length < 8){
         alert("Preencha corretamente todos os campos")
         return false
     }
