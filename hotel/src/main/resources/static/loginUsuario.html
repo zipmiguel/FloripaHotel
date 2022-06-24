@@ -53,7 +53,7 @@
                 </div>
             </div>
         </header>
-        <form class="formularioLogin" onsubmit="return validarLogin()">
+        <form class="formularioLogin">
         <!-- <form class="formularioLogin"> -->
             <h1 class="negrito">Login</h1>
             <h3 class="linhaUnica"></h3>
@@ -61,8 +61,8 @@
             <input type="email" name="login" id="email" placeholder="exemplo@email.com">
             <h2>Sua Senha</h2>
             <input type="password" name="senha" placeholder="1º acesso =  preencha com a senha recebida em seu email">
-            <a onclick="this.href='recuperarSenha?email='+document.getElementById('email').value" href="#">Esqueceu sua senha?</a>
-            <input type="submit" value="Entrar" class="negrito botaoFinalizarCadastro">
+            <a id="linkEsqueceuSenha" onclick="esqueciMinhaSenha(document.getElementById('email').value)" class="pointer">Esqueceu sua senha?</a>
+            <input type="button" onclick="validarLogin()" value="Entrar" class="negrito botaoFinalizarCadastro">
         </form>
         <footer class="footer-section">
             <div class="container">
