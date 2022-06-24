@@ -19,8 +19,6 @@ public class Quarto {
     @JoinColumn(name = "id_tipoQuarto")
     private TipoQuarto tipoQuarto;
     @Column(nullable = false)
-    private String listaReservas;
-    @Column(nullable = false)
     private String numero;
     @Column
     private Boolean status;
@@ -31,14 +29,6 @@ public class Quarto {
 
     public void setIdQuarto(Long idQuarto) {
         this.idQuarto = idQuarto;
-    }
-
-    public String getListaReservas() {
-        return listaReservas;
-    }
-
-    public void setListaReservas(String listaReservas) {
-        this.listaReservas = listaReservas;
     }
 
     public String getNumero() {
