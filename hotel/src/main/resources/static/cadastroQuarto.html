@@ -40,30 +40,30 @@
                 <input class="btnPesquisar negrito branco pointer" type="submit" id="pesquisarQuarto" value="Pesquisar">
             </div>
         </div>
-        <form action="/cadastrarQuarto" method="POST">
+        <form>
             <div class="cadastro cadastroCentro">
                 <h1 class="negrito tituloCadastro">Cadastro de Quarto</h1>
                     <div class="campoCadastro centralizarDiv">
                         <h1 class="negrito">Nº do Quarto</h1>
-                        <input type="text" name="numero" placeholder="Insira o Número do Quarto">
+                        <input type="text" name="numero" placeholder="Insira o Número do Quarto" required>
                     </div>
                     <div class="campoCadastro centralizarDiv">
                         <h1 class="negrito">Tipo de quarto</h1>
-                        <select id="selectTipoQuartoBanco" name="tipoQuarto" class="pointer">
+                        <select id="selectTipoQuartoBanco" name="tipoQuarto" class="pointer" required>
                         </select>
                     </div>
                     <div id="radioCargo">
                         <div>
                             <h3 class="negrito">Ativar</h1>
-                            <input type="radio" id="campotrue" name="status" value=true>
+                            <input type="radio" id="campotrue" name="status" value=true required>
                         </div>
                         <div>
                             <h3 class="negrito">Desativar</h1>
-                            <input type="radio" id="campofalse" name="status" value=false>
+                            <input type="radio" id="campofalse" name="status" value=false required>
                         </div>
                     </div>
                     <div class="botoesCadastro">
-                        <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">
+                        <input type="button" onclick="cadastroEsalvarQuarto()" value="Salvar" class="negrito botaoSalvarCadastro pointer">
                     </div>
             </div>
         </form>

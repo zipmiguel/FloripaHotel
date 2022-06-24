@@ -17,24 +17,29 @@ public class Cargo {
     @Column(nullable = false)
     private String tipoCargo;
     @Column(nullable = false)
-    private String permissao;
+    private Boolean permissao;
 
     public Long getIdCargo() {
         return idCargo;
     }
+
     public void setIdCargo(Long idCargo) {
         this.idCargo = idCargo;
     }
+
     public String getTipoCargo() {
         return tipoCargo;
     }
+
     public void setTipoCargo(String tipoCargo) {
         this.tipoCargo = tipoCargo;
     }
-    public String getPermissao() {
+
+    public Boolean getPermissao() {
         return permissao;
     }
-    public void setPermissao(String permissao) {
+
+    public void setPermissao(Boolean permissao) {
         this.permissao = permissao;
     }
 }
