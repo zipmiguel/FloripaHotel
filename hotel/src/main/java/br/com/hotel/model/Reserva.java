@@ -1,5 +1,7 @@
 package br.com.hotel.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,14 +29,17 @@ public class Reserva {
     @ManyToOne
     @JoinColumn(name = "id_diaria")
     private Diaria diaria;
+    @ManyToOne
+    @JoinColumn(name="id_tipo_quarto")
+    private TipoQuarto tipoQuarto;
     @Column(nullable = false)
     private String metodoPagamento;
     @Column(nullable = false)
     private Double valorPago;
     @Column(nullable = false)
-    private String dataEntrada;
+    private LocalDate dataEntrada;
     @Column(nullable = false)
-    private String dataSaida;
+    private LocalDate dataSaida;
     @Column(nullable = false)
     private String status;
     @Column(nullable = false)
@@ -57,12 +62,6 @@ public class Reserva {
     }
     public void setHospede(Hospede hospede) {
         this.hospede = hospede;
-    }
-    public Quarto getQuarto() {
-        return quarto;
-    }
-    public void setTipoQuarto(Quarto quarto) {
-        this.quarto = quarto;
     }
     public Funcionario getFuncionario() {
         return funcionario;
@@ -88,16 +87,16 @@ public class Reserva {
     public void setValorPago(Double valorPago) {
         this.valorPago = valorPago;
     }
-    public String getDataEntrada() {
+    public LocalDate getDataEntrada() {
         return dataEntrada;
     }
-    public void setDataEntrada(String dataEntrada) {
+    public void setDataEntrada(LocalDate dataEntrada) {
         this.dataEntrada = dataEntrada;
     }
-    public String getDataSaida() {
+    public LocalDate getDataSaida() {
         return dataSaida;
     }
-    public void setDataSaida(String dataSaida) {
+    public void setDataSaida(LocalDate dataSaida) {
         this.dataSaida = dataSaida;
     }
     public String getStatus() {
@@ -106,7 +105,18 @@ public class Reserva {
     public void setStatus(String status) {
         this.status = status;
     }
-
+    public Quarto getQuarto(){
+        return quarto;
+    }
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
+    }
+    public TipoQuarto getTipoQuarto() {
+        return tipoQuarto;
+    }
+    public void setTipoQuarto(TipoQuarto tipoQuarto) {
+        this.tipoQuarto = tipoQuarto;
+    }
     
 }
 
