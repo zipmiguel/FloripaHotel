@@ -2,8 +2,6 @@ package br.com.hotel.controller;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +18,7 @@ public class QuartoController {
     private QuartoRepositorio quartoRepositorio;
 
     @PostMapping("/cadastrarQuarto")
-    public String cadastrarQuarto(HttpServletResponse response, Quarto quarto) throws IOException {
+    public String cadastrarQuarto(Quarto quarto) throws IOException {
         System.out.println(quarto.getNumero());
         System.out.println(quarto.getStatus());
         System.out.println(quarto.getTipoQuarto());

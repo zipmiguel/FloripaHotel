@@ -49,9 +49,6 @@ function cadastroEsalvarQuarto(){
     const statusV = $("input[name=status]").val()
     const tipoQuartoV = $("select[name=tipoQuarto]").val()
     
-    alert(numeroV)
-    alert(statusV)
-    alert(tipoQuartoV)
     if(numeroV == "" || statusV == "" || tipoQuartoV == ""){
         alert("Preencha todos os campos corretamente!")
     }else{
