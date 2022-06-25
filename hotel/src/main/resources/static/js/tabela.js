@@ -19,7 +19,11 @@ function OpenEditPopup(idquarto){
        popupEditar.removeAttribute('idquarto');
        popupEditar.setAttribute('idquarto',idquarto);
        popupEditar.style.visibility = 'visible';
-       popupEditar.style.display = 'flex'
+       popupEditar.style.display = 'flex';
+       if (document.querySelector('#tituloEdit')!=null){
+           const div = $(`td[idquarto = ${idquarto}]`)
+           $('#tituloEdit').html(div[0].innerText);
+       }
 }
 function CloseEditPopup(){
     const listaDiv = Array.from(document.querySelectorAll('#editarPopup div'));
@@ -81,7 +85,7 @@ function carregarTipoQuarto(){
             const tabela = document.querySelector('#listerUser')
             let tr = "";
             $.each(data,function(i,value){
-             tr+= `<tr class="TipoQuarto">
+             tr+= `<tr class="TipoQuarto" idquarto=${value.idTipoQuarto}>
              <td>${value.tipoQuarto}</td>
              <td>${value.quantidadeCamaSolteiro}</td>
              <td>${value.quantidadeCamaCasal}</td>
