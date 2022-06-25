@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.hotel.repositorio.tipoQuartoRepositorio;
+import br.com.hotel.repositorio.TipoQuartoRepositorio;
 
 import br.com.hotel.model.TipoQuarto;
 
@@ -20,7 +20,7 @@ import br.com.hotel.model.TipoQuarto;
 @RequestMapping("/tipoQuarto")
 public class TipoQuartoController{
     @Autowired
-    private tipoQuartoRepositorio tipoQuartoRepositorio;
+    private TipoQuartoRepositorio tipoQuartoRepositorio;
 
     @GetMapping
     public List<TipoQuarto> listaTipoQuarto(){

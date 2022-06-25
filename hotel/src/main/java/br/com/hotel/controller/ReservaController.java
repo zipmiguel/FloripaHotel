@@ -2,24 +2,21 @@ package br.com.hotel.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Period;
-import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.hotel.model.Quarto;
 import br.com.hotel.model.Reserva;
+import br.com.hotel.model.TipoQuarto;
 import br.com.hotel.repositorio.QuartoRepositorio;
 import br.com.hotel.repositorio.ReservaRepositorio;
-import ch.qos.logback.core.util.Duration;
+import br.com.hotel.repositorio.TipoQuartoRepositorio;
 
 @RestController
 public class ReservaController {
@@ -28,44 +25,43 @@ public class ReservaController {
     private ReservaRepositorio reservaRepositorio;
     @Autowired
     private QuartoRepositorio quartoRepositorio;
+    @Autowired
+    private TipoQuartoRepositorio tipoQuartoRepositorio;
 
-    //método para redirecionar com data e quantidade pessoas
     @PostMapping("/pesquisarReserva")
-    public void pesquisarReserva(HttpServletResponse response, @RequestParam String dataEntrada, @RequestParam String dataSaida)  throws IOException {
-        
+    public List<TipoQuarto> pesquisarReserva(HttpServletResponse response, @RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam int total)  throws IOException {
         LocalDate entrada = LocalDate.parse(dataEntrada);
         LocalDate saida = LocalDate.parse(dataSaida);
-        int diasDiferenca = (int)ChronoUnit.DAYS.between(entrada, saida);
-        List<Reserva> listaReservas = reservaRepositorio.findAll();
-        int quantidadeQuartosAtivos = quartoRepositorio.countBystatus(true);
-
-        // for (Reserva reserva : listaReservas) {
-        //     if(reserva.getTipoQuarto())
-        // }
-
-
-        // for (Quarto quarto : listaQuartosAtivos){
-        //     for (int i = 0; i <= diasDiferenca; i++) {
-        //         LocalDate dataVerificada = entrada.plusDays(i);
-        //         for (Reserva reserva : reservas) {
-        //             if(reserva.getDataEntrada().isBefore(dataVerificada) || reserva.getDataEntrada().isEqual(dataVerificada)){
-        //                 if(reserva.getDataSaida().isEqual(dataVerificada) || reserva.getDataSaida().isEqual(dataVerificada)){
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-        response.sendRedirect("/reservaUsuario");
+        List<TipoQuarto> listaTipoQuarto = tipoQuartoRepositorio.BuscarTiposQuartoTrue();
+        List<TipoQuarto> disponibilidade = new ArrayList<>();
+        for (TipoQuarto tipoQuarto : listaTipoQuarto) {
+            if(tipoQuarto.getNumeroPessoas() >= total){
+                if(disponibilidadeTipoQuarto(tipoQuarto, entrada, saida)){
+                    disponibilidade.add(tipoQuarto);
+                }
+            }
+        }
+        // response.sendRedirect("http://localhost:8089/reservaUsuario");
+        return disponibilidade;
     }
 
-    //método para redirecionar com data, quantidade pessoas e quantidade de quartos
-    // @PostMapping("/setarReserva")
-    // // public void pesquisarReserva(HttpServletResponse response, Reserva reserva) throws IOException {
-    // //     reservaRepositorio.save(reserva);
-    // //     response.sendRedirect("/reservaUsuario");
-    // // }
-
-
+    public Boolean disponibilidadeTipoQuarto(TipoQuarto tipoQuarto, LocalDate entrada, LocalDate saida){
+        
+        List<Reserva> listaReservas = reservaRepositorio.findAll();
+        int quantidadeReservasInterferem = 0;
+        for (Reserva reserva : listaReservas) {
+            if(reserva.getTipoQuarto() == tipoQuarto){
+                if(!(reserva.getDataSaida().isBefore(entrada) || reserva.getDataEntrada().isAfter(saida))){
+                    quantidadeReservasInterferem++;
+                }
+            }
+        }
+        if(quantidadeReservasInterferem < quartoRepositorio.contarPeloTipoQuarto(tipoQuarto.getIdTipoQuarto())){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     @PostMapping("/finalizarReserva")
     public void cadastrarReserva(Reserva reserva) {
