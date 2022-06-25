@@ -2,8 +2,6 @@ package br.com.hotel.controller;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,9 +16,14 @@ public class CargoController {
     private CargoRepositorio cargoRepositorio;
 
     @PostMapping("/cadastrarCargo")
-    public Cargo cadastrarCargo(HttpServletResponse response, Cargo cargo) throws IOException {
-        response.sendRedirect("/cadastroCargo");
-        return cargoRepositorio.save(cargo);
-
+    public String cadastrarCargo(Cargo cargo) throws IOException {
+        Cargo cargoExistente = cargoRepositorio.findBytipoCargo(cargo.getTipoCargo());
+        if (cargoExistente == null) {
+            cargoRepositorio.save(cargo);
+            return "adicionar";
+        } else {
+            return "";
+        }
     }
+
 }

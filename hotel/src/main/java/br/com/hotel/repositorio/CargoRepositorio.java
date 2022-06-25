@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.hotel.model.Cargo;
 
 @Repository
-public interface CargoRepositorio extends JpaRepository<Cargo, Long>{
-
+public interface CargoRepositorio extends JpaRepository<Cargo, Long> {
+    Cargo findBytipoCargo(String tipoCargo);
 }
