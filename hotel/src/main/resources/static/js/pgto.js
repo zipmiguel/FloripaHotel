@@ -23,7 +23,6 @@ function carregarDadosReserva(){
                 let diariaAtual = new Date(dataEntrada)
                 diariaAtual.setDate(dataEntrada.getDate() + i)
                 if(diariaAtual.getDay() == 0 || diariaAtual.getDay() == 6){
-                    alert("entrou no fds ")
                     precoTotal += Diaria.fimDeSemana
                 }else{
                     precoTotal += Diaria.diaUtil
@@ -33,6 +32,32 @@ function carregarDadosReserva(){
             
             document.querySelector("h2.info4").innerHTML = `Total: R$ ${precoTotal}`      
     })
+
+    if(localStorage.getItem('hospede') != null){
+        $("#avisoCadastro").hide()
+        const hospede = JSON.parse(localStorage.getItem('hospede'))
+        let campos = [
+            nomeCliente = $("input[name=nomeCliente]"),
+            telefoneCliente = $("input[name=telefoneCliente]"),
+            cpfCliente = $("input[name=cpfCliente]"),
+            enderecoCliente = $("input[name=enderecoCliente]"),
+            emailCliente = $("input[name=emailCliente]"),
+            nascimentoCliente = $("input[name=dataNascimentoCliente]"),
+        ]
+        
+        campos[0].val(hospede.nome)
+        campos[1].val(hospede.telefone)
+        campos[2].val(hospede.cpf)
+        campos[3].val(hospede.endereco)
+        campos[4].val(hospede.email)
+        campos[5].val(hospede.nascimento)
+
+        campos.forEach(campo => {
+            campo.prop('disabled',true)
+        });
+    }else{
+        $(".hrLaranja").hide()
+    }
 }
 
 function padTo2Digits(num) {
