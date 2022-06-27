@@ -1,8 +1,10 @@
 package br.com.hotel.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +26,10 @@ public class CargoController {
         } else {
             return "";
         }
+    }
+    @GetMapping("/listaCargos")
+    public List<Cargo> listaCargos(){
+    	return cargoRepositorio.findAll();
     }
 
 }

@@ -193,6 +193,11 @@ form{
     background-color: #93FF91;
     color: #000000;
 }
+
+.cadastro input.botaoAtualizarCadastro{
+    background-color: yellow;
+    color: #000000;
+}
 .pointer{
     cursor: pointer;
 }

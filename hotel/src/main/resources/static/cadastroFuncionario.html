@@ -9,7 +9,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/hotel.css">
-        
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/cadastroFuncionario.js"></script>
     </head>
     <body>
         <div class="cabecalho">
@@ -33,53 +34,53 @@
             <h2 id="titulo" class="negrito">Funcionário</h2>
             <hr class="hrLaranja"/>
             <div class="inputs">
-                <input class="barra-pesquisa" type="text" placeholder="Pesquisar Funcionário por CPF">
-                <input class="btnPesquisar negrito branco pointer" type="submit" value="Pesquisar">
+                <input class="barra-pesquisa" type="text" placeholder="Pesquisar Funcionário por CPF" id="campoPesquisaCPF">
+                <input class="btnPesquisar negrito branco pointer" type="button" value="Pesquisar" onclick="pesquisaCpf()">
             </div>
         </div>
-        <form action="">
-            <div class="cadastro">
+        <form action="/funcionario" method="post">
+            <div class="cadastro" id="cadastro">
                 <h1 class="negrito tituloCadastro">Cadastro de Funcionários</h1>
                 <div class="cadastroEsquerda">
                     <div class="campoCadastro">
                         <h1 class="negrito">Nome</h1>
-                        <input type="text" name="nome" placeholder="Nome Completo">
+                        <input type="text" name="nome" placeholder="Nome Completo" id="nome" required>
                     </div>
                     <div class="campoCadastro">
                         <h1 class="negrito">Telefone</h1>
-                        <input type="text" class="telefone" name="telefone" placeholder="xx xxxxx-xxxx">
+                        <input type="text" class="telefone" name="telefone" placeholder="xx xxxxx-xxxx" id="telefone" required>
                     </div>
                     <div class="campoCadastro">
                         <h1 class="negrito">CPF</h1>
-                        <input type="text" class="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx">
+                        <input type="text" class="cpf" name="cpf" id="cpf" placeholder="xxx.xxx.xxx-xx" required>
                     </div>
                     <div class="campoCadastro">
                         <h1 class="negrito">Endereço</h1>
-                        <input type="text" name="endereco" placeholder="Rua, nº, Cidade, Estado, País, CEP">
+                        <input type="text" name="endereco" placeholder="Rua, nº, Cidade, Estado, País, CEP" id="endereco" required>
                     </div>
                 </div>
                 <div class="cadastroDireita">
                     <div class="campoCadastro">
                         <h1 class="negrito">Cargo</h1>
-                        <select name="selectCargo" class="pointer">
+                        <select name="idCargo" class="pointer" id="idCargo" required>
                             <option value="" selected disabled>Selecione o Tipo de Cargo</option>
                         </select>
                     </div>
                     <div class="campoCadastro">
                         <h1 class="negrito">Email</h1>
-                        <input type="email" name="email" placeholder="Exemplo@email.com">
+                        <input type="email" name="email" placeholder="Exemplo@email.com" id="email" required>
                     </div>
                     <div class="campoCadastro">
                         <h1 class="negrito">Senha</h1>
-                        <input type="password" name="senha" placeholder="Exemplo123!">
+                        <input type="password" name="senha" placeholder="Exemplo123!" id="senha" required>
                     </div>
                     <div class="campoCadastro">
                         <h2 class="negrito">Confirmar Senha</h2>
-                        <input type="password" name="senha" placeholder="Exemplo123!">
+                        <input type="password" placeholder="Exemplo123!" id="confirmarSenha" required>
                     </div>
                 </div>
                 <div class="botoesCadastro">
-                    <input type="reset" value="Excluir" class="negrito botaoExcluirCadastro pointer">
+                    <input type="button" value="Excluir" class="negrito botaoExcluirCadastro pointer" onclick="deletarFuncionario()">
                     <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">
                 </div>
             </div>

@@ -14,6 +14,7 @@ import javax.persistence.Table;
 public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
     private Long idFuncionario;
     @ManyToOne
     @JoinColumn(name = "id_cargo")
@@ -27,11 +28,17 @@ public class Funcionario {
     @Column(nullable = false)
     private String endereco;
     @Column(nullable = false)
-    private String login;
-    @Column(nullable = false)
     private String senha;
+    @Column(nullable = false)
+    private String email;
 
-    public Long getIdFuncionario() {
+    public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Long getIdFuncionario() {
         return idFuncionario;
     }
     public void setIdFuncionario(Long idFuncionario) {
@@ -66,12 +73,6 @@ public class Funcionario {
     }
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-    public String getLogin() {
-        return login;
-    }
-    public void setLogin(String login) {
-        this.login = login;
     }
     public String getSenha() {
         return senha;
