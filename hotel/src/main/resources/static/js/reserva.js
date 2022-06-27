@@ -1,24 +1,38 @@
-$(document).ready(function(){
-    if(sessionStorage.getItem('dataEntrada') != null){
-        $("#dataEntrada").val(sessionStorage.getItem('dataEntrada'))
-        $("#dataSaida").val(sessionStorage.getItem('dataSaida'))
-        $("#adultos").val(sessionStorage.getItem('adultos'))
-        $("#criancas").val(sessionStorage.getItem('criancas'))
-    }
-});
-function verificarDisponibilidade(){
-    
-    const dataEntradaV = $("#dataEntrada").val()
-    const dataSaidaV = $("#dataSaida").val()
-    const nAdultos = $("#adultos").val()
-    const nCriancas = $("#criancas").val()
-    const totalPessoas = parseInt(nAdultos) + parseInt(nCriancas)
-    
+function pegarValores(){
+    var dataEntradaV = $("#dataEntrada").val()
+    var dataSaidaV = $("#dataSaida").val()
+    var nAdultos = $("#adultos").val()
+    var nCriancas = $("#criancas").val()
+    var totalPessoas = parseInt(nAdultos) + parseInt(nCriancas)
+
+    return [dataEntradaV,dataSaidaV,nAdultos,nCriancas,totalPessoas]
+}
+
+function carregarDadosReserva(){
+    $("#dataEntrada").val(sessionStorage.getItem('dataEntrada'))
+    $("#dataSaida").val(sessionStorage.getItem('dataSaida'))
+    $("#adultos").val(sessionStorage.getItem('adultos'))
+    $("#criancas").val(sessionStorage.getItem('criancas'))
+    verificarDisponibilidade()
+}
+
+function verificarReservaIndex(){
+    atualizarSession()
+    window.location.href = "http://localhost:8089/reservaUsuario"
+}
+
+function atualizarSession(){
+    [dataEntradaV,dataSaidaV,nAdultos,nCriancas,totalPessoas] = pegarValores()
     sessionStorage.setItem('dataEntrada',dataEntradaV)
     sessionStorage.setItem('dataSaida',dataSaidaV)
     sessionStorage.setItem('adultos',nAdultos)
     sessionStorage.setItem('criancas',nCriancas)
+}
 
+function verificarDisponibilidade(){
+
+    [dataEntradaV,dataSaidaV,nAdultos,nCriancas,totalPessoas] = pegarValores()
+    atualizarSession()
     if(dataEntradaV=="" || dataSaidaV=="" ||  nAdultos == 0){
         alert("Preencha todos os campos corretamente!")
     }else{
@@ -65,7 +79,7 @@ function paginaDisponibilidadeReserva(listaDisponibilidade){
         `<p>AC</p>`+
         `</div>`+
         `</div>`+
-        `<select id="quantidadeQuartos" name="selectQuantidadeQuartos" class="pointer">`+
+        `<select id="quantidadeQuartos" class="select`+tipoQuarto.idTipoQuarto+`" name="selectQuantidadeQuartos" class="pointer">`+
         `<option value="0" selected>Quantidade de Quartos</option>`+
         `<option value="1">1</option>`+
         `<option value="2">2</option>`+
@@ -78,7 +92,7 @@ function paginaDisponibilidadeReserva(listaDisponibilidade){
         `<option value="9">9</option>`+
         `<option value="10">10</option>`+
         `</select>`+
-        `<a href="#" class="primary-btn">Reservar Agora</a>`+
+        `<button onclick= "atualizarSessaoPgto(`+tipoQuarto.idTipoQuarto+`)" class="primary-btn">Reservar Agora</button>`+
         `</div>`+
         `</div>`+
         `</div>`+
@@ -86,4 +100,13 @@ function paginaDisponibilidadeReserva(listaDisponibilidade){
         `<hr/>`
     }
     return divs
+}
+function atualizarSessaoPgto(id){
+    sessionStorage.setItem('dataEntrada',dataEntradaV)
+    $.post("http://localhost:8089/tipoQuarto/"+id,{
+        }, function(tipoQuarto){
+            sessionStorage.setItem('reserva',JSON.stringify(tipoQuarto))
+            sessionStorage.setItem('qntdQuartos',$(".select"+id).val())
+            window.location.href = "http://localhost:8089/pagamentoUsuario"
+    })
 }

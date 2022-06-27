@@ -51,7 +51,7 @@ public class ReservaController {
         int quantidadeReservasInterferem = 0;
         for (Reserva reserva : listaReservas) {
             if(reserva.getTipoQuarto() == tipoQuarto){
-                if(!(reserva.getDataSaida().isBefore(entrada) || reserva.getDataEntrada().isAfter(saida))){
+                if(reserva.getDataEntrada().isBefore(saida) && reserva.getDataSaida().isAfter(entrada)){
                     quantidadeReservasInterferem++;
                 }
             }
