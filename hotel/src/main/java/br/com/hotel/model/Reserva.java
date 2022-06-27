@@ -21,17 +21,17 @@ public class Reserva {
     @JoinColumn(name = "id_hospede")
     private Hospede hospede;
     @ManyToOne
-    @JoinColumn(name = "id_tipoQuarto")
+    @JoinColumn(name = "id_quarto")
     private Quarto quarto;
+    @ManyToOne
+    @JoinColumn(name = "id_tipoQuarto")
+    private TipoQuarto tipoQuarto;
     @ManyToOne
     @JoinColumn(name = "id_funcionario")
     private Funcionario funcionario;
     @ManyToOne
     @JoinColumn(name = "id_diaria")
     private Diaria diaria;
-    @ManyToOne
-    @JoinColumn(name="id_tipo_quarto")
-    private TipoQuarto tipoQuarto;
     @Column(nullable = false)
     private String metodoPagamento;
     @Column(nullable = false)
@@ -105,7 +105,7 @@ public class Reserva {
     public void setStatus(String status) {
         this.status = status;
     }
-    public Quarto getQuarto(){
+    public Quarto getQuarto() {
         return quarto;
     }
     public void setQuarto(Quarto quarto) {
@@ -117,6 +117,5 @@ public class Reserva {
     public void setTipoQuarto(TipoQuarto tipoQuarto) {
         this.tipoQuarto = tipoQuarto;
     }
-    
 }
 

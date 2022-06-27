@@ -2,15 +2,17 @@ package br.com.hotel.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.hotel.repositorio.tipoQuartoRepositorio;
+import br.com.hotel.repositorio.TipoQuartoRepositorio;
 
 import br.com.hotel.model.TipoQuarto;
 
@@ -20,7 +22,13 @@ import br.com.hotel.model.TipoQuarto;
 @RequestMapping("/tipoQuarto")
 public class TipoQuartoController{
     @Autowired
-    private tipoQuartoRepositorio tipoQuartoRepositorio;
+    private TipoQuartoRepositorio tipoQuartoRepositorio;
+
+    @PostMapping("/{id}")
+    public Optional<TipoQuarto> pesquisarId(@PathVariable("id") Long id){
+        Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(id);
+        return tipoQuarto;
+    }
 
     @GetMapping
     public List<TipoQuarto> listaTipoQuarto(){

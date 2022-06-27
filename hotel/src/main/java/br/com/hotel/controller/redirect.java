@@ -11,87 +11,87 @@ public class redirect {
     }
     @RequestMapping("/blog")
     public static String blog(){
-            return "blog.html";
+        return "blog.html";
     }
     @RequestMapping("/boleto")
     public static String boleto(){
-            return "boleto.html";
+        return "boleto.html";
     }
     @RequestMapping("/cadastroCargo")
     public static String cadastroCargo(){
-            return "cadastroCargo.html";
+        return "cadastroCargo.html";
     }
     @RequestMapping("/cadastroFuncionario")
     public static String cadastroFuncionario(){
-            return "cadastroFuncionario.html";
+        return "cadastroFuncionario.html";
     }
     @RequestMapping("/cadastroQuarto")
     public static String cadastroQuarto(){
-            return "cadastroQuarto.html";
+        return "cadastroQuarto.html";
     }
     @RequestMapping("/cadastroUsuario")
     public static String cadastroUsuario(){
-            return "cadastroUsuario.html";
+        return "cadastroUsuario.html";
     }
     @RequestMapping("/compraEfetivadaCartao")
     public static String compraEfetivadaCartao(){
-            return "compraEfetivadaCartao.html";
+        return "compraEfetivadaCartao.html";
     }
     @RequestMapping("/contact")
     public static String contact(){
-            return "contact.html";
+        return "contact.html";
     }
     @RequestMapping("/loginUsuario")
     public static String loginUsuario(){
-            return "loginUsuario.html";
+        return "loginUsuario.html";
     }
     @RequestMapping("/pagamentoFuncionario")
     public static String pagamentoFuncionario(){
-            return "pagamentoFuncionario.html";
+        return "pagamentoFuncionario.html";
     }
     @RequestMapping("/pagamentoUsuario")
     public static String pagamentoUsuario(){
-            return "pagamentoUsuario.html";
+        return "pagamentoUsuario.html";
     }
     @RequestMapping("/pix")
     public static String pix(){
-            return "pix.html";
+        return "pix.html";
     }
     @RequestMapping("/precoDiariaTipoQuarto")
     public static String precoDiariaTipoQuarto(){
-            return "precoDiariaTipoQuarto.html";
+        return "precoDiariaTipoQuarto.html";
     }
     @RequestMapping("/recuperarSenhaUsuario")
     public static String recuperarSenhaUsuario(){
-            return "recuperarSenhaUsuario.html";
+        return "recuperarSenhaUsuario.html";
     }
     @RequestMapping("/reservaFuncionario")
     public static String reservaFuncionario(){
-            return "reservaFuncionario.html";
+        return "reservaFuncionario.html";
     }
     @RequestMapping("/reservaUsuario")
     public static String reservaUsuario(){
-            return "reservaUsuario.html";
+        return "reservaUsuario.html";
     }
     @RequestMapping("/rooms")
     public static String rooms(){
-            return "rooms.html";
+        return "rooms.html";
     }
     @RequestMapping("/services")
     public static String services(){
-            return "services.html";
+        return "services.html";
     }
     @RequestMapping("/cadastroTipoQuarto")
     public static String cadastroTipoQuarto(){
-            return "cadastroTipoQuarto.html";
+        return "cadastroTipoQuarto.html";
     }
     @RequestMapping("/editarReservaUsuario")
     public static String editarReservaUsuario(){
-            return "editarReservaUsuario.html";
+        return "editarReservaUsuario.html";
     }
     @RequestMapping("/editarReservaFuncionario")
     public static String editarReservaFuncionario(){
-            return "editarReservaFuncionario.html";
+        return "editarReservaFuncionario.html";
     }
     @RequestMapping("/")
     public static String index(){

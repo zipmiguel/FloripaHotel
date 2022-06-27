@@ -26,6 +26,11 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script>
+        $(document).ready(function(){
+            carregarDadosReserva();
+        });
+    </script>
 </head>
 
 <body>
@@ -126,8 +131,8 @@
     <hr/>
     <!-- Room Section Begin -->
     <section class="room-section">
-        <div class="container-fluid">
-                <div class="row">
+        <div id="divReservaDisponivel" class="container-fluid">
+                <!-- <div class="row">
                     <div class="col-lg-6">
                         <div class="ri-slider-item">
                             <div class="ri-sliders owl-carousel">
@@ -160,18 +165,17 @@
                                     </div>
                                 </div>
                                 <select id="quantidadeQuartos" name="selectQuantidadeQuartos" class="pointer">
-                                    <optgroup label="Quantidade de Quartos">    
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </optgroup>
+                                    <option value="0" selected>Quantidade de Quartos</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
                                 </select>
                                 <a href="#" class="primary-btn">Reservar Agora</a>
                             </div>
@@ -212,18 +216,17 @@
                                     </div>
                                 </div>
                                 <select id="quantidadeQuartos" name="selectQuantidadeQuartos" class="pointer">
-                                    <optgroup label="Quantidade de Quartos">    
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </optgroup>
+                                    <option value="0" selected>Quantidade de Quartos</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
                                 </select>
                                 <a href="#" class="primary-btn">Reservar Agora</a>
                             </div>
@@ -268,18 +271,17 @@
                                     </div>
                                 </div>
                                 <select id="quantidadeQuartos" name="selectQuantidadeQuartos" class="pointer">
-                                    <optgroup label="Quantidade de Quartos">    
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </optgroup>
+                                    <option value="0" selected>Quantidade de Quartos</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
                                 </select>
                                 <a href="#" class="primary-btn">Reservar Agora</a>
                             </div>
@@ -325,25 +327,24 @@
                                     </div>
                                 </div>
                                 <select id="quantidadeQuartos" name="selectQuantidadeQuartos" class="pointer">
-                                    <optgroup label="Quantidade de Quartos">    
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </optgroup>
+                                    <option value="0" selected>Quantidade de Quartos</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
                                 </select>
                                 <a href="#" class="primary-btn">Reservar Agora</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            <hr/>
+            <hr/> -->
         </div>
     </section>
     <!-- Room Section End -->

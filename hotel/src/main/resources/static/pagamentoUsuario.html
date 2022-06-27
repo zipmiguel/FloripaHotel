@@ -14,6 +14,7 @@
         <script src="js/cliente.js"></script>
 
         <script src="js/verificarUsuario.js"></script>
+        <script src="js/pgto.js"></script>
 
         <!-- Css Styles -->
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -25,7 +26,11 @@
         <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
-        
+        <script>
+            $(document).ready(function(){
+                carregarDadosReserva();
+            });
+        </script>
     </head>
     <body>
         <header class="header-section">
@@ -55,10 +60,10 @@
         </header>
         <form class="formularioCompra" action="">
             <h1 class="negrito underLineLaranja">Sua estadia</h1>
-            <h2 class="informacoes">segunda, 30/05/2022 - terça, 31/05/2022</h2>
-            <h2 class="informacoes">2 Adultos, 1 Criança</h2>
-            <h2 class="informacoes">1 Quarto Standard</h2>
-            <h2 class="informacoes negrito">Total: R$1699,99</h2>
+            <h2 class="informacoes info1">segunda, 30/05/2022 - terça, 31/05/2022</h2>
+            <h2 class="informacoes info2">2 Adultos, 1 Criança</h2>
+            <h2 class="informacoes info3">1 Quarto Standard</h2>
+            <h2 class="informacoes info4 negrito">Total: R$1699,99</h2>
             <h3>Faça login ou cadastre-se para finalizar sua reserva de modo rápido e seguro!!!</h3>
             <div class="formulario" action="">
                 <div class="cadastro">
