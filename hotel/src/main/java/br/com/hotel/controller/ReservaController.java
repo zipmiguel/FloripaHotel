@@ -16,7 +16,7 @@ import br.com.hotel.model.Reserva;
 import br.com.hotel.model.TipoQuarto;
 import br.com.hotel.repositorio.QuartoRepositorio;
 import br.com.hotel.repositorio.ReservaRepositorio;
-import br.com.hotel.repositorio.TipoQuartoRepositorio;
+import br.com.hotel.repositorio.tipoQuartoRepositorio;
 
 @RestController
 public class ReservaController {
@@ -26,7 +26,7 @@ public class ReservaController {
     @Autowired
     private QuartoRepositorio quartoRepositorio;
     @Autowired
-    private TipoQuartoRepositorio tipoQuartoRepositorio;
+    private tipoQuartoRepositorio tipoQuartoRepositorio;
 
     @PostMapping("/pesquisarReserva")
     public List<TipoQuarto> pesquisarReserva(HttpServletResponse response, @RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam int total)  throws IOException {

@@ -25,6 +25,7 @@ public class Diaria {
     @Column(nullable = false)
     private Double feriado;
     @Column(nullable = false)
+    private Double promocional;
     
     public TipoQuarto getTipoQuarto() {
         return tipoQuarto;
@@ -32,8 +33,6 @@ public class Diaria {
     public void setTipoQuarto(TipoQuarto tipoQuarto) {
         this.tipoQuarto = tipoQuarto;
     }
-    private Double promocional;
-
     public Long getIdDiara() {
         return idDiara;
     }

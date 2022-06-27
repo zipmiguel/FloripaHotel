@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.hotel.repositorio.TipoQuartoRepositorio;
+
+import br.com.hotel.repositorio.CargoRepositorio;
+import br.com.hotel.repositorio.DiariaRepositorio;
+import br.com.hotel.repositorio.tipoQuartoRepositorio;
+import br.com.hotel.model.Diaria;
 
 import br.com.hotel.model.TipoQuarto;
 
@@ -22,12 +26,18 @@ import br.com.hotel.model.TipoQuarto;
 @RequestMapping("/tipoQuarto")
 public class TipoQuartoController{
     @Autowired
-    private TipoQuartoRepositorio tipoQuartoRepositorio;
+    private tipoQuartoRepositorio tipoQuartoRepositorio;
+    
+    @Autowired
+    private DiariaRepositorio diariaRepositorio;
 
     @PostMapping("/{id}")
-    public Optional<TipoQuarto> pesquisarId(@PathVariable("id") Long id){
+    public TipoQuarto pesquisarId(@PathVariable("id") Long id){
         Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(id);
-        return tipoQuarto;
+        if (tipoQuarto.isPresent()) {
+			return tipoQuarto.get();
+		}
+        return null;
     }
 
     @GetMapping
@@ -39,7 +49,14 @@ public class TipoQuartoController{
     @PostMapping("/save")
     public void saveQuarto(HttpServletResponse response, @RequestParam String tipoQuarto, @RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException {
         TipoQuarto tQuarto = new TipoQuarto(tipoQuarto, quantidadeCamaSolteiro, quantidadeCamaCasal);
+        Diaria diaria = new Diaria();
+        diaria.setDiaUtil(0.0);
+        diaria.setFeriado(0.0);
+        diaria.setFimDeSemana(0.0);
+        diaria.setPromocional(0.0);
+        diaria.setTipoQuarto(tQuarto);
         tipoQuartoRepositorio.save(tQuarto);
+        diariaRepositorio.save(diaria);
         response.sendRedirect("/cadastroTipoQuarto");
     }
 
@@ -52,9 +69,10 @@ public class TipoQuartoController{
     @PostMapping("/edit")
     public void EditQuarto(HttpServletResponse response, @RequestParam Long idQuarto, @RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException {
         TipoQuarto tipoQuartoOriginal = tipoQuartoRepositorio.getReferenceById(idQuarto);
-        TipoQuarto tipoQuartoNovo = new TipoQuarto(tipoQuartoOriginal.getTipoQuarto(), quantidadeCamaSolteiro, quantidadeCamaCasal);
-        tipoQuartoRepositorio.CancelaTipoQuarto(idQuarto);
-        tipoQuartoRepositorio.save(tipoQuartoNovo);
+        tipoQuartoOriginal.setQuantidadeCamaCasal(quantidadeCamaCasal);
+        tipoQuartoOriginal.setQuantidadeCamaSolteiro(quantidadeCamaSolteiro);
+        tipoQuartoOriginal.setNumeroPessoas((quantidadeCamaCasal*2)+quantidadeCamaSolteiro);
+        tipoQuartoRepositorio.save(tipoQuartoOriginal);
         response.sendRedirect("/cadastroTipoQuarto");
     }
 }
