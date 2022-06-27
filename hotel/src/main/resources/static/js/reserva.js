@@ -37,16 +37,23 @@ function verificarDisponibilidade(){
         alert("Preencha todos os campos corretamente!")
     }else{
         $.post("http://localhost:8089/pesquisarReserva",{
-            dataEntrada:dataEntradaV,dataSaida:dataSaidaV,total:totalPessoas
+            dataEntrada:dataEntradaV,dataSaida:dataSaidaV
         }, function(listaDispo){
-            let conteudo = paginaDisponibilidadeReserva(listaDispo)
+            let conteudo = paginaDisponibilidadeReserva(listaDispo,totalPessoas,nAdultos)
             document.querySelector("#divReservaDisponivel").innerHTML = conteudo
         })
     }
 }
-function paginaDisponibilidadeReserva(listaDisponibilidade){
+function paginaDisponibilidadeReserva(listaDisponibilidade,totalPessoas,nAdultos){
     let divs = ""
     for (const tipoQuarto of listaDisponibilidade) {
+        
+        minQuartos = Math.ceil(totalPessoas/tipoQuarto.numeroPessoas)
+        let optionText = ""
+        for (let i = minQuartos; i<=nAdultos; i++) {
+            optionText+=`<option value="${i}">${i}</option>`
+        }
+
         divs += `<div class="row">`+
         `<div class="col-lg-6">`+
         `<div class="ri-slider-item">`+
@@ -81,18 +88,9 @@ function paginaDisponibilidadeReserva(listaDisponibilidade){
         `</div>`+
         `<select id="quantidadeQuartos" class="select`+tipoQuarto.idTipoQuarto+`" name="selectQuantidadeQuartos" class="pointer">`+
         `<option value="0" selected>Quantidade de Quartos</option>`+
-        `<option value="1">1</option>`+
-        `<option value="2">2</option>`+
-        `<option value="3">3</option>`+
-        `<option value="4">4</option>`+
-        `<option value="5">5</option>`+
-        `<option value="6">6</option>`+
-        `<option value="7">7</option>`+
-        `<option value="8">8</option>`+
-        `<option value="9">9</option>`+
-        `<option value="10">10</option>`+
+        optionText+
         `</select>`+
-        `<button onclick= "atualizarSessaoPgto(`+tipoQuarto.idTipoQuarto+`)" class="primary-btn">Reservar Agora</button>`+
+        `<button onclick="atualizarSessaoPgto(`+tipoQuarto.idTipoQuarto+`)" class="primary-btn" style="border:none;">Reservar Agora</button>`+
         `</div>`+
         `</div>`+
         `</div>`+
@@ -103,10 +101,14 @@ function paginaDisponibilidadeReserva(listaDisponibilidade){
 }
 function atualizarSessaoPgto(id){
     sessionStorage.setItem('dataEntrada',dataEntradaV)
-    $.post("http://localhost:8089/tipoQuarto/"+id,{
-        }, function(tipoQuarto){
-            sessionStorage.setItem('reserva',JSON.stringify(tipoQuarto))
-            sessionStorage.setItem('qntdQuartos',$(".select"+id).val())
-            window.location.href = "http://localhost:8089/pagamentoUsuario"
-    })
+    if($(".select"+id).val() == 0){
+        alert("Insira uma quantidade de quartos válida!")
+    }else{
+        $.post("http://localhost:8089/tipoQuarto/"+id,{
+            }, function(tipoQuarto){
+                sessionStorage.setItem('reserva',JSON.stringify(tipoQuarto))
+                sessionStorage.setItem('qntdQuartos',$(".select"+id).val())
+                window.location.href = "http://localhost:8089/pagamentoUsuario"
+        })
+    }
 }

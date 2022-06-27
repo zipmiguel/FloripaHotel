@@ -29,19 +29,16 @@ public class ReservaController {
     private TipoQuartoRepositorio tipoQuartoRepositorio;
 
     @PostMapping("/pesquisarReserva")
-    public List<TipoQuarto> pesquisarReserva(HttpServletResponse response, @RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam int total)  throws IOException {
+    public List<TipoQuarto> pesquisarReserva(HttpServletResponse response, @RequestParam String dataEntrada, @RequestParam String dataSaida)  throws IOException {
         LocalDate entrada = LocalDate.parse(dataEntrada);
         LocalDate saida = LocalDate.parse(dataSaida);
         List<TipoQuarto> listaTipoQuarto = tipoQuartoRepositorio.BuscarTiposQuartoTrue();
         List<TipoQuarto> disponibilidade = new ArrayList<>();
         for (TipoQuarto tipoQuarto : listaTipoQuarto) {
-            if(tipoQuarto.getNumeroPessoas() >= total){
-                if(disponibilidadeTipoQuarto(tipoQuarto, entrada, saida)){
-                    disponibilidade.add(tipoQuarto);
-                }
+            if(disponibilidadeTipoQuarto(tipoQuarto, entrada, saida)){
+                disponibilidade.add(tipoQuarto);
             }
         }
-        // response.sendRedirect("http://localhost:8089/reservaUsuario");
         return disponibilidade;
     }
 
