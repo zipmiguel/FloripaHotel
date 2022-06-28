@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.hotel.repositorio.CargoRepositorio;
 import br.com.hotel.repositorio.DiariaRepositorio;
 import br.com.hotel.repositorio.tipoQuartoRepositorio;
 import br.com.hotel.model.Diaria;
@@ -54,6 +53,7 @@ public class TipoQuartoController{
         diaria.setFeriado(0.0);
         diaria.setFimDeSemana(0.0);
         diaria.setPromocional(0.0);
+        diaria.setVisivel(true);
         diaria.setTipoQuarto(tQuarto);
         tipoQuartoRepositorio.save(tQuarto);
         diariaRepositorio.save(diaria);
@@ -62,7 +62,15 @@ public class TipoQuartoController{
 
     @PostMapping("/delete")
     public void deleteQuarto(HttpServletResponse response, @RequestParam Long idQuarto) throws IOException {
+        //Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(idQuarto);
+        Optional<Diaria> diaria = diariaRepositorio.findById(idQuarto);
+        if(diaria.isPresent()){
+        diaria.get().setVisivel(false);
+        diariaRepositorio.save(diaria.get());
         tipoQuartoRepositorio.CancelaTipoQuarto(idQuarto);
+        }else{
+            System.out.println("id");
+        }
         response.sendRedirect("/cadastroTipoQuarto");
     }
 

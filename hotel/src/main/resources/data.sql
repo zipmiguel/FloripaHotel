@@ -116,10 +116,10 @@ insert into hotel.quarto (id_tipoQuarto, numero, status) values
 
 insert into hotel.diaria (id_tipoQuarto, diaUtil, fimDeSemana, feriado, promocional) values 
 -- promocional igual a 10% de desconto em relacao ao preco do diaUtil
-    (1, 100, 120, 130, 90), 
-    (2, 200, 220, 230, 180), 
-    (3, 300, 320, 330, 270), 
-    (4, 500, 520, 530, 450);
+    (1, 500, 520, 530, 450),
+    (2, 300, 320, 330, 270), 
+    (3, 200, 220, 230, 180), 
+    (4, 100, 120, 130, 90);
 
 
 insert into hotel.reserva(codigoReserva,dataEntrada,dataSaida,metodoPagamento,status,valorPago,id_diaria,id_hospede,id_tipoQuarto,id_quarto) values

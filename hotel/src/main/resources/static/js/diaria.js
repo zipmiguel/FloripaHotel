@@ -17,7 +17,7 @@ function carregarDiaria(){
                             <td class="inputDiaria${element.idDiara}">R$ ${formataValor2(element.feriado)}</td>
                             <td class="inputDiaria${element.idDiara}">R$ ${formataValor2(element.promocional)}</td>
                             <td>
-                            <img src="img/editar_lapis_30x30px.svg" class="botaoPopup" onclick="OpenEditPopup(${element.idDiara});">
+                            <img src="img/editar_lapis_30x30px.svg" class="botaoPopup pointer" onclick="OpenEditPopup(${element.idDiara});">
                             </td>
                         </tr>`
             });

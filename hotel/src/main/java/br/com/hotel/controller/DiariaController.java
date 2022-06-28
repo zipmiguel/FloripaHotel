@@ -10,12 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.hotel.model.Diaria;
-import br.com.hotel.model.TipoQuarto;
 import br.com.hotel.repositorio.DiariaRepositorio;
 import br.com.hotel.repositorio.tipoQuartoRepositorio;
 
@@ -35,7 +33,7 @@ public class DiariaController {
     }
     @GetMapping
     public List<Diaria> listaDiaria(){
-    	return diariaRepositorio.findAll();
+    	return diariaRepositorio.findByvisivel(true);
     }
     @PostMapping("/edit")
     public void editarDiaria(HttpServletResponse response,Diaria diaria) throws IOException{
