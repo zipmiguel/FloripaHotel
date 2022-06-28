@@ -20,18 +20,18 @@ public class Reserva {
     @ManyToOne
     @JoinColumn(name = "id_hospede")
     private Hospede hospede;
-    @ManyToOne
-    @JoinColumn(name = "id_quarto")
-    private Quarto quarto;
+    // @ManyToOne
+    // @JoinColumn(name = "id_quarto")
+    // private Quarto quarto;
     @ManyToOne
     @JoinColumn(name = "id_tipoQuarto")
     private TipoQuarto tipoQuarto;
-    @ManyToOne
-    @JoinColumn(name = "id_funcionario")
-    private Funcionario funcionario;
-    @ManyToOne
-    @JoinColumn(name = "id_diaria")
-    private Diaria diaria;
+    // @ManyToOne
+    // @JoinColumn(name = "id_funcionario")
+    // private Funcionario funcionario;
+    // @ManyToOne
+    // @JoinColumn(name = "id_diaria")
+    // private Diaria diaria;
     @Column(nullable = false)
     private String metodoPagamento;
     @Column(nullable = false)
@@ -63,18 +63,18 @@ public class Reserva {
     public void setHospede(Hospede hospede) {
         this.hospede = hospede;
     }
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
-    public Diaria getDiaria() {
-        return diaria;
-    }
-    public void setDiaria(Diaria diaria) {
-        this.diaria = diaria;
-    }
+    // public Funcionario getFuncionario() {
+    //     return funcionario;
+    // }
+    // public void setFuncionario(Funcionario funcionario) {
+    //     this.funcionario = funcionario;
+    // }
+    // public Diaria getDiaria() {
+    //     return diaria;
+    // }
+    // public void setDiaria(Diaria diaria) {
+    //     this.diaria = diaria;
+    // }
     public String getMetodoPagamento() {
         return metodoPagamento;
     }
@@ -105,12 +105,12 @@ public class Reserva {
     public void setStatus(String status) {
         this.status = status;
     }
-    public Quarto getQuarto() {
-        return quarto;
-    }
-    public void setQuarto(Quarto quarto) {
-        this.quarto = quarto;
-    }
+    // public Quarto getQuarto() {
+    //     return quarto;
+    // }
+    // public void setQuarto(Quarto quarto) {
+    //     this.quarto = quarto;
+    // }
     public TipoQuarto getTipoQuarto() {
         return tipoQuarto;
     }

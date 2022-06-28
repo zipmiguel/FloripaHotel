@@ -23,6 +23,8 @@ public class Cartao {
     private String nome;
     @Column(nullable = false)
     private String cvv;
+    @Column(nullable = false)
+    private String tipo;
     
     public Long getIdCartao() {
         return idCartao;
@@ -59,5 +61,13 @@ public class Cartao {
     }
     public void setCvv(String cvv) {
         this.cvv = cvv;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }
