@@ -20,9 +20,14 @@ function OpenEditPopup(idquarto){
        popupEditar.setAttribute('idquarto',idquarto);
        popupEditar.style.visibility = 'visible';
        popupEditar.style.display = 'flex';
-       if (document.querySelector('#tituloEdit')!=null){
+       if (document.querySelector('#tituloEdit')!=null||document.querySelector('#tituloEdit')!=undefined){
            const div = $(`td[idquarto = ${idquarto}]`)
            $('#tituloEdit').html(div[0].innerText);
+           const listaInput = $(`.inputDiaria${idquarto}`)
+           listaDiaria = ['diaUtil','fimDeSemana','feriado','promocional']
+           listaInput.each(function(index){
+                document.getElementById(listaDiaria[index]).value = parseInt(formataValor(this.innerHTML))
+           })
        }
 }
 function CloseEditPopup(){

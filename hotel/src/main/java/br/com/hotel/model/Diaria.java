@@ -25,15 +25,22 @@ public class Diaria {
     @Column(nullable = false)
     private Double feriado;
     @Column(nullable = false)
+    private Double promocional;
+    @Column(nullable = false)
+    private Boolean visivel;
     
+    public boolean getvisivel() {
+        return visivel;
+    }
+    public void setVisivel(boolean visivel) {
+        this.visivel = visivel;
+    }
     public TipoQuarto getTipoQuarto() {
         return tipoQuarto;
     }
     public void setTipoQuarto(TipoQuarto tipoQuarto) {
         this.tipoQuarto = tipoQuarto;
     }
-    private Double promocional;
-
     public Long getIdDiara() {
         return idDiara;
     }
