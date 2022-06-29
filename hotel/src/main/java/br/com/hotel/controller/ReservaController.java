@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,15 +13,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.hotel.model.Hospede;
 import br.com.hotel.model.Reserva;
 import br.com.hotel.model.TipoQuarto;
+import br.com.hotel.repositorio.HospedeRepositorio;
 import br.com.hotel.repositorio.QuartoRepositorio;
 import br.com.hotel.repositorio.ReservaRepositorio;
 import br.com.hotel.repositorio.TipoQuartoRepositorio;
 
 @RestController
 public class ReservaController {
-
+    
+    @Autowired
+    HospedeRepositorio hospedeRepositorio;
     @Autowired
     private ReservaRepositorio reservaRepositorio;
     @Autowired
@@ -60,9 +65,25 @@ public class ReservaController {
         }
     }
 
+
     @PostMapping("/finalizarReserva")
-    public void cadastrarReserva(Reserva reserva) {
+    public Reserva cadastrarReserva(@RequestParam Long idHospede,@RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto) {
+        Reserva reserva = new Reserva();
+        Optional<Hospede> hospede = hospedeRepositorio.findById(idHospede);
+        Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(idTipoQuarto);
+        reserva.setHospede(hospede.get());
+        System.out.println(dataSaida);
+        System.out.println(dataEntrada);
+        reserva.setDataEntrada(LocalDate.parse(dataEntrada));
+        reserva.setDataSaida(LocalDate.parse(dataSaida));
+        reserva.setValorPago(valorTotal);
+        reserva.setTipoQuarto(tipoQuarto.get());
+        reserva.setStatus("Não chegou");
+        reserva.setMetodoPagamento("a");
+        reserva.setCodigoReserva(System.currentTimeMillis());
         reservaRepositorio.save(reserva);
+        return reserva;
+
     }
 
     //terminar esse método para fazer a busca da reserva efetivada p/ depois checkin nos quartos

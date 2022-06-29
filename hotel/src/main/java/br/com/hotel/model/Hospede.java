@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-// import javax.persistence.JoinColumn;
-// import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,18 +15,18 @@ public class Hospede implements Cloneable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idHospede;
-    // @OneToOne
-    // @JoinColumn(name = "id_cartao")
-    // private Cartao cartao;
+    @OneToOne
+    @JoinColumn(name = "id_cartao")
+    private Cartao cartao;
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
     private String telefone;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String cpf;
     @Column(nullable = false)
     private String endereco;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
     @Column(nullable = false)
     private String nascimento;
@@ -47,12 +47,12 @@ public class Hospede implements Cloneable{
     public void setIdHospede(Long idHospede) {
         this.idHospede = idHospede;
     }
-    // public Cartao getCartao() {
-    //     return cartao;
-    // }
-    // public void setCartao(Cartao cartao) {
-    //     this.cartao = cartao;
-    // }
+    public Cartao getCartao() {
+        return cartao;
+    }
+    public void setCartao(Cartao cartao) {
+        this.cartao = cartao;
+    }
     public String getNome() {
         return nome;
     }

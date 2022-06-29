@@ -105,17 +105,17 @@
             </h3>
                 <div class="divOpcaoPgto" style="margin-left: 5%;">
                     <h2 class="negrito">Pagar via Boleto</h1>
-                    <input type="radio" name="divOpcaoPgto" value="boleto">
+                    <input type="radio" onchange="verificarRadio()" name="divOpcaoPgto" value="boleto">
                 </div>
                 <div class="divOpcaoPgto">
                     <h2 class="negrito">Pagar via Cartão</h1>
-                    <input type="radio" name="divOpcaoPgto" value="cartao">
+                    <input type="radio" onchange="verificarRadio()" id="radioCartao" name="divOpcaoPgto" value="cartao" checked>
                 </div>
                 <div class="divOpcaoPgto">
                     <h2 class="negrito">Pagar via PIX</h1>
-                    <input type="radio" name="divOpcaoPgto" value="pix">
+                    <input type="radio" onchange="verificarRadio()" name="divOpcaoPgto" value="pix">
                 </div>
-                <div class="formulario" action="">
+                <div id="formCartao" class="formulario" action="">
                     <div class="cadastro">
                         <h1 class="negrito tituloCadastro">Cadastro Cartão</h1>
                         <div class="cadastroEsquerda">
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                 </div>
-            <input type="submit" class="botaoFinalizarCadastro negrito" value="Finalizar Reserva">
+            <input type="button" onclick="finalizarReserva()" class="botaoFinalizarCadastro negrito" value="Finalizar Reserva">
         </form>
         <footer class="footer-section">
             <div class="container">

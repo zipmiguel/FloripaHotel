@@ -1,5 +1,5 @@
 function carregarDadosReserva(){
-    const tipoQuarto = JSON.parse(sessionStorage.getItem('reserva'))
+    const tipoQuarto = JSON.parse(sessionStorage.getItem('tipoQuarto'))
     const dataEntrada = new Date(sessionStorage.getItem('dataEntrada')+' 12:00:00')
     const dataSaida = new Date(sessionStorage.getItem('dataSaida')+' 12:00:00')
     const nAdultos = sessionStorage.getItem('adultos')
@@ -30,7 +30,8 @@ function carregarDadosReserva(){
             }
             precoTotal *= nQuartos
             
-            document.querySelector("h2.info4").innerHTML = `Total: R$ ${precoTotal}`      
+            document.querySelector("h2.info4").innerHTML = `Total: R$ ${precoTotal}`
+            sessionStorage.setItem('valorTotal',precoTotal)    
     })
 
     if(localStorage.getItem('hospede') != null){
@@ -69,4 +70,79 @@ function formatDate(date) {
       padTo2Digits(date.getMonth() + 1),
       date.getFullYear(),
     ].join('/');
+}
+function formatDate2(date){
+    return [
+        date.getFullYear(),
+        padTo2Digits(date.getMonth() + 1),
+        padTo2Digits(date.getDate()),
+      ].join('-');
+}
+
+
+function finalizarReserva(){
+    const hospedeV = JSON.parse(localStorage.getItem('hospede'))
+    const tipoQuartoV = JSON.parse(sessionStorage.getItem('tipoQuarto'))
+    const dataEntradaV = new Date(sessionStorage.getItem('dataEntrada')+' 12:00:00')
+    const dataSaidaV = new Date(sessionStorage.getItem('dataSaida')+' 12:00:00')
+    const valorTotalV = sessionStorage.getItem('valorTotal')
+
+    alert(JSON.stringify(hospedeV))
+    if ($("input[type=checkbox][name=salvarCartao]").is(":checked") && verificarRadio() && verificarCadCartao()) {
+        campos = verificarCadCartao()
+        $.post("http://localhost:8089/cadastrarCartao",{
+            bandeira:campos[0].val(),numero:campos[1].val(),vencimento:campos[2].val(),nome:campos[3].val(),cvv:campos[4].val(),tipo:campos[5].val(),idHospede:(JSON.parse(localStorage.getItem('hospede'))).idHospede
+        })
+    }else{
+        alert("Preencha os dados do cartão corretamente!")
+    }
+    $.post("http://localhost:8089/finalizarReserva",{
+        idHospede:hospedeV.idHospede,idTipoQuarto:tipoQuartoV.idTipoQuarto,dataEntrada:formatDate2(dataEntradaV),dataSaida:formatDate2(dataSaidaV),valorTotal:valorTotalV
+        }, function(reserva){
+              
+    })
+}
+function verificarRadio(){
+    if (document.querySelector('#radioCartao').checked) {
+        $("#formCartao").show()
+        return true
+    }
+    $("#formCartao").hide()
+    return false
+}
+function verificarCadCartao(){
+
+    let campos = [
+        $("#bandeirasCartoes"),
+        $(".numeroCartao"),
+        $("input[type=month][name=vencimentoCartao]"),
+        $("input[name=nomeCartao]"),
+        $(".cvv"),
+        $("select[name=selectCreditoOuDebito]")
+    ]
+    if(campos[0].val() == ""){
+        alert('0')
+        return false
+    }
+    if(campos[1].val().length != 19){
+        alert('1')
+        return false
+    }
+    if(campos[2].val() == ""){
+        alert('2')
+        return false
+    }
+    if(campos[3].val() == ""){
+        alert('3')
+        return false
+    }
+    if(campos[4].val().length != 3){
+        alert('4')
+        return false
+    }
+    if(campos[5].val() == ""){
+        alert('5')
+        return false
+    }
+    return campos
 }

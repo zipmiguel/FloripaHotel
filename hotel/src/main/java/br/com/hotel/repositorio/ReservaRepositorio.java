@@ -7,5 +7,5 @@ import br.com.hotel.model.Reserva;
 
 @Repository
 public interface ReservaRepositorio extends JpaRepository<Reserva, Long> {
-    Reserva findBycodigoReserva(Long codigoReserva);
+    // Reserva findBycodigoReserva(Long codigoReserva);
 }
