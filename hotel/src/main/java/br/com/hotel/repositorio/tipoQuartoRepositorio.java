@@ -12,7 +12,7 @@ import java.util.List;
 //Luiz Eduardo 
 @Repository
 @Transactional
-public interface tipoQuartoRepositorio extends JpaRepository<TipoQuarto,Long>{
+public interface TipoQuartoRepositorio extends JpaRepository<TipoQuarto,Long>{
 
     @Query(nativeQuery = true,value = "select * from tipoQuarto where StatusTipoQuarto = true")
     List<TipoQuarto> BuscarTiposQuartoTrue();
