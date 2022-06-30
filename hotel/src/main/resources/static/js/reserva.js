@@ -87,7 +87,7 @@ function paginaDisponibilidadeReserva(listaDisponibilidade,totalPessoas,nAdultos
         `</div>`+
         `</div>`+
         `<select id="quantidadeQuartos" class="select`+tipoQuarto.idTipoQuarto+`" name="selectQuantidadeQuartos" class="pointer">`+
-        `<option value="0" selected disabled>Quantidade de Quartos</option>`+
+        `<option value="0" selected>Quantidade de Quartos</option>`+
         optionText+
         `</select>`+
         `<button onclick="atualizarSessaoPgto(`+tipoQuarto.idTipoQuarto+`)" class="primary-btn" style="border:none;">Reservar Agora</button>`+
