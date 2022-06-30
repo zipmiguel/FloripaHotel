@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +24,9 @@ public class TipoQuarto {
     private int numeroPessoas;
     @Column(nullable = false, columnDefinition = "boolean")
     private boolean StatusTipoQuarto;
+    @Lob
+    private byte[] imagem;
+    
 
     public boolean getStatusTipoQuarto() {
         return StatusTipoQuarto;
@@ -75,4 +79,12 @@ public class TipoQuarto {
         this.StatusTipoQuarto = true;
     }
     public TipoQuarto(){}
+
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
 }
