@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ import br.com.hotel.model.TipoQuarto;
 import br.com.hotel.repositorio.HospedeRepositorio;
 import br.com.hotel.repositorio.QuartoRepositorio;
 import br.com.hotel.repositorio.ReservaRepositorio;
-import br.com.hotel.repositorio.TipoQuartoRepositorio;
+import br.com.hotel.repositorio.tipoQuartoRepositorio;
 
 @RestController
 public class ReservaController {
@@ -31,7 +32,7 @@ public class ReservaController {
     @Autowired
     private QuartoRepositorio quartoRepositorio;
     @Autowired
-    private TipoQuartoRepositorio tipoQuartoRepositorio;
+    private tipoQuartoRepositorio tipoQuartoRepositorio;
 
     @PostMapping("/pesquisarReserva")
     public List<TipoQuarto> pesquisarReserva(HttpServletResponse response, @RequestParam String dataEntrada, @RequestParam String dataSaida)  throws IOException {
@@ -93,5 +94,5 @@ public class ReservaController {
     //     Quarto quarto = quartoRepositorio.findBynumero(numero);
     //     return quarto;
     // }
-
+    
 }

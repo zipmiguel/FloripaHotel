@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.hotel.repositorio.DiariaRepositorio;
-import br.com.hotel.repositorio.TipoQuartoRepositorio;
+import br.com.hotel.repositorio.tipoQuartoRepositorio;
 import br.com.hotel.model.Diaria;
 
 import br.com.hotel.model.TipoQuarto;
@@ -25,7 +25,7 @@ import br.com.hotel.model.TipoQuarto;
 @RequestMapping("/tipoQuarto")
 public class TipoQuartoController{
     @Autowired
-    private TipoQuartoRepositorio tipoQuartoRepositorio;
+    private tipoQuartoRepositorio tipoQuartoRepositorio;
     
     @Autowired
     private DiariaRepositorio diariaRepositorio;

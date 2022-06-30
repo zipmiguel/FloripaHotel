@@ -511,3 +511,12 @@ tr th{
 	margin-top: 80px;
 	font-size: 2em;	
 }
+#check-in-Popup{
+    display: none;
+    visibility: hidden;
+    width: 50%;
+    min-height: 300px;
+    max-height: 900px;
+    background-color: #EEEEEE;
+    margin: 0 auto;
+}

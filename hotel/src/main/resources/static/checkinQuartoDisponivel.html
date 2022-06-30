@@ -12,17 +12,17 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/hotel.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
-        <script src="js/storageManager.js"> </script>
-        <script src="js/tabela.js"></script>
-        <script>
-            $(document).ready(function(){
-                carregarTipoQuarto();
-                checkUser();
-            });
-        </script>
+        <script src="js/storageManager.js"></script>
+        <script type="text/javascript" src="js/tabela.js"></script>
+		<script src="js/checkin.js"></script>
         <style>
             th{text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 18px;};
         </style>
+        <script>
+            $(document).ready(function () {
+            carregarCheck()
+            })
+        </script>
     </head>
     <body>
         <div class="cabecalho">
@@ -53,18 +53,9 @@
                 <thead>
                     <tr>
                         <th>Tipo de Quarto</th>
-                        <th></th>
                     </tr>
                 </thead>    
-                <tbody id="listerUser">
-                        <tr>
-                            <form action="/tipoQuarto/save" method="post">
-                                <td><input type="text" class="centralText" name="tipoQuarto" required></td>
-                                <td>
-                                    <img src="img/buscar_lupa_30_30px.svg" class="botaoPopup pointer" onclick=" OpenDeletePopup(//${value.idTipoQuarto})">
-                                </td>
-                            </form>
-                        </tr>
+                <tbody id="listerCheckin">
                 </tbody>
             </table>
         </div>
@@ -78,58 +69,12 @@
                 </div>
             </div>
         </footer>
-        <!--editar Popup-->
+        <!--Popup checkin-->
         <div class="popup">
-            <div id="editarPopup">
-                <form action="/tipoQuarto/edit" id="formularioEdit" onsubmit="EditTipoQuarto()" method="post">
-                    <header class="headerPopup">
-                        <h1 class="tituloPopup negrito">EDITAR</h1> 
-                    </header>
-                    <div class="inputPopup">
-                        <label class="title-input">Cama Solteiro</label>
-                        <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" id="quantidadeCamaSolteiro" onchange="gerarQNTpessoas('#editarPopup')" required>
-                            <option value="0" selected>0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div> 
-                    <div class="inputPopup">
-                        <label class="title-input">Cama Casal</label>
-                        <select class="form-select form-select-lg inputpopupForm" aria-label=".form-select-lg example" id="quantidadeCamaCasal" name="quantidadeCamaCasal" id="quantidadeCamaCasal" onchange="gerarQNTpessoas('#editarPopup')" required>
-                            <option value="0" selected>0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div> 
-                    <div class="inputPopup">
-                        <label class="title-input">N° Pessoas</label>
-                        <input type="number" class="form-control inputpopupForm" required name="numeroPessoas" id="numeroPessoas" disabled>
-                    </div> 
-                    <footer class="footerPopup">
-                        <button type="button" class="buttonPopup buttonCancel close negrito" onclick="CloseEditPopup()">Cancelar </button>
-                        <button type="submit" class="buttonPopup buttonSuccess negrito">Salvar</button>
-                    </footer>
-                    <input type="hidden" name="idQuarto" id="idquarto">
-                </form>
-            </div>
-        <!--deletar Popup-->
-            <div id="deletePopup">
-                <form action="/tipoQuarto/delete" method="post" id="formularioDelete">
-                    <header class="headerPopup" style="padding-top: 10px;">
-                        <h3 style="padding: 60px 0 30px 0; color: #ffffff;" class="negrito tituloPopup">Gostaria mesmo de excluir?</h3> 
-                    </header>
-                    <footer class="footerPopup">
-                        <button type="button" class="buttonPopup negrito" onclick="CloseDeletePopup()">Cancelar</button>
-                        <button type="button" class="buttonPopup buttonCancel close negrito" id="BotaoSubmitDelete" onclick="deleteTipoQuarto()">Excluir</button>
-                        <input type="hidden" id="idQuarto" name="idQuarto">
-                    </footer>
-                </form>
+            <div id="check-in-Popup">
+				<header class="headerPopup" style="background-color: red;">
+                    <h1 class="tituloPopup" style="font-size:50px; text-align: center;" id="tituloCheckin"></h1> 
+                </header>
             </div>
         </div>
     </body>
