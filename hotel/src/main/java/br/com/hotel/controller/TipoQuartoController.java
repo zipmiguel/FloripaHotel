@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.hotel.repositorio.DiariaRepositorio;
 import br.com.hotel.repositorio.TipoQuartoRepositorio;
 import br.com.hotel.model.Diaria;
-
+import br.com.hotel.model.Quarto;
 import br.com.hotel.model.TipoQuarto;
 
 //Luiz Eduardo 
@@ -75,12 +76,21 @@ public class TipoQuartoController{
     }
 
     @PostMapping("/edit")
-    public void EditQuarto(HttpServletResponse response, @RequestParam Long idQuarto, @RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException {
+    public void EditQuarto(HttpServletResponse response, @RequestParam ("imagem") MultipartFile imagem, @RequestParam Long idQuarto, @RequestParam int quantidadeCamaSolteiro, @RequestParam int quantidadeCamaCasal) throws IOException {
         TipoQuarto tipoQuartoOriginal = tipoQuartoRepositorio.getReferenceById(idQuarto);
         tipoQuartoOriginal.setQuantidadeCamaCasal(quantidadeCamaCasal);
         tipoQuartoOriginal.setQuantidadeCamaSolteiro(quantidadeCamaSolteiro);
         tipoQuartoOriginal.setNumeroPessoas((quantidadeCamaCasal*2)+quantidadeCamaSolteiro);
+        tipoQuartoOriginal.setImagem(imagem.getBytes());
+        System.out.println(imagem.getBytes());
         tipoQuartoRepositorio.save(tipoQuartoOriginal);
         response.sendRedirect("/cadastroTipoQuarto");
     }
+
+    @GetMapping("/imagem/{id}")
+    public byte[] foto (@PathVariable ("id") long id){
+        Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(id);
+        return tipoQuarto.get().getImagem();
+    }
+
 }

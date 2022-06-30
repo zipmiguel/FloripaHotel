@@ -57,9 +57,9 @@ function paginaDisponibilidadeReserva(listaDisponibilidade,totalPessoas,nAdultos
         divs += `<div class="row">`+
         `<div class="col-lg-6">`+
         `<div class="ri-slider-item">`+
-        `<div class="ri-sliders owl-carousel">`+
-        `<div class="single-img set-bg" data-setbg="../js/img/rooms/room-standard-1.jpg"></div>`+
-        `<div class="single-img set-bg" data-setbg="../js/img/rooms/room-standard-2.jpg"></div>`+
+        `<div class="">`+
+        `<div class="single-img set-bg"><img style="width: 850px; height: 750px;" src="http://localhost:8089/tipoQuarto/imagem/`+tipoQuarto.idTipoQuarto+`"></img></div>`+
+        // `<div class="single-img set-bg"><img src="http://localhost:8089/tipoQuarto/imagem/`+tipoQuarto.idTipoQuarto+`"></img></div>`+
         `</div>`+
         `</div>`+
         `</div>`+

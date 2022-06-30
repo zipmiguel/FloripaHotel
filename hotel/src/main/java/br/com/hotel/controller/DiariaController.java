@@ -39,7 +39,8 @@ public class DiariaController {
     public void editarDiaria(HttpServletResponse response,Diaria diaria) throws IOException{
     	Optional<Diaria> tipoQuartoDiaria = diariaRepositorio.findById(diaria.getIdDiara());
     	if (tipoQuartoDiaria.isPresent()) {
-    		diaria.setTipoQuarto(tipoQuartoDiaria.get().getTipoQuarto());
+            diaria.setTipoQuarto(tipoQuartoDiaria.get().getTipoQuarto());
+            diaria.setVisivel(true);
         	diariaRepositorio.save(diaria);
 		}
     	response.sendRedirect("/precoDiariaTipoQuarto");

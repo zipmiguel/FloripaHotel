@@ -105,7 +105,7 @@
         <!--editar Popup-->
         <div class="popup">
             <div id="editarPopup">
-                <form action="/tipoQuarto/edit" id="formularioEdit" onsubmit="EditTipoQuarto()" method="post">
+                <form action="/tipoQuarto/edit" id="formularioEdit" onsubmit="EditTipoQuarto()" method="post" enctype="multipart/form-data">
                     <header class="headerPopup">
                         <h1 class="tituloPopup negrito">EDITAR</h1> 
                     </header>
@@ -134,6 +134,10 @@
                     <div class="inputPopup">
                         <label class="title-input">N° Pessoas</label>
                         <input type="number" class="form-control inputpopupForm" required name="numeroPessoas" id="numeroPessoas" disabled>
+                    </div> 
+                    <div class="inputPopup">
+                        <label class="title-input">Insira Imagem</label>
+                        <input accept="image/jpeg" type="file" class="form-control-file" class="form-control inputpopupForm" name="imagem" id="imagem">
                     </div> 
                     <footer class="footerPopup">
                         <button type="button" class="buttonPopup buttonCancel close negrito" onclick="CloseEditPopup()">Cancelar </button>
