@@ -67,7 +67,7 @@ public class ReservaController {
 
 
     @PostMapping("/finalizarReserva")
-    public Reserva cadastrarReserva(@RequestParam Long idHospede,@RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto) {
+    public void cadastrarReserva(HttpServletResponse response, @RequestParam String metodoPagamento,@RequestParam Long idHospede,@RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto){
         Reserva reserva = new Reserva();
         Optional<Hospede> hospede = hospedeRepositorio.findById(idHospede);
         Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(idTipoQuarto);
@@ -79,11 +79,9 @@ public class ReservaController {
         reserva.setValorPago(valorTotal);
         reserva.setTipoQuarto(tipoQuarto.get());
         reserva.setStatus("Não chegou");
-        reserva.setMetodoPagamento("a");
+        reserva.setMetodoPagamento(metodoPagamento);
         reserva.setCodigoReserva(System.currentTimeMillis());
         reservaRepositorio.save(reserva);
-        return reserva;
-
     }
 
     //terminar esse método para fazer a busca da reserva efetivada p/ depois checkin nos quartos

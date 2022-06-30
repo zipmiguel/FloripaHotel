@@ -12,7 +12,7 @@
 
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/verificarUsuario.js"></script>
-
+        <script src="js/pgto.js"></script>
         <!-- Css Styles -->
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -23,7 +23,11 @@
         <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
-        
+        <script>
+            $(document).ready(function(){
+                carregarDadosPosPgto();
+            });
+        </script>
     </head>
     <body>
         <header class="header-section">
@@ -53,10 +57,10 @@
         </header>
         <div class="formularioCompra">
             <h1 class="negrito underLineLaranja">Sua estadia</h1>
-            <h2 class="informacoes">segunda, 30/05/2022 - terça, 31/05/2022</h2>
-            <h2 class="informacoes">2 Adultos, 1 Criança</h2>
-            <h2 class="informacoes">1 Quarto Standard</h2>
-            <h2 class="informacoes negrito">Total: R$1699,99</h2>
+            <h2 class="informacoes info1">segunda, 30/05/2022 - terça, 31/05/2022</h2>
+            <h2 class="informacoes info2">2 Adultos, 1 Criança</h2>
+            <h2 class="informacoes info3">1 Quarto Standard</h2>
+            <h2 class="informacoes info4 negrito">Total: R$1699,99</h2>
             <h3 class="linhaUnica"></h3>
         </div>
         <div class="aprovacaoPgto">
@@ -68,7 +72,7 @@
             <h4 class="negritoPixBoleto">Vencimento</h4>
             <h4 class="informacoes">Quinta-feira, 2 de Junho</h4>
             <h4 class="negritoPixBoleto">Valor do Pedido</h4>
-            <h4 class="informacoes">R$ 1699,99</h4>
+            <h4 class="informacoes info4">R$ 1699,99</h4>
             <img src="img/codigoBarrasBoleto.svg" alt=""/>
             <h4 class="negritoPixBoleto">Código do Boleto:</h4>
             <h4 class="informacoes">99991.00035 48952.754951 35179.158472 9 24685796315478</h4>
