@@ -67,8 +67,7 @@ public class ReservaController {
 
 
     @PostMapping("/finalizarReserva")
-    public void cadastrarReserva(HttpServletResponse response, @RequestParam String metodoPagamento,@RequestParam Long idHospede,@RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto)
-            throws IOException {
+    public void cadastrarReserva(HttpServletResponse response, @RequestParam String metodoPagamento,@RequestParam Long idHospede,@RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto){
         Reserva reserva = new Reserva();
         Optional<Hospede> hospede = hospedeRepositorio.findById(idHospede);
         Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(idTipoQuarto);
