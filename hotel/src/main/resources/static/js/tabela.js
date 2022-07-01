@@ -8,10 +8,7 @@ function mostrarPopup(){
     }) 
 }
 function ocultarPopup(){
-   const listaClose = Array.from(document.querySelectorAll('.close'));
-    listaClose.forEach(close => {
         document.querySelector('.popup').classList.remove('show');
-    }) 
 }
 function OpenEditPopup(idquarto){
        mostrarPopup()

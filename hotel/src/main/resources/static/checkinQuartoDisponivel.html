@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <script src="js/storageManager.js"></script>
         <script type="text/javascript" src="js/tabela.js"></script>
-		<script src="js/checkin.js"></script>
+		<script type="text/javascript" src="js/checkin.js"></script>
         <style>
             th{text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 18px;};
         </style>
@@ -72,9 +72,12 @@
         <!--Popup checkin-->
         <div class="popup">
             <div id="check-in-Popup">
-				<header class="headerPopup" style="background-color: red;">
-                    <h1 class="tituloPopup" style="font-size:50px; text-align: center;" id="tituloCheckin"></h1> 
+                <button id="closeCheckin" style="position: absolute; left: auto;" onclick="closeCheckin()"></button>
+				<header class="headerPopup" >
+                    <h1 class="tituloPopup" style="font-size:35px; text-align: center;" id="tituloCheckin"></h1> 
                 </header>
+                <div id="contentCheckin">
+                </div>
             </div>
         </div>
     </body>

@@ -9,6 +9,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.hotel.model.Hospede;
 import br.com.hotel.model.Reserva;
 import br.com.hotel.model.TipoQuarto;
+import br.com.hotel.model.Quarto;
 import br.com.hotel.repositorio.HospedeRepositorio;
 import br.com.hotel.repositorio.QuartoRepositorio;
 import br.com.hotel.repositorio.ReservaRepositorio;
@@ -94,5 +96,14 @@ public class ReservaController {
     //     Quarto quarto = quartoRepositorio.findBynumero(numero);
     //     return quarto;
     // }
+    @PutMapping("/listaQuartos")
+    public List<Quarto> listaQuartos(@RequestParam long idTipoQuarto){
+    		Optional<TipoQuarto> quartoTipo =  tipoQuartoRepositorio.findById(idTipoQuarto);
+    		if (quartoTipo.isPresent()) {
+				List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(quartoTipo.get());
+				return listaQuartoEspecifico;
+			}
+    	return null;
+    }
     
 }
