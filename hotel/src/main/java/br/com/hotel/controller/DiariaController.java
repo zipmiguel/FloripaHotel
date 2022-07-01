@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.hotel.model.Diaria;
 import br.com.hotel.repositorio.DiariaRepositorio;
-import br.com.hotel.repositorio.tipoQuartoRepositorio;
+import br.com.hotel.repositorio.TipoQuartoRepositorio;
 
 @RestController
 @RequestMapping("/diaria")
@@ -24,7 +24,7 @@ public class DiariaController {
     @Autowired
     DiariaRepositorio diariaRepositorio;
     @Autowired
-    tipoQuartoRepositorio tipoQuartoRepositorio;
+    TipoQuartoRepositorio tipoQuartoRepositorio;
 
     @PostMapping("/{id}")
     public Diaria findDiaria(@PathVariable("id") Long id){
