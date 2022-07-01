@@ -555,8 +555,30 @@ div .quartoCheckin{
 
 }
 #closeCheckin{
+	display:block;
     background-image: url(../img/close_2.png);
     width: 48px;
     height: 48px;
     border: 0 none;
+    margin-left: auto;
+}
+#popupCancelarCheckin{
+    display: none;
+    visibility: hidden;
+    width: 30%;
+    min-height: 300px;
+    max-height: 1200px;
+    background-color: #393939;
+    margin: 0 auto;
+    flex-direction: column;
+}
+#popupSalvarCheckin{
+    display: none;
+    visibility: hidden;
+    width: 30%;
+    min-height: 300px;
+    max-height: 1200px;
+    background-color: #393939;
+    margin: 0 auto;
+    flex-direction: column;
 }

@@ -1,5 +1,6 @@
 package br.com.hotel.controller;
 
+import java.io.Console;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -74,10 +76,14 @@ public class ReservaController {
 
 
     @PostMapping("/finalizarReserva")
-    public void cadastrarReserva(HttpServletResponse response, @RequestParam String metodoPagamento,@RequestParam Long idHospede,@RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto) throws MessagingException{
+    public void cadastrarReserva(HttpServletResponse response, @RequestParam String metodoPagamento,
+    		@RequestParam Long idHospede,@RequestParam String dataEntrada, 
+    		@RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto,@RequestParam Integer qntQuartos) throws MessagingException{
         Reserva reserva = new Reserva();
         Optional<Hospede> hospede = hospedeRepositorio.findById(idHospede);
         Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(idTipoQuarto);
+        System.out.println(qntQuartos);
+        for (int i = 0; i < qntQuartos; i++) {
         reserva.setHospede(hospede.get());
         System.out.println(dataSaida);
         System.out.println(dataEntrada);
@@ -91,15 +97,16 @@ public class ReservaController {
         senderMailService.codigoReserva(hospede.get().getEmail(),hospede.get().getNome(),codigo);
         reserva.setCodigoReserva(codigo);
         reservaRepositorio.save(reserva);
+        }
     }
 
-    //terminar esse método para fazer a busca da reserva efetivada p/ depois checkin nos quartos
-    // @GetMapping("/pesquisarReservaEfetivada/{numero}")
-    // public Quarto buscarQuarto(@PathVariable("numero") String numero) {
-    //     System.out.println(numero);
-    //     Quarto quarto = quartoRepositorio.findBynumero(numero);
-    //     return quarto;
-    // }
+     //terminar esse método para fazer a busca da reserva efetivada p/ depois checkin nos quartos
+     @GetMapping("/pesquisarReservaEfetivada/{numero}")
+     public List<Quarto> buscarQuartosDisponiveis(@PathVariable("numero") String numero) {
+         Optional<Quarto> quarto = Optional.of(quartoRepositorio.findBynumero(numero));
+         List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(quarto.get().getTipoQuarto());
+         return listaQuartoEspecifico;
+     }
     @PutMapping("/listaQuartos")
     public List<Quarto> listaQuartos(@RequestParam long idTipoQuarto){
     		Optional<TipoQuarto> quartoTipo =  tipoQuartoRepositorio.findById(idTipoQuarto);
@@ -109,5 +116,8 @@ public class ReservaController {
 			}
     	return null;
     }
-    
+    @PostMapping("/checkin")
+    public void fazerCheckin(@RequestParam Boolean tipoQuarto, @RequestParam long idQuarto) {
+    	
+    }
 }

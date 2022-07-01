@@ -44,8 +44,8 @@
             <h2 id="titulo" class="negrito">Checkin - Quartos Disponíveis</h2>
             <hr class="hrLaranja"/>
             <div class="inputs" style="margin-top: 60px;">
-                <input class="barra-pesquisa" type="text" placeholder="Inserir o Código da Reserva">
-                <input class="btnPesquisar negrito branco pointer" type="submit" value="Pesquisar">
+                <input class="barra-pesquisa" type="text" placeholder="Inserir o Código da Reserva" id="codigoReserva">
+                <input class="btnPesquisar negrito branco pointer" type="button" value="Pesquisar" onclick="carregarQuartosCodigo()">
             </div>
         </div>
         <div style="margin-top: 50px;">
@@ -72,13 +72,35 @@
         <!--Popup checkin-->
         <div class="popup">
             <div id="check-in-Popup">
-                <button id="closeCheckin" style="position: absolute; left: auto;" onclick="closeCheckin()"></button>
+                <button id="closeCheckin" onclick="closeCheckin()"></button>
 				<header class="headerPopup" >
                     <h1 class="tituloPopup" style="font-size:35px; text-align: center;" id="tituloCheckin"></h1> 
                 </header>
                 <div id="contentCheckin">
                 </div>
             </div>
+        </div>
+        <!--cancelar Check-in-->
+        <div id="popupCancelarCheckin">
+            <header class="headerPopup" style="padding-top: 10px;">
+                <h3 style="padding: 60px 0 30px 0; color: #ffffff;" class="negrito tituloPopup">Gostaria mesmo de liberar o Quarto?</h3> 
+            </header>
+            <footer class="footerPopup" style="margin-top: auto;">
+                <button type="button" class="buttonPopup negrito" onclick="CloseDeletePopup()">Cancelar</button>
+                <button type="button" class="buttonPopup buttonCancel close negrito" id="BotaoSubmitDelete" onclick="deleteTipoQuarto()">Liberar</button>
+                <input type="hidden" id="idQuartoCancelar" name="idQuarto">
+            </footer>
+        </div>
+        <!--salvar check-in-->
+        <div id="popupSalvarCheckin">
+            <header class="headerPopup" style="padding-top: 10px;">
+                <h3 style="padding: 60px 0 30px 0; color: #ffffff;" class="negrito tituloPopup">Gostaria mesmo de fechar o Quarto?</h3> 
+            </header>
+            <footer class="footerPopup" style="margin-top: auto;">
+                <button type="button" class="buttonPopup negrito" onclick="CloseDeletePopup()">Cancelar</button>
+                <button type="button" class="buttonPopup buttonSuccess close negrito" id="BotaoSubmitDelete" onclick="deleteTipoQuarto()">Liberar</button>
+                <input type="hidden" id="idQuartoSalvar" name="idQuarto">
+            </footer>
         </div>
     </body>
     </html>

@@ -87,23 +87,29 @@ function finalizarReserva(){
     const dataSaidaV = new Date(sessionStorage.getItem('dataSaida')+' 12:00:00')
     const valorTotalV = sessionStorage.getItem('valorTotal')
     const metodoPagamentoV = document.querySelector('input[name=divOpcaoPgto]:checked').value
-
+    const qntQuartos = parseInt(sessionStorage.getItem('qntdQuartos'))
+    console.log(qntQuartos);
+	
+	alert(sessionStorage.getItem('qntdQuartos'))
     if(verificarRadio() && verificarCadCartao()){
         if($("input[type=checkbox][name=salvarCartao]").is(":checked")){
             let campos = verificarCadCartao()
             $.post("http://localhost:8089/cadastrarCartao",{
-                bandeira:campos[0].val(),numero:campos[1].val(),vencimento:campos[2].val(),nome:campos[3].val(),cvv:campos[4].val(),tipo:campos[5].val(),idHospede:(JSON.parse(localStorage.getItem('hospede'))).idHospede
+                bandeira:campos[0].val(),numero:campos[1].val(),vencimento:campos[2].val(),nome:campos[3].val()
+                ,cvv:campos[4].val(),tipo:campos[5].val(),idHospede:(JSON.parse(localStorage.getItem('hospede'))).idHospede
             })
         }
         $.post("http://localhost:8089/finalizarReserva",{
-            metodoPagamento:metodoPagamentoV,idHospede:hospedeV.idHospede,idTipoQuarto:tipoQuartoV.idTipoQuarto,dataEntrada:formatDate2(dataEntradaV),dataSaida:formatDate2(dataSaidaV),valorTotal:valorTotalV
+            metodoPagamento:metodoPagamentoV,idHospede:hospedeV.idHospede,idTipoQuarto:tipoQuartoV.idTipoQuarto,
+            dataEntrada:formatDate2(dataEntradaV),dataSaida:formatDate2(dataSaidaV),valorTotal:valorTotalV,qntQuartos:qntQuartos,
         }, function(){
             alert('Verifique seu email, em instantes você receberá um código para realizar o check-in no hotel!')
             window.location.replace("http://localhost:8089/compraEfetivadaCartao")
         })
     }else if(metodoPagamentoV != "cartao"){
         $.post("http://localhost:8089/finalizarReserva",{
-            metodoPagamento:metodoPagamentoV,idHospede:hospedeV.idHospede,idTipoQuarto:tipoQuartoV.idTipoQuarto,dataEntrada:formatDate2(dataEntradaV),dataSaida:formatDate2(dataSaidaV),valorTotal:valorTotalV
+            metodoPagamento:metodoPagamentoV,idHospede:hospedeV.idHospede,idTipoQuarto:tipoQuartoV.idTipoQuarto,
+            dataEntrada:formatDate2(dataEntradaV),dataSaida:formatDate2(dataSaidaV),valorTotal:valorTotalV,qntQuartos:qntQuartos,
         },function(){
             window.location.replace("http://localhost:8089/"+metodoPagamentoV)
         })
