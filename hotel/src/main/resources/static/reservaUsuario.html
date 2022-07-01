@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Hotel Template">
+    <meta name="keywords" content="Hotel, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reserva Usuário</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="logo">
+                    <a href="./index.html"><img src="img/logo.svg" alt=""></a>
+                </div>
+                <div class="nav-right">
+                    <a href="./index.html#reserva" class="primary-btn">Faça sua Reserva</a>
+                    <a href="./index.html#reserva" id="button-login">Login</a>
+                    <h6 class="text-white">Ainda não tem conta?<a href="./index.html#reserva" id="button-cadastro">Cadastre-se</a></h6>
+                </div>
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li><a href="./index.html">Início</a></li>
+                        <li><a href="rooms.html">Quartos</a></li>
+                        <li><a href="services.html">Serviços</a></li>
+                        <li><a href="./about-us.html">Sobre</a></li>
+                        <!-- <li><a href="./blog.html">Notícias</a></li> -->
+                        <li><a href="./contact.html">Contato</a></li>
+                    </ul>
+                </nav>
+                <div id="mobile-menu-wrap"></div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Hero Area Section Begin -->
+    <section class="hero-area-reservation set-bg" data-setbg="img/hero-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="hero-text">
+                        <h1 id="reserva">Reserva</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Area Section End -->
+
+    <!-- Search Filter Section Begin -->
+    <section class="search-filter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="#" class="check-form">
+                        <h4>Sua Estadia</h4>
+                        <div class="datepicker">
+                            <p>Entrada</p>
+                            <img src="img/calendar.png" alt="">
+                            <input type="text" class="datepicker-1" value="dd / mm / yyyy">
+                        </div>
+                        <div class="datepicker">
+                            <p>Saída</p>
+                            <img src="img/calendar.png" alt="">
+                            <input type="text" class="datepicker-2" value="dd / mm / yyyy">
+                        </div>
+                        <div class="room-quantity">
+                            <div class="single-quantity">
+                                <p>Adultos</p>
+                                <div class="pro-qty"><input type="text" value="0"></div>
+                            </div>
+                            <div class="single-quantity">
+                                <p>Crianças</p>
+                                <div class="pro-qty"><input type="text" value="0"></div>
+                            </div>
+                            <!-- <div class="single-quantity last">
+                                <p>Quartos</p>
+                                <div class="pro-qty"><input type="text" value="0"></div>
+                            </div> -->
+                        </div>
+                        <!-- <div class="room-selector">
+                            <p>Tipo de Quarto</p>
+                            <select class="suit-select">
+                                <option value="standard">Standard</option>
+                                <option value="master">Master</option>
+                                <option value="deluxe">Deluxe</option>
+                                <option value="deluxe-plus">Deluxe Plus</option>
+                            </select>
+                        </div> -->
+                        <button type="submit">Pesquisar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Search Filter Section End -->
+    <hr/>
+    <!-- Room Section Begin -->
+    <section class="room-section">
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ri-slider-item">
+                            <div class="ri-sliders owl-carousel">
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-1.jpg"></div>
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-2.jpg"></div>
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-3.jpg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ri-text">
+                            <div class="section-title">
+                                <div class="section-title">
+                                    <span>acomodação confortável que cabe no seu bolso</span>
+                                    <h2>Standard</h2>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
+                                    viverra maecenas. Donec in sodales dui, a blandit nunc. Pellentesque id eros venenatis,
+                                    sollicitudin neque sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur
+                                    non, ultricies volutpat tellus.</p>
+                                <div class="ri-features">
+                                    <div class="ri-info">
+                                        <i class="flaticon-019-television"></i>
+                                        <p>Smart TV</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-029-wifi"></i>
+                                        <p>Wi-fi</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-003-air-conditioner"></i>
+                                        <p>AC</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-036-parking"></i>
+                                        <p>Estacionamento</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-007-swimming-pool"></i>
+                                        <p>Piscina</p>
+                                    </div>
+                                </div>
+                                <select id="quantidadeQuartos" name="selectQuantidadeQuartos" class="pointer">
+                                    <option value="" selected disabled>Quantidade de Quartos</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <a href="#" class="primary-btn">Reservar Agora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <hr/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ri-slider-item">
+                            <div class="ri-sliders owl-carousel">
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-1.jpg"></div>
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-2.jpg"></div>
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-3.jpg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ri-text">
+                            <div class="section-title">
+                                <div class="section-title">
+                                    <span>bem-estar em um espaço único</span>
+                                    <h2>Master</h2>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
+                                    viverra maecenas. Donec in sodales dui, a blandit nunc. Pellentesque id eros venenatis,
+                                    sollicitudin neque sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur
+                                    non, ultricies volutpat tellus.</p>
+                                <div class="ri-features">
+                                    <div class="ri-info">
+                                        <i class="flaticon-019-television"></i>
+                                        <p>Smart TV</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-029-wifi"></i>
+                                        <p>Wi-fi</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-003-air-conditioner"></i>
+                                        <p>AC</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-036-parking"></i>
+                                        <p>Estacionamento</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-007-swimming-pool"></i>
+                                        <p>Piscina</p>
+                                    </div>
+                                </div>
+                                <select id="quantidadeQuartos" name="selectQuantidadeQuartos" class="pointer">
+                                    <option value="" selected disabled>Quantidade de Quartos</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <a href="#" class="primary-btn">Reservar Agora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <hr/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ri-slider-item">
+                            <div class="ri-sliders owl-carousel">
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-1.jpg"></div>
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-2.jpg"></div>
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-3.jpg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ri-text">
+                            <div class="section-title">
+                                <div class="section-title">
+                                    <span>alto padrão, o melhor a sua espera</span>
+                                    <h2>Deluxe</h2>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
+                                    viverra maecenas. Donec in sodales dui, a blandit nunc. Pellentesque id eros venenatis,
+                                    sollicitudin neque sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur
+                                    non, ultricies volutpat tellus.</p>
+                                <div class="ri-features">
+                                    <div class="ri-info">
+                                        <i class="flaticon-019-television"></i>
+                                        <p>Smart TV</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-029-wifi"></i>
+                                        <p>Wi-fi</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-003-air-conditioner"></i>
+                                        <p>AC</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-036-parking"></i>
+                                        <p>Estacionamento</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-007-swimming-pool"></i>
+                                        <p>Piscina</p>
+                                    </div>
+                                </div>
+                                <select id="quantidadeQuartos" name="selectQuantidadeQuartos" class="pointer">
+                                    <option value="" selected disabled>Quantidade de Quartos</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <a href="#" class="primary-btn">Reservar Agora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <hr/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ri-slider-item">
+                            <div class="ri-sliders owl-carousel">
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-1.jpg"></div>
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-2.jpg"></div>
+                                <div class="single-img set-bg" data-setbg="img/rooms/room-3.jpg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ri-text">
+                            <div class="section-title">
+                                <div class="section-title">
+                                    <span>vivencie o sublime</span>
+                                    <h2>Deluxe Plus</h2>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
+                                    viverra maecenas. Donec in sodales dui, a blandit nunc. Pellentesque id eros venenatis,
+                                    sollicitudin neque sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur
+                                    non, ultricies volutpat tellus.</p>
+                                <div class="ri-features">
+                                    <div class="ri-info">
+                                        <i class="flaticon-019-television"></i>
+                                        <p>Smart TV</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-029-wifi"></i>
+                                        <p>Wi-fi</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-003-air-conditioner"></i>
+                                        <p>AC</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-036-parking"></i>
+                                        <p>Estacionamento</p>
+                                    </div>
+                                    <div class="ri-info">
+                                        <i class="flaticon-007-swimming-pool"></i>
+                                        <p>Piscina</p>
+                                    </div>
+                                </div>
+                                <select id="quantidadeQuartos" name="selectQuantidadeQuartos" class="pointer">
+                                    <option value="" selected disabled>Quantidade de Quartos</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <a href="#" class="primary-btn">Reservar Agora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <hr/>
+        </div>
+    </section>
+    <!-- Room Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="footer-item">
+                        <div class="footer-logo">
+                            <a href="#"><img src="img/logo.svg" alt=""></a>
+                        </div>
+                        <p>Assine nosso Newsletter para receber emails com nossas principais novidades!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-item">
+                        <h5>Newsletter</h5>
+                        <div class="newslatter-form">
+                            <input type="text" placeholder="Insira Seu Email Aqui">
+                            <button type="submit">Assinar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-item">
+                        <h5>Informações de Contato</h5>
+                        <ul>
+                            <li><img src="img/placeholder.png" alt="">2285 João Paulo,<br />Florianópolis - SC</li>
+                            <li><img src="img/phone.png" alt="">+55 (48) 3535-4592</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul>
+                            <li><a href="./index.html">Início</a></li>
+                            <li><a href="rooms.html">Quartos</a></li>
+                            <li><a href="services.html">Serviços</a></li>
+                            <li><a href="./about-us.html">Sobre</a></li>
+                            <!-- <li><a href="./blog.html">Notícias</a></li> -->
+                            <li><a href="./contact.html">Contato</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row pt-5">
+                    <div class="col-lg-12 ">
+                        <div class="small text-white text-center">
+                            <span> &copy; 2022 - Projeto WEB - Jovem Programador SENAC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

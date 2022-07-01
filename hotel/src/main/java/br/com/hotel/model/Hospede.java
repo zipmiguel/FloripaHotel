@@ -1,20 +1,24 @@
-package br.com.hotel.entidades;
+package br.com.hotel.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "funcionario")
-public class Funcionario {
+@Table(name = "hospede")
+public class Hospede {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idFuncionario;
     @Column(nullable = false)
-    private int idCargo;
+    private Long idHospede;
+    @OneToOne
+    @JoinColumn(name = "id_cartao")
+    private Cartao cartao;
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
@@ -24,21 +28,23 @@ public class Funcionario {
     @Column(nullable = false)
     private String endereco;
     @Column(nullable = false)
-    private String login;
+    private String email;
+    @Column(nullable = false)
+    private String nascimento;
     @Column(nullable = false)
     private String senha;
-
-    public int getIdFuncionario() {
-        return idFuncionario;
+    
+    public Long getIdHospede() {
+        return idHospede;
     }
-    public void setIdFuncionario(int idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setIdHospede(Long idHospede) {
+        this.idHospede = idHospede;
     }
-    public int getIdCargo() {
-        return idCargo;
+    public Cartao getCartao() {
+        return cartao;
     }
-    public void setIdCargo(int idCargo) {
-        this.idCargo = idCargo;
+    public void setCartao(Cartao cartao) {
+        this.cartao = cartao;
     }
     public String getNome() {
         return nome;
@@ -64,11 +70,17 @@ public class Funcionario {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String getNascimento() {
+        return nascimento;
+    }
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
     }
     public String getSenha() {
         return senha;
@@ -76,4 +88,6 @@ public class Funcionario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    
 }

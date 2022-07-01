@@ -169,9 +169,10 @@ form{
     font-size: 25px;
 }
 .campoCadastro input, .campoCadastro select{
-    height: 30%;
+    height: 30px;
     width: 300px;
     border: 0;
+    padding: 0 10px 0 10px;
 }
 .cadastro input[type=submit], .cadastro input[type=reset], .cadastro input[type=button]{
     margin: 0 50px 0 50px;
@@ -196,8 +197,11 @@ form{
     cursor: pointer;
 }
 /* luiz_eduardo */
-.cadastroCentro{
-    width: 62.5%;
+.centralizarDiv{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 27.5%;
+    height: 75px;
 }
 .tipoCargo{
     width: 100%;
@@ -215,6 +219,14 @@ form{
     text-align: center;
     display: inline;
     margin-left: 30%;
+}
+.nomeNovoCargoPermissao{
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    display: inline;
+    margin-left: 320px;
 }
 .inputCadastroCargo{
     display: inline;
@@ -248,4 +260,55 @@ td{
     font-weight: bold;
     border: 1px solid #000000;
     border-collapse: collapse;
+}
+/* configuracoes footer */
+footer {
+    width: 100%;
+	font-family: "Montserrat Alternates", sans-serif;
+	-webkit-font-smoothing: antialiased;
+    font-size: 0.915em;
+}
+.copyright {
+	background: #171717;
+	overflow: hidden;
+	padding: 24px;
+	margin-top: 30px;
+}
+.copyright .copyright-text {
+	float: left;
+	font-size: 13px;
+	color: #9d9d9d;
+	font-weight: 600;
+	line-height: 28px;
+}
+
+
+#radioCargo{
+    display: flex;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 50px;
+    justify-content: space-around;
+}
+#radioCargo div{
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#radioCargo div h3{
+    width: 100%;
+    margin-bottom: 10px;
+}
+#radioCargo div input{
+    width: 20px;
+    height: 20px;
+}
+.hrLaranja{
+	height: 3px;
+	border: none;
+	background-color: #F9AD81;
+	opacity: 100%;
+	width: 90%;
+	margin: 10px auto 30px auto;
 }

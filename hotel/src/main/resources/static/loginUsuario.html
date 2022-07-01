@@ -4,16 +4,13 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Recuperação de Senha</title>
-        <script src="js/cliente.js"></script>
+
+        <title>Login Usuário</title>
         <link href='https://fonts.googleapis.com/css?family=Montserrat Alternates' rel='stylesheet'>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/jquey-mask.js"></script>
-        <script src="js/cliente.js"></script>
-        
+
         <!-- Css Styles -->
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -35,7 +32,7 @@
                     </div>
                     <div class="nav-right">
                         <a href="./index.html#reserva" class="primary-btn">Faça sua Reserva</a>
-                        <a href="./login.html" id="button-login">Login</a>
+                        <a href="./loginUsuario.html" id="button-login">Login</a>
                         <h6 class="text-white">Ainda não tem conta?<a href="./cadastroUsuario.html" id="button-cadastro">Cadastre-se</a></h6>
                     </div>
                     <nav class="main-menu mobile-menu">
@@ -53,13 +50,14 @@
             </div>
         </header>
         <form class="formularioLogin" action="">
-            <h1 class="negrito">Alteração de Senha</h1>
+            <h1 class="negrito">Login</h1>
             <h3 class="linhaUnica"></h3>
-            <h2>Insira o Código Recebido</h2>
-            <input type="text" class="codigoRecebido" name="codigoNovaSenha" placeholder="xxxxxx">
-            <h2>Nova Senha</h2>
-            <input type="password" name="novaSenha" placeholder="Exemplo123!">
-            <input type="submit" value="Alterar" class="negrito botaoFinalizarCadastro">
+            <h2>Seu Email</h2>
+            <input type="email" name="emailCliente" id="email" placeholder="exemplo@email.com">
+            <h2>Sua Senha</h2>
+            <input type="password" name="senhaCliente" placeholder="1º acesso =  preencha com a senha recebida em seu email">
+            <a onclick="this.href='recuperar?emailCliente='+document.getElementById('email').value" href="#">Esqueceu sua senha?</a>
+            <input type="submit" value="Entrar" class="negrito botaoFinalizarCadastro">
         </form>
         <footer class="footer-section">
             <div class="container">

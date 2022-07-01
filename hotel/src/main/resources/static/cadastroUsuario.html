@@ -33,7 +33,7 @@
                     </div>
                     <div class="nav-right">
                         <a href="./index.html#reserva" class="primary-btn">Faça sua Reserva</a>
-                        <a href="./login.html" id="button-login">Login</a>
+                        <a href="./loginUsuario.html" id="button-login">Login</a>
                         <!-- <h6 class="text-white">Ainda não tem conta?<a href="./index.html#reserva" id="button-cadastro">Cadastre-se</a></h6> -->
                     </div>
                     <nav class="main-menu mobile-menu">
@@ -107,7 +107,7 @@
                         <div class="campoCadastro">
                             <h1 class="negrito">Bandeira</h1>
                                 <select id="bandeirasCartoes" name="selectBandeirasCartoes" class="pointer">
-                                    <option value="" selected disabled hidden>Selecione a Bandeira do Cartão</option>
+                                    <option value="" selected disabled>Selecione a Bandeira do Cartão</option>
                                     <option value="americanExpress">American Express</option>
                                     <option value="dinersClubInternational">Diners Club International</option>
                                     <option value="elo">Elo</option>
@@ -133,6 +133,14 @@
                         <div class="campoCadastro">
                             <h1 class="negrito">CVV</h1>
                             <input type="text" class="cvv" name="cvv" placeholder="xxx">
+                        </div>
+                        <div class="campoCadastro">
+                            <h1 class="negrito">Tipo Cartão</h1>
+                            <select name="selectCreditoOuDebito" class="pointer">
+                                <option value="" selected disabled>Selecione Crédito ou Débito</option>
+                                <option value="cartaoCredito">Cartão de Crédito</option>
+                                <option value="cartaoDebito">Cartão de Débito</option>
+                            </select>
                         </div>
                     </div>
                     <input type="submit" value="Salvar" class="negrito botaoSalvarCadastro pointer">

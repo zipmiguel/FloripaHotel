@@ -1,4 +1,4 @@
-package br.com.hotel.entidades;
+package br.com.hotel.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,16 +13,16 @@ public class Cargo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private int idCargo;
+    private Long idCargo;
     @Column(nullable = false)
     private String tipoCargo;
     @Column(nullable = false)
-    private Boolean permissao;
+    private String permissao;
 
-    public int getIdCargo() {
+    public Long getIdCargo() {
         return idCargo;
     }
-    public void setIdCargo(int idCargo) {
+    public void setIdCargo(Long idCargo) {
         this.idCargo = idCargo;
     }
     public String getTipoCargo() {
@@ -31,10 +31,10 @@ public class Cargo {
     public void setTipoCargo(String tipoCargo) {
         this.tipoCargo = tipoCargo;
     }
-    public Boolean getPermissao() {
+    public String getPermissao() {
         return permissao;
     }
-    public void setPermissao(Boolean permissao) {
+    public void setPermissao(String permissao) {
         this.permissao = permissao;
     }
 }
