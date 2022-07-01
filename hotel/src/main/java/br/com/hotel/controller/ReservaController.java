@@ -79,11 +79,12 @@ public class ReservaController {
     public void cadastrarReserva(HttpServletResponse response, @RequestParam String metodoPagamento,
     		@RequestParam Long idHospede,@RequestParam String dataEntrada, 
     		@RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto,@RequestParam Integer qntQuartos) throws MessagingException{
-        Reserva reserva = new Reserva();
-        Optional<Hospede> hospede = hospedeRepositorio.findById(idHospede);
         Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(idTipoQuarto);
+        Optional<Hospede> hospede = hospedeRepositorio.findById(idHospede);
         System.out.println(qntQuartos);
+        List<Reserva> listaReservas = new ArrayList<>();
         for (int i = 0; i < qntQuartos; i++) {
+        Reserva reserva = new Reserva();
         reserva.setHospede(hospede.get());
         System.out.println(dataSaida);
         System.out.println(dataEntrada);
@@ -93,18 +94,23 @@ public class ReservaController {
         reserva.setTipoQuarto(tipoQuarto.get());
         reserva.setStatus("Não chegou");
         reserva.setMetodoPagamento(metodoPagamento);
-        Long codigo = System.currentTimeMillis();
+        Long codigo = System.nanoTime();
         senderMailService.codigoReserva(hospede.get().getEmail(),hospede.get().getNome(),codigo);
         reserva.setCodigoReserva(codigo);
-        reservaRepositorio.save(reserva);
+        listaReservas.add(reserva);
         }
+        reservaRepositorio.saveAll(listaReservas);
     }
 
      //terminar esse método para fazer a busca da reserva efetivada p/ depois checkin nos quartos
      @GetMapping("/pesquisarReservaEfetivada/{numero}")
      public List<Quarto> buscarQuartosDisponiveis(@PathVariable("numero") String numero) {
-         Optional<Quarto> quarto = Optional.of(quartoRepositorio.findBynumero(numero));
-         List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(quarto.get().getTipoQuarto());
+         System.out.println(numero);
+         System.out.println(numero);
+         System.out.println(numero);
+         System.out.println(numero);
+         Reserva reservaBusca = reservaRepositorio.searchCodeReserva(numero);
+         List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(reservaBusca.getTipoQuarto());
          return listaQuartoEspecifico;
      }
     @PutMapping("/listaQuartos")
@@ -118,6 +124,14 @@ public class ReservaController {
     }
     @PostMapping("/checkin")
     public void fazerCheckin(@RequestParam Boolean tipoQuarto, @RequestParam long idQuarto) {
-    	
+    	if (tipoQuarto) {
+            Optional<Quarto> quartoCancelado = quartoRepositorio.findById(idQuarto);
+            quartoCancelado.get().setStatus(true);
+            quartoRepositorio.save(quartoCancelado.get());
+        } else {
+            Optional<Quarto> quartoLiberado = quartoRepositorio.findById(idQuarto);
+            quartoLiberado.get().setStatus(false);
+            quartoRepositorio.save(quartoLiberado.get());
+        }
     }
 }
