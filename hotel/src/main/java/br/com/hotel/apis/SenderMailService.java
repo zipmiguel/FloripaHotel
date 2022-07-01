@@ -1,6 +1,5 @@
 package br.com.hotel.apis;
 
-import java.text.DecimalFormat;
 import java.util.Random;
 
 import javax.mail.MessagingException;

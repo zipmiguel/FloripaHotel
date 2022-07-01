@@ -37,20 +37,25 @@ function verificarDisponibilidade(){
         alert("Preencha todos os campos corretamente!")
     }else{
         $.post("http://localhost:8089/pesquisarReserva",{
-            dataEntrada:dataEntradaV,dataSaida:dataSaidaV
+            dataEntrada:dataEntradaV,dataSaida:dataSaidaV,qntdPessoas:parseInt(totalPessoas),qntdAdultos:nAdultos
         }, function(listaDispo){
-            let conteudo = paginaDisponibilidadeReserva(listaDispo,totalPessoas,nAdultos)
+            let conteudo = paginaDisponibilidadeReserva(listaDispo[0],totalPessoas,nAdultos,listaDispo[1])
             document.querySelector("#divReservaDisponivel").innerHTML = conteudo
         })
     }
 }
-function paginaDisponibilidadeReserva(listaDisponibilidade,totalPessoas,nAdultos){
+function paginaDisponibilidadeReserva(listaDisponibilidade,totalPessoas,nAdultos,maximoQuartos){
     let divs = ""
+    let i = 0
     for (const tipoQuarto of listaDisponibilidade) {
         
         minQuartos = Math.ceil(totalPessoas/tipoQuarto.numeroPessoas)
         let optionText = ""
-        for (let i = minQuartos; i<=nAdultos; i++) {
+        let final = maximoQuartos[i]
+        if(maximoQuartos[i] > nAdultos){
+            final = nAdultos
+        }
+        for (let i = minQuartos; i<=final; i++) {
             optionText+=`<option value="${i}">${i}</option>`
         }
 
@@ -96,6 +101,7 @@ function paginaDisponibilidadeReserva(listaDisponibilidade,totalPessoas,nAdultos
         `</div>`+
         `</div>`+
         `<hr/>`
+        i++
     }
     return divs
 }
