@@ -1,11 +1,13 @@
 
 
-function openCheckin(idTipoQuarto){
+function openCheckin(idTipoQuarto,puxarPeloCodigo ){
 	mostrarPopup()
     const popupCheckin = document.getElementById('check-in-Popup');
+	   if(!puxarPeloCodigo){
+		   carregarQuartos();
+	   }
        popupCheckin.removeAttribute('idTipoQuarto');
        popupCheckin.setAttribute('idTipoQuarto',idTipoQuarto);
-       carregarQuartos();
        popupCheckin.style.visibility = 'visible';
        popupCheckin.style.display = 'block';
        let input = $(`input[name="tipoQuarto${idTipoQuarto}"]`)
@@ -70,7 +72,7 @@ function carregarCheck(){
              tr+= `<tr class="TipoQuarto" idTipoQuarto=${value.idTipoQuarto}">
              <td><input type="text" class="centralText" name="tipoQuarto${value.idTipoQuarto}" value="${value.tipoQuarto}" style="font-family: 'Montserrat Alternates';font-weight: bold;" disabled></td>
              <td>
-             <img src="img/buscar_lupa_30_30px.svg" class="botaoPopup pointer" onclick="openCheckin(${value.idTipoQuarto})">
+             <img src="img/buscar_lupa_30_30px.svg" class="botaoPopup pointer" onclick="openCheckin(${value.idTipoQuarto,false})">
              </td>
              </tr>
              `;
@@ -104,19 +106,20 @@ function carregarQuartosCodigo(){
                     var checkQuarto1 = quarto.status==true ? 'disponivel' : 'indisponivel'
                     var checkQuarto2 = quarto.status==true ? 'buttonPopupCheckinSuccess' : 'buttonPopupCheckinFailed'
                     var checkQuarto3 = quarto.status==true ? true : false
+                    
                     conteudoColuna+=`
+
                     <div class="quartoCheckin">
                     <div class="quartoCheckinTitulo">${quarto.numero}</div>
-                    <button class="buttonPopupCheckin ${checkQuarto2} onclick="OpenPopupCheckin(${checkQuarto3},${quarto.idQuarto})">${checkQuarto1}</button>
-                    </div>
-                    `
+                    <button class="buttonPopupCheckin ${checkQuarto2}" onclick="OpenPopupCheckin(${checkQuarto3},${quarto.idQuarto})">${checkQuarto1}</button>
+                    </div>`
                 })
                 conteudoColuna+='</div>'
                 conteudoTotal+=conteudoColuna;
             })
          console.log(conteudoTotal)
          let idtitulo = data[0].tipoQuarto.idTipoQuarto;
-         openCheckin(idtitulo)
+         openCheckin(idtitulo,true)
          $('.TipoQuarto').remove();
          $('#contentCheckin').append(conteudoTotal);
     },
@@ -126,38 +129,14 @@ function carregarQuartosCodigo(){
     })
 }
 function OpenPopupCheckin(tipoPopup,idquarto){
-    if (tipoPopup) {
-        const popupCheckinCancelar = document.getElementById('popupCancelarCheckin');
-        popupCheckinCancelar.removeAttribute('idquarto');
-        popupCheckinCancelar.setAttribute('idquarto',idquarto);
-        popupCheckinCancelar.setAttribute('status',tipoPopup);
-        popupCheckinCancelar.style.visibility = 'visible';
-        popupCheckinCancelar.style.display = 'block';
-    }else{
         const popupCheckinSalvar = document.getElementById('popupSalvarCheckin');
         popupCheckinSalvar.removeAttribute('idquarto');
         popupCheckinSalvar.setAttribute('idquarto',idquarto);
         popupCheckinSalvar.setAttribute('status',tipoPopup);
         popupCheckinSalvar.style.visibility = 'visible';
         popupCheckinSalvar.style.display = 'flex';
-    }
 }
 function checkinQuarto(tipoPopup){
-    if (tipoPopup) {
-        const popupCheckinCancelar = document.getElementById('popupCancelarCheckin');
-        $.ajax({
-            type: "post",
-            url: "/checkin",
-            data: {tipoQuarto:tipoPopup,idQuarto:popupCheckinCancelar.getAttribute('idquarto')},
-            dataType: "json",
-            success: function () {
-                closePopupCheckin();
-            },
-            error: function(){
-                alert('erro ao cancelar quarto')
-            }
-        });
-    }else{
         const popupCheckinSalvar = document.getElementById('popupSalvarCheckin');
         $.ajax({
             type: "post",
@@ -172,7 +151,6 @@ function checkinQuarto(tipoPopup){
             }
         });
     }
-}
 function closePopupCheckin(){
     const popupCheckinCancelar = document.getElementById('popupCancelarCheckin');
     const popupCheckinSalvar = document.getElementById('popupSalvarCheckin');

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--feito por luiz Eduardo Sagaz Carvalho-->
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Checkin - Quartos Disponíveis</title>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat Alternates' rel='stylesheet'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/hotel.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+
+        <script src="js/storageManager.js"></script>
+		<script type="text/javascript" src="js/checkin.js"></script>
+        <script type="text/javascript" src="js/tabela.js"></script>
+        <style>
+            th{text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 18px;};
+        </style>
+        <script>
+            $(document).ready(function () {
+                carregarCheck();
+            })
+        </script>
+        
+    </head>
+        <body>
+            <div class="cabecalho">
+                <div class="nomedoHotel">
+                    <a href="">
+                        <h1 class="negrito branco">Floripa</h1>
+                        <h3 class="negrito branco">HOTEL</h3>
+                    </a>
+                </div>
+                <div class="logoHome">
+                    <a href="#">
+                        <img src="img/icons8-casa-64.png" alt="btn-home">
+                    </a>
+                </div>
+                <div class="nomeSair">
+                </div>
+            </div>
+            <div class="navegacao">
+                <h2 id="titulo" class="negrito">Checkin - Quartos Disponíveis</h2>
+                <hr class="hrLaranja"/>
+                <div class="inputs" style="margin-top: 60px;">
+                    <input class="barra-pesquisa" type="text" placeholder="Inserir o Código da Reserva" id="codigoReserva">
+                    <input class="btnPesquisar negrito branco pointer" type="button" value="Pesquisar" onclick="carregarQuartosCodigo()">
+                </div>
+            </div>
+            <div style="margin-top: 50px;">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Tipo de Quarto</th>
+                        </tr>
+                    </thead>    
+                    <tbody id="listerCheckin">
+                    </tbody>
+                </table>
+            </div>
+            <!---->
+            <footer class="footerTabela">
+                <div class="copyright">
+                    <div class="col-lg-12 ">
+                        <div class="small text-white text-center">
+                            <span> &copy; 2022 - Projeto WEB - Jovem Programador SENAC</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--Popup checkin-->
+            <div class="popup">
+                <div id="check-in-Popup">
+                    <button id="closeCheckin" onclick="closeCheckin()"></button>
+                    <header class="headerPopup" >
+                        <h1 class="tituloPopup" style="font-size:35px; text-align: center;" id="tituloCheckin"></h1> 
+                    </header>
+                    <div id="contentCheckin">
+                    </div>
+                </div>
+            </div>
+            <!--cancelar Check-in-->
+            <div id="popupCancelarCheckin">
+                <header class="headerPopup" style="padding-top: 10px;">
+                    <h3 style="padding: 60px 0 30px 0; color: #ffffff;" class="negrito tituloPopup">Gostaria mesmo de liberar o Quarto?</h3> 
+                </header>
+                <footer class="footerPopup" style="margin-top: auto;">
+                    <button type="button" class="buttonPopup negrito" onclick="closePopupCheckin()">Cancelar</button>
+                    <button type="button" class="buttonPopup buttonCancel close negrito" id="BotaoCheckinLiberado" onclick="checkinQuarto(true)">Liberar</button>
+                    <input type="hidden" id="idQuartoCancelar" name="idQuarto">
+                </footer>
+            </div>
+            <!--salvar check-in-->
+            <div id="popupSalvarCheckin">
+                <header class="headerPopup" style="padding-top: 10px;">
+                    <h3 style="padding: 60px 0 30px 0; color: #ffffff;" class="negrito tituloPopup">Gostaria mesmo de fechar o Quarto?</h3> 
+                </header>
+                <footer class="footerPopup" style="margin-top: auto;">
+                    <button type="button" class="buttonPopup negrito" onclick="closePopupCheckin()">Cancelar</button>
+                    <button type="button" class="buttonPopup buttonSuccess close negrito" id="BotaoSubmitDelete" onclick="checkinQuarto(false)">Liberar</button>
+                    <input type="hidden" id="idQuartoSalvar" name="idQuarto">
+                </footer>
+            </div>
+        </body>
+    </html>

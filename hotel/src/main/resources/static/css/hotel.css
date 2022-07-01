@@ -566,6 +566,7 @@ div .quartoCheckin{
     position: absolute;
     display: none;
     visibility: hidden;
+    z-index: 1000;
     width: 30%;
     min-height: 300px;
     max-height: 1200px;
@@ -573,11 +574,14 @@ div .quartoCheckin{
     margin: 0 auto;
     top: 100px;
     flex-direction: column;
+    margin-top: 100px;
 }
 #popupSalvarCheckin{
+    margin-top: 100px;
     display: none;
     visibility: hidden;
     width: 30%;
+    z-index: 1000;
     min-height: 300px;
     max-height: 1200px;
     background-color: #393939;
