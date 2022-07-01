@@ -98,7 +98,7 @@ function finalizarReserva(){
         $.post("http://localhost:8089/finalizarReserva",{
             metodoPagamento:metodoPagamentoV,idHospede:hospedeV.idHospede,idTipoQuarto:tipoQuartoV.idTipoQuarto,dataEntrada:formatDate2(dataEntradaV),dataSaida:formatDate2(dataSaidaV),valorTotal:valorTotalV
         }, function(){
-            alert('entrou')
+            alert('Verifique seu email, em instantes você receberá um código para realizar o check-in no hotel!')
             window.location.replace("http://localhost:8089/compraEfetivadaCartao")
         })
     }else if(metodoPagamentoV != "cartao"){
@@ -189,6 +189,7 @@ function carregarDadosPosPgto(){
             precoTotal *= nQuartos
             
             document.querySelector(".info4").innerHTML = `Total: R$ ${precoTotal}`
-            sessionStorage.setItem('valorTotal',precoTotal)    
+            document.querySelector(".info5").innerHTML = `Total: R$ ${precoTotal}`
+            sessionStorage.setItem('valorTotal',precoTotal)
     })
 }

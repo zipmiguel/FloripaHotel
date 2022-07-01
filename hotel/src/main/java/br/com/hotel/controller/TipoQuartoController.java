@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import br.com.hotel.repositorio.DiariaRepositorio;
 import br.com.hotel.repositorio.TipoQuartoRepositorio;
 import br.com.hotel.model.Diaria;
-import br.com.hotel.model.Quarto;
 import br.com.hotel.model.TipoQuarto;
 
 //Luiz Eduardo 
@@ -83,6 +82,13 @@ public class TipoQuartoController{
         tipoQuartoOriginal.setNumeroPessoas((quantidadeCamaCasal*2)+quantidadeCamaSolteiro);
         tipoQuartoOriginal.setImagem(imagem.getBytes());
         System.out.println(imagem.getBytes());
+        System.out.println("a");
+        System.out.println("a");
+        System.out.println("a");
+        System.out.println("a");
+        System.out.println("a");
+        System.out.println("a");
+        System.out.println("a");
         tipoQuartoRepositorio.save(tipoQuartoOriginal);
         response.sendRedirect("/cadastroTipoQuarto");
     }
