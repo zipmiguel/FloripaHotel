@@ -82,6 +82,13 @@ public class TipoQuartoController{
         tipoQuartoOriginal.setNumeroPessoas((quantidadeCamaCasal*2)+quantidadeCamaSolteiro);
         tipoQuartoOriginal.setImagem(imagem.getBytes());
         System.out.println(imagem.getBytes());
+        System.out.println("a");
+        System.out.println("a");
+        System.out.println("a");
+        System.out.println("a");
+        System.out.println("a");
+        System.out.println("a");
+        System.out.println("a");
         tipoQuartoRepositorio.save(tipoQuartoOriginal);
         response.sendRedirect("/cadastroTipoQuarto");
     }
