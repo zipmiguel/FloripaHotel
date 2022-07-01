@@ -12,6 +12,13 @@ function ocultarPopup(){
 }
 function OpenEditPopup(idquarto){
        mostrarPopup()
+
+        $.post('http://localhost:8089/tipoQuarto/'+idquarto,{
+        }, function(tipoQuarto){
+            $(".campo1Form").val(tipoQuarto.quantidadeCamaSolteiro)
+            $(".campo2Form").val(tipoQuarto.quantidadeCamaCasal)
+        })
+
        const popupEditar = document.getElementById('editarPopup');
        popupEditar.removeAttribute('idquarto');
        popupEditar.setAttribute('idquarto',idquarto);
@@ -130,5 +137,3 @@ function deleteTipoQuarto(){
         }
     });*/
 }
-
-

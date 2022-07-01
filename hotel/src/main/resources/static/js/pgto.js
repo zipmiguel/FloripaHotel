@@ -86,21 +86,30 @@ function finalizarReserva(){
     const dataEntradaV = new Date(sessionStorage.getItem('dataEntrada')+' 12:00:00')
     const dataSaidaV = new Date(sessionStorage.getItem('dataSaida')+' 12:00:00')
     const valorTotalV = sessionStorage.getItem('valorTotal')
+    const metodoPagamentoV = document.querySelector('input[name=divOpcaoPgto]:checked').value
 
-    alert(JSON.stringify(hospedeV))
-    if ($("input[type=checkbox][name=salvarCartao]").is(":checked") && verificarRadio() && verificarCadCartao()) {
-        campos = verificarCadCartao()
-        $.post("http://localhost:8089/cadastrarCartao",{
-            bandeira:campos[0].val(),numero:campos[1].val(),vencimento:campos[2].val(),nome:campos[3].val(),cvv:campos[4].val(),tipo:campos[5].val(),idHospede:(JSON.parse(localStorage.getItem('hospede'))).idHospede
+    if(verificarRadio() && verificarCadCartao()){
+        if($("input[type=checkbox][name=salvarCartao]").is(":checked")){
+            let campos = verificarCadCartao()
+            $.post("http://localhost:8089/cadastrarCartao",{
+                bandeira:campos[0].val(),numero:campos[1].val(),vencimento:campos[2].val(),nome:campos[3].val(),cvv:campos[4].val(),tipo:campos[5].val(),idHospede:(JSON.parse(localStorage.getItem('hospede'))).idHospede
+            })
+        }
+        $.post("http://localhost:8089/finalizarReserva",{
+            metodoPagamento:metodoPagamentoV,idHospede:hospedeV.idHospede,idTipoQuarto:tipoQuartoV.idTipoQuarto,dataEntrada:formatDate2(dataEntradaV),dataSaida:formatDate2(dataSaidaV),valorTotal:valorTotalV
+        }, function(){
+            alert('Verifique seu email, em instantes você receberá um código para realizar o check-in no hotel!')
+            window.location.replace("http://localhost:8089/compraEfetivadaCartao")
+        })
+    }else if(metodoPagamentoV != "cartao"){
+        $.post("http://localhost:8089/finalizarReserva",{
+            metodoPagamento:metodoPagamentoV,idHospede:hospedeV.idHospede,idTipoQuarto:tipoQuartoV.idTipoQuarto,dataEntrada:formatDate2(dataEntradaV),dataSaida:formatDate2(dataSaidaV),valorTotal:valorTotalV
+        },function(){
+            window.location.replace("http://localhost:8089/"+metodoPagamentoV)
         })
     }else{
-        alert("Preencha os dados do cartão corretamente!")
+        alert("Preencha seus dados de pagamento corretamente!")
     }
-    $.post("http://localhost:8089/finalizarReserva",{
-        idHospede:hospedeV.idHospede,idTipoQuarto:tipoQuartoV.idTipoQuarto,dataEntrada:formatDate2(dataEntradaV),dataSaida:formatDate2(dataSaidaV),valorTotal:valorTotalV
-        }, function(reserva){
-              
-    })
 }
 function verificarRadio(){
     if (document.querySelector('#radioCartao').checked) {
@@ -145,4 +154,42 @@ function verificarCadCartao(){
         return false
     }
     return campos
+}
+
+function carregarDadosPosPgto(){
+    const tipoQuarto = JSON.parse(sessionStorage.getItem('tipoQuarto'))
+    const dataEntrada = new Date(sessionStorage.getItem('dataEntrada')+' 12:00:00')
+    const dataSaida = new Date(sessionStorage.getItem('dataSaida')+' 12:00:00')
+    const nAdultos = sessionStorage.getItem('adultos')
+    const nCriancas = sessionStorage.getItem('criancas')
+    const nQuartos = sessionStorage.getItem('qntdQuartos')
+    var diasSemana = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"]
+
+    const diaSemanaEntrada = diasSemana[dataEntrada.getDay()]
+    const diaSemanaSaida = diasSemana[dataSaida.getDay()]
+    var diferenca = dataSaida.getTime() - dataEntrada.getTime()
+    var diferencaEmDias = diferenca / (1000 * 3600 * 24);
+
+    var precoTotal = 0
+    document.querySelector(".info1").innerHTML = `${diaSemanaEntrada}, ${formatDate(dataEntrada)} - ${diaSemanaSaida}, ${formatDate(dataSaida)}`
+    document.querySelector(".info2").innerHTML = `${nAdultos} Adulto(s), ${nCriancas} Criança(s)`
+    document.querySelector(".info3").innerHTML = `${nQuartos} Quarto(s) ${tipoQuarto.tipoQuarto}`
+
+    $.post("http://localhost:8089/diaria/"+tipoQuarto.idTipoQuarto,{
+        }, function(Diaria){
+            for(let i = 0; i < diferencaEmDias; i++){
+                let diariaAtual = new Date(dataEntrada)
+                diariaAtual.setDate(dataEntrada.getDate() + i)
+                if(diariaAtual.getDay() == 0 || diariaAtual.getDay() == 6){
+                    precoTotal += Diaria.fimDeSemana
+                }else{
+                    precoTotal += Diaria.diaUtil
+                }
+            }
+            precoTotal *= nQuartos
+            
+            document.querySelector(".info4").innerHTML = `Total: R$ ${precoTotal}`
+            document.querySelector(".info5").innerHTML = `Total: R$ ${precoTotal}`
+            sessionStorage.setItem('valorTotal',precoTotal)
+    })
 }

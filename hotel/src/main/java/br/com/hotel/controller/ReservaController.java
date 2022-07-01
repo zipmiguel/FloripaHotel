@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.hotel.apis.SenderMailService;
 import br.com.hotel.model.Hospede;
 import br.com.hotel.model.Reserva;
 import br.com.hotel.model.TipoQuarto;
@@ -27,6 +29,8 @@ import br.com.hotel.repositorio.TipoQuartoRepositorio;
 @RestController
 public class ReservaController {
     
+    @Autowired
+    SenderMailService senderMailService;
     @Autowired
     HospedeRepositorio hospedeRepositorio;
     @Autowired
@@ -70,7 +74,7 @@ public class ReservaController {
 
 
     @PostMapping("/finalizarReserva")
-    public Reserva cadastrarReserva(@RequestParam Long idHospede,@RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto) {
+    public void cadastrarReserva(HttpServletResponse response, @RequestParam String metodoPagamento,@RequestParam Long idHospede,@RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto) throws MessagingException{
         Reserva reserva = new Reserva();
         Optional<Hospede> hospede = hospedeRepositorio.findById(idHospede);
         Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(idTipoQuarto);
@@ -82,11 +86,11 @@ public class ReservaController {
         reserva.setValorPago(valorTotal);
         reserva.setTipoQuarto(tipoQuarto.get());
         reserva.setStatus("Não chegou");
-        reserva.setMetodoPagamento("a");
-        reserva.setCodigoReserva(System.currentTimeMillis());
+        reserva.setMetodoPagamento(metodoPagamento);
+        Long codigo = System.currentTimeMillis();
+        senderMailService.codigoReserva(hospede.get().getEmail(),hospede.get().getNome(),codigo);
+        reserva.setCodigoReserva(codigo);
         reservaRepositorio.save(reserva);
-        return reserva;
-
     }
 
     //terminar esse método para fazer a busca da reserva efetivada p/ depois checkin nos quartos

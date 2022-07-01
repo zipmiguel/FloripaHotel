@@ -1,5 +1,6 @@
 package br.com.hotel.apis;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 import javax.mail.MessagingException;
@@ -64,6 +65,19 @@ public class SenderMailService {
         helper.setText("<html><head></head><body><h2 style=\"color: black;\">Floripa Hotel</h2> <br/>"+
         "<h3 style=\"color: black;\">Olá "+nome+", seu cadastro está quase concluído, por favor clique no link abaixo para finalizá-lo !<br/><br/>"+
         "<a href=\"http://localhost:8089/finalizarCadastro/"+codigo+"\">Clique aqui!</a></h3></body></html>", true);
+        mailSender.send(mimeMessage);
+    }
+    @Async
+    public void codigoReserva(String endereco, String nome,Long codigo) throws MessagingException {
+        String codigoS = codigo.toString();
+        String codigoFormatado = codigoS.substring(0, 4)+"-"+codigoS.substring(4, 8)+"-"+codigoS.substring(8, 12)+"-"+codigoS.substring(12);
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+        helper.setTo(endereco);
+        helper.setSubject("Reserva Concluída com sucesso!");
+        helper.setText("<html><head></head><body><h2 style=\"color: black;\">Floripa Hotel</h2> <br/>"+
+        "<h3 style=\"color: black;\">Olá "+nome+", sua reserva está concluída, por favor apresente esse código para realizar o check-in ao chegar no hotel!<br/><br/>"+
+        "<h2>"+codigoFormatado+"</h2></body></html>", true);
         mailSender.send(mimeMessage);
     }
 }
