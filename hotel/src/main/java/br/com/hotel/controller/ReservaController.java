@@ -3,6 +3,7 @@ package br.com.hotel.controller;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +11,6 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,20 +41,31 @@ public class ReservaController {
     private TipoQuartoRepositorio tipoQuartoRepositorio;
 
     @PostMapping("/pesquisarReserva")
-    public List<TipoQuarto> pesquisarReserva(HttpServletResponse response, @RequestParam String dataEntrada, @RequestParam String dataSaida)  throws IOException {
+    public List<List<? extends Object>> pesquisarReserva(HttpServletResponse response, @RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam int qntdPessoas, @RequestParam int qntdAdultos)  throws IOException {
         LocalDate entrada = LocalDate.parse(dataEntrada);
         LocalDate saida = LocalDate.parse(dataSaida);
         List<TipoQuarto> listaTipoQuarto = tipoQuartoRepositorio.BuscarTiposQuartoTrue();
         List<TipoQuarto> disponibilidade = new ArrayList<>();
+        List<Integer> maximo = new ArrayList<>();
         for (TipoQuarto tipoQuarto : listaTipoQuarto) {
-            if(disponibilidadeTipoQuarto(tipoQuarto, entrada, saida)){
-                disponibilidade.add(tipoQuarto);
+            if(disponibilidadeTipoQuarto(tipoQuarto, entrada, saida) * tipoQuarto.getNumeroPessoas() >= qntdPessoas){
+                double qntdPessoasD = qntdPessoas;
+                Double minQuartos = Math.ceil(qntdPessoasD/tipoQuarto.getNumeroPessoas());
+                System.out.println(qntdAdultos);
+                System.out.println(qntdPessoas);
+                System.out.println(tipoQuarto.getNumeroPessoas());
+                System.out.println(minQuartos);
+                System.out.println(tipoQuarto.getTipoQuarto());
+                if(qntdAdultos >= minQuartos){
+                    disponibilidade.add(tipoQuarto);
+                    maximo.add(disponibilidadeTipoQuarto(tipoQuarto,entrada,saida));
+                }
             }
         }
-        return disponibilidade;
+        return Arrays.asList(disponibilidade,maximo);
     }
 
-    public Boolean disponibilidadeTipoQuarto(TipoQuarto tipoQuarto, LocalDate entrada, LocalDate saida){
+    public int disponibilidadeTipoQuarto(TipoQuarto tipoQuarto, LocalDate entrada, LocalDate saida){
         
         List<Reserva> listaReservas = reservaRepositorio.findAll();
         int quantidadeReservasInterferem = 0;
@@ -65,11 +76,12 @@ public class ReservaController {
                 }
             }
         }
-        if(quantidadeReservasInterferem < quartoRepositorio.contarPeloTipoQuarto(tipoQuarto.getIdTipoQuarto())){
-            return true;
-        }else{
-            return false;
-        }
+        // if(quantidadeReservasInterferem < quartoRepositorio.contarPeloTipoQuarto(tipoQuarto.getIdTipoQuarto())){
+        //     return true;
+        // }else{
+        //     return false;
+        // }
+        return quartoRepositorio.contarPeloTipoQuarto(tipoQuarto.getIdTipoQuarto()) - quantidadeReservasInterferem;
     }
 
 
