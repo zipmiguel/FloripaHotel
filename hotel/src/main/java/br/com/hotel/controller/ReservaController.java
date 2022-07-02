@@ -117,18 +117,16 @@ public class ReservaController {
 
      //terminar esse método para fazer a busca da reserva efetivada p/ depois checkin nos quartos
      @GetMapping("/pesquisarReservaEfetivada/{numero}")
-     public List<Quarto> buscarQuartosDisponiveis(@PathVariable("numero") String numero) {
-         System.out.println(numero);
-         System.out.println(numero);
+     public List<Object> buscarQuartosDisponiveis(@PathVariable("numero") String numero) {
          System.out.println(numero);
          System.out.println(numero);
          Reserva reservaBusca = reservaRepositorio.searchCodeReserva(numero);
          List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(reservaBusca.getTipoQuarto());
-         return listaQuartoEspecifico;
+         return Arrays.asList(listaQuartoEspecifico,reservaBusca);
      }
     @PutMapping("/listaQuartos")
-    public List<Quarto> listaQuartos(@RequestParam long idTipoQuarto){
-    		Optional<TipoQuarto> quartoTipo =  tipoQuartoRepositorio.findById(idTipoQuarto);
+    public List<Quarto> listaQuartos(@RequestParam String idTipoQuarto){
+    		Optional<TipoQuarto> quartoTipo =  tipoQuartoRepositorio.findById((Long.parseLong(idTipoQuarto)));
     		if (quartoTipo.isPresent()) {
 				List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(quartoTipo.get());
 				return listaQuartoEspecifico;
@@ -146,5 +144,19 @@ public class ReservaController {
             quartoLiberado.get().setStatus(false);
             quartoRepositorio.save(quartoLiberado.get());
         }
+    }
+    @PostMapping("/reservaPeloQuarto")
+    public Boolean reservasQuartos(@RequestParam Long idQuarto, @RequestParam String data){
+        LocalDate dataFormatada = LocalDate.parse(data);
+        Optional<Quarto> quarto = quartoRepositorio.findById(idQuarto);
+        List<Reserva> lista = reservaRepositorio.findByQuarto(quarto.get());
+        Boolean reservaExistente = false;
+        for (Reserva reserva : lista) {
+            if(reserva.getDataEntrada().isBefore(dataFormatada) && reserva.getDataSaida().isAfter(dataFormatada)){
+                reservaExistente = true;
+                break;
+            }
+        }
+        return reservaExistente;
     }
 }

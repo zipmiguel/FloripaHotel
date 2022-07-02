@@ -1,15 +1,14 @@
 
 
 function openCheckin(idTipoQuarto,puxarPeloCodigo ){
-	mostrarPopup()
     const popupCheckin = document.getElementById('check-in-Popup');
+    popupCheckin.setAttribute('idTipoQuarto',idTipoQuarto);
 	   if(!puxarPeloCodigo){
 		   carregarQuartos();
 	   }
-       popupCheckin.removeAttribute('idTipoQuarto');
-       popupCheckin.setAttribute('idTipoQuarto',idTipoQuarto);
        popupCheckin.style.visibility = 'visible';
        popupCheckin.style.display = 'block';
+       mostrarPopup()
        let input = $(`input[name="tipoQuarto${idTipoQuarto}"]`)
        $('#tituloCheckin').html(input.val());
 }
@@ -21,7 +20,7 @@ function closeCheckin(){
 }
 
 function carregarQuartos(){
-	const popupCheckin = document.getElementById('check-in-Popup');
+    const popupCheckin = document.getElementById('check-in-Popup');
     $.ajax({
         type: "put",
         dataType: "json",
@@ -68,15 +67,16 @@ function carregarCheck(){
         success: function (data) {
             const tabela = document.querySelector('#listerCheckin')
             let tr = "";
-            $.each(data,function(i,value){
-             tr+= `<tr class="TipoQuarto" idTipoQuarto=${value.idTipoQuarto}">
-             <td><input type="text" class="centralText" name="tipoQuarto${value.idTipoQuarto}" value="${value.tipoQuarto}" style="font-family: 'Montserrat Alternates';font-weight: bold;" disabled></td>
-             <td>
-             <img src="img/buscar_lupa_30_30px.svg" class="botaoPopup pointer" onclick="openCheckin(${value.idTipoQuarto,false})">
-             </td>
-             </tr>
-             `;
-            })
+            data.forEach(value => {
+                
+                tr+= `<tr class="TipoQuarto" idTipoQuarto="${value.idTipoQuarto}">
+                <td><input type="text" class="centralText" name="tipoQuarto${value.idTipoQuarto}" value="${value.tipoQuarto}" style="font-family: 'Montserrat Alternates';font-weight: bold;" disabled></td>
+                <td>
+                <img src="img/buscar_lupa_30_30px.svg" class="botaoPopup pointer" onclick="openCheckin(${value.idTipoQuarto},false)">
+                </td>
+                </tr>
+                `;
+            });
         $('.TipoQuarto').remove();
         $('#listerCheckin').append(tr);
     },
@@ -85,8 +85,22 @@ function carregarCheck(){
         }
     })
 }
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}
+function formatDate(date){
+    return [
+        date.getFullYear(),
+        padTo2Digits(date.getMonth() + 1),
+        padTo2Digits(date.getDate()),
+      ].join('-');
+}
 function carregarQuartosCodigo(){
-	const codigoReserva = $('#codigoReserva').val();
+    const codigoReserva = $('#codigoReserva').val();
+    teste = {
+        numero:"",
+        none:""
+    };
     $.ajax({
         type: "GET",
         dataType: "json",
@@ -95,36 +109,43 @@ function carregarQuartosCodigo(){
             var ColecaoQuartosTipo = []
             const corte = 5;
             let conteudoTotal = "";
-            let conteudoColuna = "";
-            for (let i = 0; i < data.length; i = i + corte) {
-            ColecaoQuartosTipo.push(data.slice(i, i + corte));
+            let dataAtual = new Date();
+            for (let i = 0; i < data[0].length; i = i + corte) {
+            ColecaoQuartosTipo.push(data[0].slice(i, i + corte));
+            teste.numero = i ;
+            teste.none = corte+i
             }
             ColecaoQuartosTipo.forEach(fileiraQuarto=>{
-                conteudoColuna = ""
+                let conteudoColuna = ""
                 conteudoColuna+=`<div class="lineCheckin">`
-                fileiraQuarto.forEach(quarto=>{
-                    var checkQuarto1 = quarto.status==true ? 'disponivel' : 'indisponivel'
-                    var checkQuarto2 = quarto.status==true ? 'buttonPopupCheckinSuccess' : 'buttonPopupCheckinFailed'
-                    var checkQuarto3 = quarto.status==true ? true : false
-                    
-                    conteudoColuna+=`
-
-                    <div class="quartoCheckin">
-                    <div class="quartoCheckinTitulo">${quarto.numero}</div>
-                    <button class="buttonPopupCheckin ${checkQuarto2}" onclick="OpenPopupCheckin(${checkQuarto3},${quarto.idQuarto})">${checkQuarto1}</button>
-                    </div>`
-                })
-                conteudoColuna+='</div>'
+                fileiraQuarto.forEach(quartoV=>{
+                    $.post("http://localhost:8089/reservaPeloQuarto",{
+                        
+                        idQuarto:quartoV.idQuarto,data:formatDate(dataAtual)
+                    },function(existeReserva){
+                            var checkQuarto1 = existeReserva ? 'disponivel' : 'indisponivel'
+                            var checkQuarto2 = existeReserva ? 'buttonPopupCheckinSuccess' : 'buttonPopupCheckinFailed'
+                            conteudoColuna+=` 
+                            <div class="quartoCheckin">
+                            <div class="quartoCheckinTitulo">${quartoV.numero}</div>
+                            <button class="buttonPopupCheckin ${checkQuarto2}" onclick="OpenPopupCheckin(${existeReserva},${quartoV.idQuarto})">${checkQuarto1}</button>
+                            </div>`
+                        })
+                    })
+                    conteudoColuna+='</div>'
                 conteudoTotal+=conteudoColuna;
-            })
-         console.log(conteudoTotal)
-         let idtitulo = data[0].tipoQuarto.idTipoQuarto;
-         openCheckin(idtitulo,true)
-         $('.TipoQuarto').remove();
-         $('#contentCheckin').append(conteudoTotal);
-    },
-        error: function() {
-            alert('codigo não encontrado');
+                
+                this.conteudoTotal+=conteudoColuna;
+                
+                console.log(conteudoTotal)
+                let idtitulo = data[0][0].tipoQuarto.idTipoQuarto;
+                openCheckin(idtitulo,true)
+        
+                $('#contentCheckin').html(conteudoTotal);
+                })
+            },
+            error: function() {
+                alert('codigo não encontrado');
         }
     })
 }
