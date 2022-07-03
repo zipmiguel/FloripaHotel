@@ -46,7 +46,7 @@ $(document).ready(function(){
 
 function cadastroEsalvarQuarto(){
     const numeroV = $("input[name=numero]").val()
-    const statusV = $("input[name=status]").val()
+    const statusV = document.querySelector('input[name=status]:checked').value
     const tipoQuartoV = $("select[name=tipoQuarto]").val()
     
     if(numeroV == "" || statusV == "" || tipoQuartoV == ""){
