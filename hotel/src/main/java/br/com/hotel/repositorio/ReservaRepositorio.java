@@ -19,4 +19,6 @@ public interface ReservaRepositorio extends JpaRepository<Reserva, Long> {
     List<Reserva> findByQuarto(Quarto quarto);
     @Query(value = "select *from reserva where codigoReserva = :codigoReserva2",nativeQuery = true)
     Reserva searchCodeReserva(@Param("codigoReserva2") String codigoReserva);
+    @Query(value = "select *from reserva where id_quarto = :id_quarto and status!='Não chegou'",nativeQuery = true)
+    List<Reserva> searchQuartoNchegou(@Param("id_quarto") long id_quarto);
 }

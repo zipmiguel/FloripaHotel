@@ -577,15 +577,13 @@ div .quartoCheckin{
     margin-top: 100px;
 }
 #popupSalvarCheckin{
-    margin-top: 100px;
+    position: absolute;
     display: none;
     visibility: hidden;
     width: 30%;
-    z-index: 1000;
+    z-index: 100000000;
     min-height: 300px;
     max-height: 1200px;
     background-color: #393939;
     margin: 0 auto;
-    top: 100px;
-    position: absolute;
 }
