@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tela de Pagamento</title>
+        <title>Pagamento Usuário</title>
         <link href='https://fonts.googleapis.com/css?family=Montserrat Alternates' rel='stylesheet'>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -12,6 +12,9 @@
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquey-mask.js"></script>
         <script src="js/cliente.js"></script>
+
+        <script src="js/verificarUsuario.js"></script>
+        <script src="js/pgto.js"></script>
 
         <!-- Css Styles -->
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -23,28 +26,32 @@
         <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
-        
+        <script>
+            $(document).ready(function(){
+                carregarDadosReserva();
+            });
+        </script>
     </head>
     <body>
         <header class="header-section">
             <div class="container-fluid">
                 <div class="inner-header">
                     <div class="logo">
-                        <a href="./index.html"><img src="img/logo.svg" alt=""></a>
+                        <a href="./"><img src="img/logo.svg" alt=""></a>
                     </div>
                     <div class="nav-right">
-                        <a href="./index.html#reserva" class="primary-btn">Faça sua Reserva</a>
-                        <a href="./index.html#reserva" id="button-login">Login</a>
-                        <h6 class="text-white">Ainda não tem conta?<a href="./index.html#reserva" id="button-cadastro">Cadastre-se</a></h6>
+                        <a href="./#reserva" class="primary-btn">Faça sua Reserva</a>
+                        <a href="./#reserva" id="button-login">Login</a>
+                        <h6 class="text-white">Ainda não tem conta?<a href="./#reserva" id="button-cadastro">Cadastre-se</a></h6>
                     </div>
                     <nav class="main-menu mobile-menu">
                         <ul>
-                            <li><a href="./index.html">Início</a></li>
-                            <li><a href="rooms.html">Quartos</a></li>
-                            <li><a href="services.html">Serviços</a></li>
-                            <li><a href="./about-us.html">Sobre</a></li>
-                            <!-- <li><a href="./blog.html">Notícias</a></li> -->
-                            <li><a href="./contact.html">Contato</a></li>
+                            <li><a href="./">Início</a></li>
+                            <li><a href="rooms">Quartos</a></li>
+                            <li><a href="services">Serviços</a></li>
+                            <li><a href="./about-us">Sobre</a></li>
+                            <!-- <li><a href="./blog">Notícias</a></li> -->
+                            <li><a href="./contact">Contato</a></li>
                         </ul>
                     </nav>
                     <div id="mobile-menu-wrap"></div>
@@ -53,11 +60,12 @@
         </header>
         <form class="formularioCompra" action="">
             <h1 class="negrito underLineLaranja">Sua estadia</h1>
-            <h2 class="informacoes">segunda, 30/05/2022 - terça, 31/05/2022</h2>
-            <h2 class="informacoes">2 Adultos, 1 Criança</h2>
-            <h2 class="informacoes">1 Quarto Standard</h2>
-            <h2 class="informacoes negrito">Total: R$1699,99</h2>
-            <h3>Faça login ou cadastre-se para finalizar sua reserva de modo rápido e seguro!!!</h3>
+            <h2 class="informacoes info1">segunda, 30/05/2022 - terça, 31/05/2022</h2>
+            <h2 class="informacoes info2">2 Adultos, 1 Criança</h2>
+            <h2 class="informacoes info3">1 Quarto Standard</h2>
+            <h2 class="informacoes info4 negrito">Total: R$1699,99</h2>
+            <h3 id="avisoCadastro">Faça login ou cadastre-se para finalizar sua reserva de modo rápido e seguro!!!</h3>
+            <hr style="margin-top: 60px;" class="hrLaranja">
             <div class="formulario" action="">
                 <div class="cadastro">
                     <h1 class="negrito tituloCadastro">Informações de Contato</h1>
@@ -74,12 +82,12 @@
                             <h1 class="negrito">CPF</h1>
                             <input type="text" class="cpf" name="cpfCliente" placeholder="xxx.xxx.xxx-xx">
                         </div>
+                    </div>
+                    <div class="cadastroDireita">
                         <div class="campoCadastro">
                             <h1 class="negrito">Endereço</h1>
                             <input type="text" name="enderecoCliente" placeholder="Rua, nº, Cidade, Estado, País, CEP">
                         </div>
-                    </div>
-                    <div class="cadastroDireita">
                         <div class="campoCadastro">
                             <h1 class="negrito">Email</h1>
                             <input type="email" name="emailCliente" placeholder="exemplo@email.com"></select>
@@ -87,14 +95,6 @@
                         <div class="campoCadastro">
                             <h1 class="negrito">Nascimento</h1>
                             <input type="date" name="dataNascimentoCliente">
-                        </div>
-                        <div class="campoCadastro">
-                            <h1 class="negrito">Senha</h1>
-                            <input type="password" name="senhaCliente" placeholder="Exemplo123!">
-                        </div>
-                        <div class="campoCadastro">
-                            <h2 class="negrito">Confirmar Senha</h2>
-                            <input type="password" name="senhaCliente" placeholder="Exemplo123!">
                         </div>
                     </div>
                 </div>
@@ -105,24 +105,24 @@
             </h3>
                 <div class="divOpcaoPgto" style="margin-left: 5%;">
                     <h2 class="negrito">Pagar via Boleto</h1>
-                    <input type="radio" name="divOpcaoPgto" value="boleto">
+                    <input type="radio" onchange="verificarRadio()" name="divOpcaoPgto" value="boleto">
                 </div>
                 <div class="divOpcaoPgto">
                     <h2 class="negrito">Pagar via Cartão</h1>
-                    <input type="radio" name="divOpcaoPgto" value="cartao">
+                    <input type="radio" onchange="verificarRadio()" id="radioCartao" name="divOpcaoPgto" value="cartao" checked>
                 </div>
                 <div class="divOpcaoPgto">
                     <h2 class="negrito">Pagar via PIX</h1>
-                    <input type="radio" name="divOpcaoPgto" value="pix">
+                    <input type="radio" onchange="verificarRadio()" name="divOpcaoPgto" value="pix">
                 </div>
-                <div class="formulario" action="">
+                <div id="formCartao" class="formulario" action="">
                     <div class="cadastro">
                         <h1 class="negrito tituloCadastro">Cadastro Cartão</h1>
                         <div class="cadastroEsquerda">
                             <div class="campoCadastro">
                                 <h1 class="negrito">Bandeira</h1>
                                 <select id="bandeirasCartoes" name="selectBandeirasCartoes" class="pointer">
-                                    <option value="" selected disabled hidden>Selecione a Bandeira do Cartão</option>
+                                    <option value="" selected disabled>Selecione a Bandeira do Cartão</option>
                                     <option value="americanExpress">American Express</option>
                                     <option value="dinersClubInternational">Diners Club International</option>
                                     <option value="elo">Elo</option>
@@ -139,6 +139,10 @@
                                 <h1 class="negrito">Vencimento</h1>
                                 <input type="month" name="vencimentoCartao">
                             </div>
+                            <div class="campoCadastro" style="margin: 50px 0 0 0; padding: 0 180px 0 0; display: inline-block; ">
+                                <h6 class="negrito">Salvar cartão para compras futuras!</h6>
+                                <input type="checkbox" name="salvarCartao"/>
+                            </div>
                         </div>
                         <div class="cadastroDireita">
                             <div class="campoCadastro">
@@ -149,10 +153,18 @@
                                 <h1 class="negrito">CVV</h1>
                                 <input type="text" class="cvv" name="cvv" placeholder="xxx">
                             </div>
+                            <div class="campoCadastro">
+                                <h1 class="negrito">Tipo Cartão</h1>
+                                <select name="selectCreditoOuDebito" class="pointer">
+                                    <option value="" selected disabled>Selecione Crédito ou Débito</option>
+                                    <option value="cartaoCredito">Cartão de Crédito</option>
+                                    <option value="cartaoDebito">Cartão de Débito</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-            <input type="submit" class="botaoFinalizarCadastro negrito" value="Finalizar Reserva">
+            <input type="button" onclick="finalizarReserva()" class="botaoFinalizarCadastro negrito" value="Finalizar Reserva">
         </form>
         <footer class="footer-section">
             <div class="container">
@@ -190,12 +202,12 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <ul>
-                                <li><a href="./index.html">Início</a></li>
-                                <li><a href="rooms.html">Quartos</a></li>
-                                <li><a href="services.html">Serviços</a></li>
-                                <li><a href="./about-us.html">Sobre</a></li>
-                                <!-- <li><a href="./blog.html">Notícias</a></li> -->
-                                <li><a href="./contact.html">Contato</a></li>
+                                <li><a href="./">Início</a></li>
+                                <li><a href="rooms">Quartos</a></li>
+                                <li><a href="services">Serviços</a></li>
+                                <li><a href="./about-us">Sobre</a></li>
+                                <!-- <li><a href="./blog">Notícias</a></li> -->
+                                <li><a href="./contact">Contato</a></li>
                             </ul>
                         </div>
                     </div>

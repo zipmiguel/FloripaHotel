@@ -169,9 +169,10 @@ form{
     font-size: 25px;
 }
 .campoCadastro input, .campoCadastro select{
-    height: 30%;
-    width: 300px;
+    height: 30px;
+    width: 300px; 
     border: 0;
+    padding: 0 10px 0 10px;
 }
 .cadastro input[type=submit], .cadastro input[type=reset], .cadastro input[type=button]{
     margin: 0 50px 0 50px;
@@ -196,8 +197,11 @@ form{
     cursor: pointer;
 }
 /* luiz_eduardo */
-.cadastroCentro{
-    width: 62.5%;
+.centralizarDiv{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 27.5%;
+    height: 75px;
 }
 .tipoCargo{
     width: 100%;
@@ -216,9 +220,17 @@ form{
     display: inline;
     margin-left: 30%;
 }
+.nomeNovoCargoPermissao{
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    display: inline;
+    margin-left: 320px;
+}
 .inputCadastroCargo{
     display: inline;
-    width: 450px;
+    /* width: 450px; */
 }
 .botoesCadastro{
     width: 100%;
@@ -226,9 +238,7 @@ form{
     justify-content: space-around;
 }
 /* table_TeladosPreços */
-#tabelaPrecos{
-    width: 1200px;
-    height: 315px;
+table.table-hover{
     background-color: #FFF;
     border-collapse: collapse;
     border: 1px solid black;
@@ -248,4 +258,305 @@ td{
     font-weight: bold;
     border: 1px solid #000000;
     border-collapse: collapse;
+}
+/* configuracoes footer */
+footer {
+    width: 100%;
+	font-family: "Montserrat Alternates", sans-serif;
+	-webkit-font-smoothing: antialiased;
+    font-size: 0.915em;
+}
+.copyright {
+	background: #171717;
+	overflow: hidden;
+	padding: 24px;
+	margin-top: 30px;
+}
+.copyright .copyright-text {
+	float: left;
+	font-size: 13px;
+	color: #9d9d9d;
+	font-weight: 600;
+	line-height: 28px;
+}
+/*luizEduardoQuarto*/
+.confirmar{
+    background-color: #F9AD81;
+    border: 0;
+    padding: 7px 30px 7px 30px;
+    
+}
+.centralText{
+    text-align: center;
+    padding:0 10px 0 10px;
+    margin-top: 7px;
+}
+.popup{
+    visibility: hidden;
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    transition: all .2s ease-in-out;
+}
+.botaoPopup{
+    padding-right: 20px;
+    padding-left: 20px;
+}
+#editarPopup{
+    display: none;
+    visibility: hidden;
+    width: 30%;
+    min-height: 300px;
+    max-height: 900px;
+    background-color: #EEEEEE;
+    margin: 0 auto;
+    flex-direction: column;
+}
+#editarPopup input[type="text"]{
+    width: 100%;
+    height: 30px;
+    
+}
+.imgEditar{
+    width: 36px;
+    height: 36px;
+    margin-left: 460px;
+    }
+.headerPopup{
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#editarPopup .headerPopup .tituloPopup{
+    padding-top: 30px;
+    font-size: 40px;
+    font-family: 'Montserrat Alternates';
+}
+.footerTabela {
+    position: relative;
+    margin-top: auto;
+}
+.show {
+    visibility: visible;
+    z-index: 200;
+    opacity: 1;
+}
+.inputPopup .title-input{
+    padding-top: 20px;
+    margin-bottom: 10px;
+    font-size: 23.5px;
+    font-family: 'Montserrat Alternates';
+    font-weight: bold;
+}
+.inputpopupForm{
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 0 none;
+    outline: none;
+    border-radius: 5px;   
+}
+.selectPopupForm{
+    width: 85%;
+    padding: 0px 10px 0px 10px;
+    outline: none;
+    margin-top: 7px;
+}
+#editarPopup .inputPopup{
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Montserrat Alternates';
+    margin-bottom: 20px;
+    width: 80%;
+    height: 80px;
+}   
+.footerPopup{
+    padding-top: 40px;
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-around;
+}
+.buttonPopup{
+    width: 38%;
+    height: 55px;
+    border: 0 none;
+    font-size: 25px;
+    font-family: 'Montserrat Alternates';
+    background-color: #EEEEEE;
+}
+.buttonSuccess{
+    background-color: #93ff90;
+}
+.buttonCancel{
+    background-color: #FF8383;
+}
+.buttonPopup button[type="button"]{
+    font-weight: bold;
+}
+#radioCargo{
+    display: flex;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 50px;
+    justify-content: space-around;
+}
+#radioCargo div{
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#radioCargo div h3{
+    width: 100%;
+    margin-bottom: 10px;
+}
+#radioCargo div input{
+    width: 20px;
+    height: 20px;
+}
+.hrLaranja{
+	height: 3px;
+	border: none;
+	background-color: #F9AD81;
+	opacity: 100%;
+	width: 90%;
+	margin: 10px auto 30px auto;
+}
+#deletePopup{
+    display: none;
+    visibility: hidden;
+    width: 30%;
+    min-height: 300px;
+    max-height: 1200px;
+    background-color: #393939;
+    margin: 0 auto;
+    flex-direction: column;
+}
+#icon-deletePopup{
+    width:  72px;
+    height: 72px;
+    border: 5px solid  #ec3838;
+    border-radius: 50px;
+}
+.titulo-tabela{
+    margin-bottom: 20px;
+    display: block;
+    font-family: 'Montserrat Alternates';
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+tr th{
+    font-family: 'Montserrat Alternates';
+    border-bottom: 1px solid #000000;
+}
+.formularioLogin{
+	margin: 240px 27.5% 100px 27.5%;
+	width: 45%;
+	height: 800px;
+	background-color: #EEEEEE;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+}
+.formularioLogin h1, .formularioLogin h2{
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	margin-top: 70px;
+	width: 100%;
+}
+.formularioLogin h1{
+	height: 80px;
+	font-size: 3.5em;
+}
+.formularioLogin h3.linhaUnica{
+	margin-left: 5%;
+}
+.formularioLogin h2{
+	justify-content: left;
+	margin-left: 5%;
+}
+.formularioLogin input[type=text], .formularioLogin input[type=password], .formularioLogin input[type=email]{
+	width: 90%;
+	height: 40px;
+	border: 0;
+	padding: 0 10px 0 10px;
+	margin-top: 10px;
+	margin-left: 5%;
+}
+.formularioLogin a{
+	margin-top: 20px;
+	margin-left: 5%;
+	text-decoration: underline;
+	width: 100%;
+}
+.formularioCompra h3.linhaUnica, .formularioLogin h3.linhaUnica{
+	border-bottom: 0;
+	height: 0;
+	padding: 0;
+	margin: 50px auto 50px auto;
+}
+.formularioLogin .botaoFinalizarCadastro{
+	margin-top: 80px;
+	font-size: 2em;	
+}
+#check-in-Popup{
+    display: none;
+    visibility: hidden;
+    width: 500px;
+    min-height: 300px;
+    max-height: 1200px;
+    background-color: #EEEEEE;
+    margin: 0 auto;
+    transition: all .30s ease-in-out;
+}
+div .contentCheckin{
+	display: block;
+	width: 100%;
+	min-height:250px;
+	max-height:800px;
+	margin: 0 auto;
+    margin-bottom: 50px;
+}
+div .lineCheckin{
+	display: grid;
+	width: 100%;
+	height: 60px;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	margin-bottom: 20px;
+}
+div .quartoCheckin{
+	display:grid;
+    grid-template-rows: 35% 65%;
+}
+.quartoCheckinTitulo{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.buttonPopupCheckin{
+    border: 0 none;
+}
+.buttonPopupCheckinSuccess{
+    background-color: #93FF91;
+}
+.buttonPopupCheckinFailed{
+    background-color: #FF8383;
+
+}
+#closeCheckin{
+    background-image: url(../img/close_2.png);
+    width: 48px;
+    height: 48px;
+    border: 0 none;
 }

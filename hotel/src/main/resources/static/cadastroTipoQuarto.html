@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--feito por luiz Eduardo Sagaz Carvalho-->
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro de Quarto</title>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat Alternates' rel='stylesheet'>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/hotel.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <script src="js/storageManager.js"> </script>
+        <script src="js/tabela.js"></script>
+        <script>
+            $(document).ready(function(){
+                carregarTipoQuarto();
+                checkUser();
+            });
+        </script>
+        <style>
+            th{text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 18px;};
+        </style>
+    </head>
+    <body>
+        <div class="cabecalho">
+            <div class="nomedoHotel">
+                <a href="">
+                    <h1 class="negrito branco">Floripa</h1>
+                    <h3 class="negrito branco">HOTEL</h3>
+                </a>
+            </div>
+            <div class="logoHome">
+                <a href="#">
+                    <img src="img/icons8-casa-64.png" alt="btn-home">
+                </a>
+            </div>
+            <div class="nomeSair">
+            </div>
+        </div>
+        <div class="navegacao">
+            <h2 id="titulo" class="negrito">Tipo Quarto</h2>
+            <hr class="hrLaranja"/>
+            <div class="inputs" style="margin-top: 60px;">
+                <input class="barra-pesquisa" type="text" placeholder="Pesquisar por Tipo de Quarto">
+                <input class="btnPesquisar negrito branco pointer" type="submit" value="Pesquisar">
+            </div>
+        </div>
+        <div style="margin-top: 50px;">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Tipo de Quarto</th>
+                        <th>Cama Solteiro</th>
+                        <th>Cama Casal</th>
+                        <th>N° Pessoas</th>
+                        <th></th>
+                    </tr>
+                </thead>    
+                <tbody id="listerUser">
+                        <tr>
+                            <form action="/tipoQuarto/save" method="post">
+                                <td><input type="text" class="centralText" name="tipoQuarto" required></td>
+                                <td>
+                                    <select class="selectPopupForm" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" onchange="gerarQNTpessoas('#listerUser')" required>
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="selectPopupForm" id="quantidadeCamaCasal" name="quantidadeCamaCasal" onchange="gerarQNTpessoas('#listerUser')" required>
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    </select>
+                                </td>
+                                <td><input type="number" class="centralText" name="numeroPessoas" id="numeroPessoas" required disabled ></td>
+                                <td>
+                                    <button type="submit" class="confirmar negrito ">Cadastrar</button>
+                                </td>
+                            </form>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <!---->
+        <footer class="footerTabela">
+            <div class="copyright">
+                <div class="col-lg-12 ">
+                    <div class="small text-white text-center">
+                        <span> &copy; 2022 - Projeto WEB - Jovem Programador SENAC</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--editar Popup-->
+        <div class="popup">
+            <div id="editarPopup">
+                <form action="/tipoQuarto/edit" id="formularioEdit" onsubmit="EditTipoQuarto()" method="post" enctype="multipart/form-data">
+                    <header class="headerPopup">
+                        <h1 class="tituloPopup negrito">EDITAR</h1> 
+                    </header>
+                    <div class="inputPopup">
+                        <label class="title-input">Cama Solteiro</label>
+                        <select class="form-select form-select-lg inputpopupForm campo1Form" aria-label=".form-select-lg example" id="quantidadeCamaSolteiro" name="quantidadeCamaSolteiro" id="quantidadeCamaSolteiro" onchange="gerarQNTpessoas('#editarPopup')" required>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div> 
+                    <div class="inputPopup">
+                        <label class="title-input">Cama Casal</label>
+                        <select class="form-select form-select-lg inputpopupForm campo2Form" aria-label=".form-select-lg example" id="quantidadeCamaCasal" name="quantidadeCamaCasal" id="quantidadeCamaCasal" onchange="gerarQNTpessoas('#editarPopup')" required>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div> 
+                    <div class="inputPopup">
+                        <label class="title-input">N° Pessoas</label>
+                        <input type="number" class="form-control inputpopupForm inputDisabled" required name="numeroPessoas" id="numeroPessoas" disabled>
+                    </div> 
+                    <div class="inputPopup">
+                        <label class="title-input">Insira Imagem</label>
+                        <input accept="image/jpeg" type="file" class="form-control-file" class="form-control inputpopupForm" name="imagem" id="imagem" required>
+                    </div> 
+                    <footer class="footerPopup">
+                        <button type="button" class="buttonPopup buttonCancel close negrito" onclick="CloseEditPopup()">Cancelar </button>
+                        <button type="submit" class="buttonPopup buttonSuccess negrito">Salvar</button>
+                    </footer>
+                    <input type="hidden" name="idQuarto" id="idquarto">
+                </form>
+            </div>
+        <!--deletar Popup-->
+            <div id="deletePopup">
+                <form action="/tipoQuarto/delete" method="post" id="formularioDelete">
+                    <header class="headerPopup" style="padding-top: 10px;">
+                        <h3 style="padding: 60px 0 30px 0; color: #ffffff;" class="negrito tituloPopup">Gostaria mesmo de excluir?</h3> 
+                    </header>
+                    <footer class="footerPopup">
+                        <button type="button" class="buttonPopup negrito" onclick="CloseDeletePopup()">Cancelar</button>
+                        <button type="button" class="buttonPopup buttonCancel close negrito" id="BotaoSubmitDelete" onclick="deleteTipoQuarto()">Excluir</button>
+                        <input type="hidden" id="idQuarto" name="idQuarto">
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </body>
+    </html>

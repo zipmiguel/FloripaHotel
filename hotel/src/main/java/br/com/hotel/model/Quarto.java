@@ -1,11 +1,12 @@
-package br.com.hotel.entidades;
+package br.com.hotel.model;
 
-import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,30 +14,45 @@ import javax.persistence.Table;
 public class Quarto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idQuarto;
+    private Long idQuarto;
+    @ManyToOne
+    @JoinColumn(name = "id_tipoQuarto")
+    private TipoQuarto tipoQuarto;
     @Column(nullable = false)
-    private ArrayList<ArrayList<Reserva>> listaReservas;
-    @Column(nullable = false)
-    private int numero;
-    @Column(nullable = false)
+    private String numero;
+    @Column
     private Boolean status;
 
-    public int getIdQuarto() {
+    public Long getIdQuarto() {
         return idQuarto;
     }
-    public void setIdQuarto(int idQuarto) {
+
+    public void setIdQuarto(Long idQuarto) {
         this.idQuarto = idQuarto;
     }
-    public int getNumero() {
+
+    public String getNumero() {
         return numero;
     }
-    public void setNumero(int numero) {
+
+    public void setNumero(String numero) {
         this.numero = numero;
     }
+
     public Boolean getStatus() {
         return status;
     }
+
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
+    public TipoQuarto getTipoQuarto() {
+        return tipoQuarto;
+    }
+
+    public void setTipoQuarto(TipoQuarto tipoQuarto) {
+        this.tipoQuarto = tipoQuarto;
+    }
+
 }

@@ -10,6 +10,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/verificarUsuario.js"></script>
+        <script src="js/pgto.js"></script>
         <!-- Css Styles -->
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -20,28 +23,32 @@
         <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
-        
+        <script>
+            $(document).ready(function(){
+                carregarDadosPosPgto();
+            });
+        </script>
     </head>
     <body>
         <header class="header-section">
             <div class="container-fluid">
                 <div class="inner-header">
                     <div class="logo">
-                        <a href="./index.html"><img src="img/logo.svg" alt=""></a>
+                        <a href="./"><img src="img/logo.svg" alt=""></a>
                     </div>
                     <div class="nav-right">
-                        <a href="./index.html#reserva" class="primary-btn">Faça sua Reserva</a>
-                        <a href="./index.html#reserva" id="button-login">Login</a>
-                        <h6 class="text-white">Ainda não tem conta?<a href="./index.html#reserva" id="button-cadastro">Cadastre-se</a></h6>
+                        <a href="./#reserva" class="primary-btn">Faça sua Reserva</a>
+                        <a href="./#reserva" id="button-login">Login</a>
+                        <h6 class="text-white">Ainda não tem conta?<a href="./#reserva" id="button-cadastro">Cadastre-se</a></h6>
                     </div>
                     <nav class="main-menu mobile-menu">
                         <ul>
-                            <li><a href="./index.html">Início</a></li>
-                            <li><a href="rooms.html">Quartos</a></li>
-                            <li><a href="services.html">Serviços</a></li>
-                            <li><a href="./about-us.html">Sobre</a></li>
-                            <!-- <li><a href="./blog.html">Notícias</a></li> -->
-                            <li><a href="./contact.html">Contato</a></li>
+                            <li><a href="./">Início</a></li>
+                            <li><a href="rooms">Quartos</a></li>
+                            <li><a href="services">Serviços</a></li>
+                            <li><a href="./about-us">Sobre</a></li>
+                            <!-- <li><a href="./blog">Notícias</a></li> -->
+                            <li><a href="./contact">Contato</a></li>
                         </ul>
                     </nav>
                     <div id="mobile-menu-wrap"></div>
@@ -50,10 +57,10 @@
         </header>
         <div class="formularioCompra">
             <h1 class="negrito underLineLaranja">Sua estadia</h1>
-            <h2 class="informacoes">segunda, 30/05/2022 - terça, 31/05/2022</h2>
-            <h2 class="informacoes">2 Adultos, 1 Criança</h2>
-            <h2 class="informacoes">1 Quarto Standard</h2>
-            <h2 class="informacoes negrito">Total: R$1699,99</h2>
+            <h2 class="informacoes info1">segunda, 30/05/2022 - terça, 31/05/2022</h2>
+            <h2 class="informacoes info2">2 Adultos, 1 Criança</h2>
+            <h2 class="informacoes info3">1 Quarto Standard</h2>
+            <h2 class="informacoes info4 negrito">Total: R$1699,99</h2>
             <h3 class="linhaUnica"></h3>
         </div>
         <div class="aprovacaoPgto">
@@ -65,7 +72,7 @@
             <h4 class="negritoPixBoleto">Vencimento</h4>
             <h4 class="informacoes">Quinta-feira, 2 de Junho</h4>
             <h4 class="negritoPixBoleto">Valor do Pedido</h4>
-            <h4 class="informacoes">R$ 1699,99</h4>
+            <h4 class="informacoes info5">R$ 1699,99</h4>
             <img src="img/codigoBarrasBoleto.svg" alt=""/>
             <h4 class="negritoPixBoleto">Código do Boleto:</h4>
             <h4 class="informacoes">99991.00035 48952.754951 35179.158472 9 24685796315478</h4>
@@ -120,12 +127,12 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <ul>
-                                <li><a href="./index.html">Início</a></li>
-                                <li><a href="rooms.html">Quartos</a></li>
-                                <li><a href="services.html">Serviços</a></li>
-                                <li><a href="./about-us.html">Sobre</a></li>
-                                <!-- <li><a href="./blog.html">Notícias</a></li> -->
-                                <li><a href="./contact.html">Contato</a></li>
+                                <li><a href="./">Início</a></li>
+                                <li><a href="rooms">Quartos</a></li>
+                                <li><a href="services">Serviços</a></li>
+                                <li><a href="./about-us">Sobre</a></li>
+                                <!-- <li><a href="./blog">Notícias</a></li> -->
+                                <li><a href="./contact">Contato</a></li>
                             </ul>
                         </div>
                     </div>

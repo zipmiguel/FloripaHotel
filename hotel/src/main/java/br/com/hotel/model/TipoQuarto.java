@@ -1,10 +1,11 @@
-package br.com.hotel.entidades;
+package br.com.hotel.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 public class TipoQuarto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTipoQuarto;
+    private Long idTipoQuarto;
     @Column(nullable = false)
     private String tipoQuarto;
     @Column(nullable = false)
@@ -21,11 +22,22 @@ public class TipoQuarto {
     private int quantidadeCamaCasal;
     @Column(nullable = false)
     private int numeroPessoas;
+    @Column(nullable = false, columnDefinition = "boolean")
+    private boolean StatusTipoQuarto;
+    @Lob
+    private byte[] imagem;
     
-    public int getIdTipoQuarto() {
+
+    public boolean getStatusTipoQuarto() {
+        return StatusTipoQuarto;
+    }
+    public void setStatusTipoQuarto(boolean statusTipoQuarto) {
+        StatusTipoQuarto = statusTipoQuarto;
+    }
+    public Long getIdTipoQuarto() {
         return idTipoQuarto;
     }
-    public void setIdTipoQuarto(int idTipoQuarto) {
+    public void setIdTipoQuarto(Long idTipoQuarto) {
         this.idTipoQuarto = idTipoQuarto;
     }
     public String getTipoQuarto() {
@@ -51,5 +63,28 @@ public class TipoQuarto {
     }
     public void setNumeroPessoas(int numeroPessoas) {
         this.numeroPessoas = numeroPessoas;
+    }
+    public TipoQuarto(String tipoQuarto,int quantidadeCamaSolteiro,int quantidadeCamaCasal,int numeroPessoas){
+        this.tipoQuarto = tipoQuarto;
+        this.quantidadeCamaSolteiro = quantidadeCamaSolteiro;
+        this.quantidadeCamaCasal = quantidadeCamaCasal;
+        this.numeroPessoas = numeroPessoas;
+        this.StatusTipoQuarto = true;
+    }
+    public TipoQuarto(String tipoQuarto,int quantidadeCamaSolteiro,int quantidadeCamaCasal){
+        this.tipoQuarto = tipoQuarto;
+        this.quantidadeCamaSolteiro = quantidadeCamaSolteiro;
+        this.quantidadeCamaCasal = quantidadeCamaCasal;
+        this.numeroPessoas = (quantidadeCamaCasal*2)+quantidadeCamaSolteiro;
+        this.StatusTipoQuarto = true;
+    }
+    public TipoQuarto(){}
+
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
     }
 }

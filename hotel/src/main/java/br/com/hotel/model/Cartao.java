@@ -1,4 +1,4 @@
-package br.com.hotel.entidades;
+package br.com.hotel.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Cartao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCartao;
+    private Long idCartao;
     @Column(nullable = false)
     private String bandeira;
     @Column(nullable = false)
@@ -23,11 +23,13 @@ public class Cartao {
     private String nome;
     @Column(nullable = false)
     private String cvv;
+    @Column(nullable = false)
+    private String tipo;
     
-    public int getIdCartao() {
+    public Long getIdCartao() {
         return idCartao;
     }
-    public void setIdCartao(int idCartao) {
+    public void setIdCartao(Long idCartao) {
         this.idCartao = idCartao;
     }
     public String getBandeira() {
@@ -59,5 +61,13 @@ public class Cartao {
     }
     public void setCvv(String cvv) {
         this.cvv = cvv;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }
