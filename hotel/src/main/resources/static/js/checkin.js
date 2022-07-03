@@ -150,7 +150,7 @@ function carregarQuartosCodigo(){
                 return quantidade;
             }
             if (verificaQuantidadeQuartosBoolean()===0) {
-                alert('Todos Quartos ocupados ou seu codigo passou da validade')
+                alert('Todos Quartos ocupados ou seu codigo com data invalida')
             }
             openCheckin(idtitulo,true);
             },

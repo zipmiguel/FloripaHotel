@@ -120,7 +120,7 @@ public class ReservaController {
          Reserva reservaBusca = reservaRepositorio.searchCodeReserva(numero);
          List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(reservaBusca.getTipoQuarto());
          List<Boolean> listaQuartosB = new ArrayList<>();
-         if (!(LocalDate.now().isAfter(reservaBusca.getDataSaida())) && !(reservaBusca.getQuarto()!=null)) {
+         if (!(LocalDate.now().isAfter(reservaBusca.getDataSaida())) && !(reservaBusca.getQuarto()!=null) && !(LocalDate.now().isBefore(reservaBusca.getDataEntrada()))) {
          for (int i = 0; i < listaQuartoEspecifico.size(); i++) {
             listaQuartosB.add(reservasQuartos(listaQuartoEspecifico.get(i).getIdQuarto()));
          }}
