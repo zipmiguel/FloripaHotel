@@ -17,6 +17,6 @@ public interface QuartoRepositorio extends JpaRepository<Quarto, Long> {
     @Query(value = "select count(*) from hotel.quarto where status = 1 and id_tipoquarto = :idTipoQuarto",nativeQuery = true)
     int contarPeloTipoQuarto(@Param("idTipoQuarto") Long idTipoQuarto);
     
-    @Query(value = "select *from hotel.quarto where status=1 and id_tipoquarto = :tipoQuarto",nativeQuery = true)
+    @Query(value = "select * from hotel.quarto where status=1 and id_tipoquarto = :tipoQuarto",nativeQuery = true)
     List<Quarto> findByTipoQuarto(@Param("tipoQuarto") Long tipoQuarto);
 }
