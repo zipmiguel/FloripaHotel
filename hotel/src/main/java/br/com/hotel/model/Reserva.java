@@ -20,9 +20,9 @@ public class Reserva {
     @ManyToOne
     @JoinColumn(name = "id_hospede")
     private Hospede hospede;
-    // @ManyToOne
-    // @JoinColumn(name = "id_quarto")
-    // private Quarto quarto;
+    @ManyToOne
+    @JoinColumn(name = "id_quarto")
+    private Quarto quarto;
     @ManyToOne
     @JoinColumn(name = "id_tipoQuarto")
     private TipoQuarto tipoQuarto;
@@ -116,6 +116,12 @@ public class Reserva {
     }
     public void setTipoQuarto(TipoQuarto tipoQuarto) {
         this.tipoQuarto = tipoQuarto;
+    }
+    public Quarto getQuarto() {
+        return quarto;
+    }
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
     }
 }
 
