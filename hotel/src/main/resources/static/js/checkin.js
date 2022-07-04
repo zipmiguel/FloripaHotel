@@ -108,7 +108,7 @@ function carregarQuartosCodigo(){
         success: function (data) {
             const listaQuartos = data[0];
             const listaQuartosBoolean = data[2];
-            const Reserva = data[1];  
+            const Reserva = data[1];
             let tamanhoListaQuartos = 0;
             const idtitulo = listaQuartos[0].tipoQuarto.idTipoQuarto;
             var ColecaoQuartosTipo = []
@@ -155,7 +155,7 @@ function carregarQuartosCodigo(){
             openCheckin(idtitulo,true);
             },
             error: function() {
-                alert('codigo não encontrado');
+                alert('Código não encontrado ou o tempo de check-in expirou!');
         }
     })
 }
@@ -205,5 +205,4 @@ function closePopupCheckin(){
     checkinPopup.idtipoquarto = ''
     ocultarPopup()
     $('#codigoReserva').val('')
-    alert('check-in concluido')
 }

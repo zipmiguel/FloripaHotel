@@ -88,9 +88,7 @@ function finalizarReserva(){
     const valorTotalV = sessionStorage.getItem('valorTotal')
     const metodoPagamentoV = document.querySelector('input[name=divOpcaoPgto]:checked').value
     const qntQuartos = parseInt(sessionStorage.getItem('qntdQuartos'))
-    console.log(qntQuartos);
-	
-	alert(sessionStorage.getItem('qntdQuartos'))
+
     if(verificarRadio() && verificarCadCartao()){
         if($("input[type=checkbox][name=salvarCartao]").is(":checked")){
             let campos = verificarCadCartao()
@@ -136,27 +134,21 @@ function verificarCadCartao(){
         $("select[name=selectCreditoOuDebito]")
     ]
     if(campos[0].val() == ""){
-        alert('0')
         return false
     }
     if(campos[1].val().length != 19){
-        alert('1')
         return false
     }
     if(campos[2].val() == ""){
-        alert('2')
         return false
     }
     if(campos[3].val() == ""){
-        alert('3')
         return false
     }
     if(campos[4].val().length != 3){
-        alert('4')
         return false
     }
     if(campos[5].val() == ""){
-        alert('5')
         return false
     }
     return campos
