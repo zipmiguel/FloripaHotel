@@ -11,6 +11,8 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -86,10 +88,15 @@ public class ReservaController {
 
 
     @PostMapping("/finalizarReserva")
-    public void cadastrarReserva(HttpServletResponse response, @RequestParam String metodoPagamento,@RequestParam Long idHospede,@RequestParam String dataEntrada, @RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto) throws MessagingException{
-        Reserva reserva = new Reserva();
-        Optional<Hospede> hospede = hospedeRepositorio.findById(idHospede);
+    public void cadastrarReserva(HttpServletResponse response, @RequestParam String metodoPagamento,
+    		@RequestParam Long idHospede,@RequestParam String dataEntrada, 
+    		@RequestParam String dataSaida, @RequestParam Double valorTotal, @RequestParam Long idTipoQuarto,@RequestParam Integer qntQuartos) throws MessagingException{
         Optional<TipoQuarto> tipoQuarto = tipoQuartoRepositorio.findById(idTipoQuarto);
+        Optional<Hospede> hospede = hospedeRepositorio.findById(idHospede);
+        System.out.println(qntQuartos);
+        List<Reserva> listaReservas = new ArrayList<>();
+        for (int i = 0; i < qntQuartos; i++) {
+        Reserva reserva = new Reserva();
         reserva.setHospede(hospede.get());
         System.out.println(dataSaida);
         System.out.println(dataEntrada);
@@ -99,27 +106,74 @@ public class ReservaController {
         reserva.setTipoQuarto(tipoQuarto.get());
         reserva.setStatus("Não chegou");
         reserva.setMetodoPagamento(metodoPagamento);
-        Long codigo = System.currentTimeMillis();
+        Long codigo = System.nanoTime();
         senderMailService.codigoReserva(hospede.get().getEmail(),hospede.get().getNome(),codigo);
         reserva.setCodigoReserva(codigo);
-        reservaRepositorio.save(reserva);
+        listaReservas.add(reserva);
+        }
+        reservaRepositorio.saveAll(listaReservas);
     }
 
-    //terminar esse método para fazer a busca da reserva efetivada p/ depois checkin nos quartos
-    // @GetMapping("/pesquisarReservaEfetivada/{numero}")
-    // public Quarto buscarQuarto(@PathVariable("numero") String numero) {
-    //     System.out.println(numero);
-    //     Quarto quarto = quartoRepositorio.findBynumero(numero);
-    //     return quarto;
-    // }
+     //terminar esse método para fazer a busca da reserva efetivada p/ depois checkin nos quartos
+     @GetMapping("/pesquisarReservaEfetivada/{numero}")
+     public List<Object> buscarQuartosDisponiveis(@PathVariable("numero") String numero) {
+         Reserva reservaBusca = reservaRepositorio.searchCodeReserva(numero);
+         if(reservaBusca.getDataSaida().isEqual(LocalDate.now())){
+             return null;
+         }
+         System.out.println(LocalDate.now());
+         System.out.println(reservaBusca.getDataSaida());
+         List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(reservaBusca.getTipoQuarto().getIdTipoQuarto());
+         List<Boolean> listaQuartosB = new ArrayList<>();
+         if (!(LocalDate.now().isAfter(reservaBusca.getDataSaida())) && !(reservaBusca.getQuarto()!=null) && !(LocalDate.now().isBefore(reservaBusca.getDataEntrada()))) {
+         for (int i = 0; i < listaQuartoEspecifico.size(); i++) {
+            listaQuartosB.add(reservasQuartos(listaQuartoEspecifico.get(i).getIdQuarto()));
+         }}
+         else{
+         for (int i = 0; i < listaQuartoEspecifico.size(); i++) {
+            listaQuartosB.add(false);
+         }
+         }
+         return Arrays.asList(listaQuartoEspecifico,reservaBusca,listaQuartosB);
+     }
+     private Boolean reservasQuartos(Long idQuarto){
+        LocalDate dataFormatada = LocalDate.now();
+        Optional<Quarto> quarto = quartoRepositorio.findById(idQuarto);
+        List<Reserva> listaReserva = reservaRepositorio.searchQuartoNchegou(quarto.get().getIdQuarto());
+        for (int i = 0; i < listaReserva.size(); i++) {
+            System.out.print(listaReserva.get(i).getDataEntrada()+" e "+listaReserva.get(i).getDataSaida()+"\n\n\n\n ");
+        }
+        Boolean reservaDisponivel = true;
+        for (Reserva reserva : listaReserva) {
+                if(!(reserva.getDataEntrada().isAfter(dataFormatada)) && reserva.getDataSaida().isAfter(dataFormatada)){
+                reservaDisponivel = false;
+                break;
+            }
+        }
+        return reservaDisponivel;
+    }
+
+
     @PutMapping("/listaQuartos")
-    public List<Quarto> listaQuartos(@RequestParam long idTipoQuarto){
-    		Optional<TipoQuarto> quartoTipo =  tipoQuartoRepositorio.findById(idTipoQuarto);
-    		if (quartoTipo.isPresent()) {
-				List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(quartoTipo.get());
-				return listaQuartoEspecifico;
+    public List<Object> listaQuartos(@RequestParam String idTipoQuarto){
+    		Optional<TipoQuarto> Tipoquarto =  tipoQuartoRepositorio.findById((Long.parseLong(idTipoQuarto)));
+            List<Boolean> listaQuartosB = new ArrayList<>();
+    		if (Tipoquarto.isPresent()) {
+				List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(Tipoquarto.get().getIdTipoQuarto());
+                for (int i = 0; i < listaQuartoEspecifico.size(); i++) {
+                    listaQuartosB.add(reservasQuartos(listaQuartoEspecifico.get(i).getIdQuarto()));
+                }
+                System.err.println(listaQuartosB);
+				return Arrays.asList(listaQuartoEspecifico,listaQuartosB);
 			}
     	return null;
     }
-    
+    @GetMapping("/checkin")
+    public void fazerCheckin(@RequestParam String idquarto,@RequestParam String codigoReserva) {
+    	Reserva reserva = reservaRepositorio.searchCodeReserva(codigoReserva);
+        Optional<Quarto> quartoReserva = quartoRepositorio.findById(Long.parseLong(idquarto));
+        reserva.setStatus("Entrou");
+        reserva.setQuarto(quartoReserva.get());
+        reservaRepositorio.save(reserva);
+    }
 }
