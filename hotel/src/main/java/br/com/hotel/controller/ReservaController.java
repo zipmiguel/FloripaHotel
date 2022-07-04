@@ -118,6 +118,11 @@ public class ReservaController {
      @GetMapping("/pesquisarReservaEfetivada/{numero}")
      public List<Object> buscarQuartosDisponiveis(@PathVariable("numero") String numero) {
          Reserva reservaBusca = reservaRepositorio.searchCodeReserva(numero);
+         if(reservaBusca.getDataSaida().isEqual(LocalDate.now())){
+             return null;
+         }
+         System.out.println(LocalDate.now());
+         System.out.println(reservaBusca.getDataSaida());
          List<Quarto> listaQuartoEspecifico = quartoRepositorio.findByTipoQuarto(reservaBusca.getTipoQuarto().getIdTipoQuarto());
          List<Boolean> listaQuartosB = new ArrayList<>();
          if (!(LocalDate.now().isAfter(reservaBusca.getDataSaida())) && !(reservaBusca.getQuarto()!=null) && !(LocalDate.now().isBefore(reservaBusca.getDataEntrada()))) {

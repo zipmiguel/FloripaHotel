@@ -17,8 +17,13 @@ function carregarDadosReserva(){
 }
 
 function verificarReservaIndex(){
-    atualizarSession()
-    window.location.href = "http://localhost:8089/reservaUsuario"
+    [dataEntradaV,dataSaidaV,nAdultos,nCriancas,totalPessoas] = pegarValores()
+    if((dataEntradaV=="" || dataSaidaV=="" ||  nAdultos == 0) || (new Date(dataEntradaV) >= new Date(dataSaidaV))){
+        alert("Preencha todos os campos corretamente!")
+    }else{
+        atualizarSession()
+        window.location.href = "http://localhost:8089/reservaUsuario"
+    }
 }
 
 function atualizarSession(){
@@ -32,10 +37,10 @@ function atualizarSession(){
 function verificarDisponibilidade(){
 
     [dataEntradaV,dataSaidaV,nAdultos,nCriancas,totalPessoas] = pegarValores()
-    atualizarSession()
-    if(dataEntradaV=="" || dataSaidaV=="" ||  nAdultos == 0){
+    if((dataEntradaV=="" || dataSaidaV=="" ||  nAdultos == 0) || (new Date(dataEntradaV) >= new Date(dataSaidaV))){
         alert("Preencha todos os campos corretamente!")
     }else{
+        atualizarSession()
         $.post("http://localhost:8089/pesquisarReserva",{
             dataEntrada:dataEntradaV,dataSaida:dataSaidaV,qntdPessoas:parseInt(totalPessoas),qntdAdultos:nAdultos
         }, function(listaDispo){
@@ -72,10 +77,10 @@ function paginaDisponibilidadeReserva(listaDisponibilidade,totalPessoas,nAdultos
         `<div class="ri-text">`+
         `<div class="section-title">`+
         `<div class="section-title">`+
-        `<span>acomodação confortável que cabe no seu bolso</span>`+
+        // `<span>acomodação confortável que cabe no seu bolso</span>`+
         `<h2>`+tipoQuarto.tipoQuarto+`</h2>`+
         `</div>`+
-        `<p>Para você que quer economizar e desfrutar de toda a infraestrutura do hotel, essa é a escolha perfeita! Possui tudo que você precisa por um preço que cabe no seu bolso. Não deixa nada a desejar e ainda não pesa nos custos de sua viagem!!!<br/><br/>`+
+        // `<p>Para você que quer economizar e desfrutar de toda a infraestrutura do hotel, essa é a escolha perfeita! Possui tudo que você precisa por um preço que cabe no seu bolso. Não deixa nada a desejar e ainda não pesa nos custos de sua viagem!!!<br/><br/>`+
         `As suítes <a class="negrito" style="font-weight: 700;">`+tipoQuarto.tipoQuarto+`</a> possuem `+tipoQuarto.quantidadeCamaSolteiro+` camas de solteiro, `+tipoQuarto.quantidadeCamaCasal+` camas de casal e recebem até `+tipoQuarto.numeroPessoas+` pessoas!</p>`+
         `<div class="ri-features">`+
         `<div class="ri-info">`+
