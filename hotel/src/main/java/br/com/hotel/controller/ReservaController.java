@@ -140,7 +140,7 @@ public class ReservaController {
         }
         Boolean reservaDisponivel = true;
         for (Reserva reserva : listaReserva) {
-                if(reserva.getDataEntrada().isBefore(dataFormatada) && reserva.getDataSaida().isAfter(dataFormatada)){
+                if(!(reserva.getDataEntrada().isAfter(dataFormatada)) && reserva.getDataSaida().isAfter(dataFormatada)){
                 reservaDisponivel = false;
                 break;
             }
